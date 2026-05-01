@@ -1,0 +1,1473 @@
+{
+  "styles": {
+    "glassmorphism": {
+      "id": "glassmorphism",
+      "label": "Glassmorphism",
+      "emoji": "🪟",
+      "description": "霧面玻璃層疊感，透明度與模糊構建深度。適合 SaaS、科技產品、暗色介面。",
+      "representativeSites": [
+        {
+          "title": "Stripe Sessions 2026 | The global internet economy conference",
+          "href": "https://stripe.com/sessions?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Online code, design, and project management courses • SuperHi",
+          "href": "https://superhi.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "10 X Hub | Design Resources",
+          "href": "https://10xdesigners.co/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Logan Liffick",
+          "href": "https://loganliffick.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Wise Design",
+          "href": "https://wise.design/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Workflow Automation Builder UIUX Design | SaaS Drag & Drop",
+          "href": "https://dribbble.com/shots/27333638-Workflow-Automation-Builder-UIUX-Design-SaaS-Drag-Drop",
+          "source": "dribbble"
+        },
+        {
+          "title": "Designer Profile - Logoarchive",
+          "href": "https://dribbble.com/shots/27331230-Designer-Profile-Logoarchive",
+          "source": "dribbble"
+        },
+        {
+          "title": "Designer Profile - Logoarchive",
+          "href": "https://dribbble.com/shots/27331230-Designer-Profile-Logoarchive",
+          "source": "dribbble"
+        },
+        {
+          "title": "Running Mobile App",
+          "href": "https://dribbble.com/shots/27320453-Running-Mobile-App",
+          "source": "dribbble"
+        },
+        {
+          "title": "Running Mobile App",
+          "href": "https://dribbble.com/shots/27320453-Running-Mobile-App",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#0a0a1a",
+        "--color-surface": "rgba(255,255,255,0.08)",
+        "--color-surface-hover": "rgba(255,255,255,0.14)",
+        "--color-border": "rgba(255,255,255,0.15)",
+        "--color-text-primary": "#ffffff",
+        "--color-text-secondary": "rgba(255,255,255,0.6)",
+        "--color-accent": "#6c63ff",
+        "--color-accent-glow": "rgba(108,99,255,0.4)",
+        "--blur-sm": "blur(8px)",
+        "--blur-md": "blur(16px)",
+        "--blur-lg": "blur(32px)",
+        "--radius-sm": "8px",
+        "--radius-md": "16px",
+        "--radius-lg": "24px",
+        "--shadow-glass": "0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)",
+        "--shadow-glow": "0 0 40px rgba(108,99,255,0.3)",
+        "--font-display": "\"Plus Jakarta Sans\", sans-serif",
+        "--font-body": "\"Inter\", sans-serif",
+        "--spacing-section": "120px",
+        "--transition": "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#0a0a1a",
+          "surface": "rgba(255,255,255,0.08)",
+          "accent": "#6c63ff"
+        },
+        "backdropBlur": {
+          "glass": "16px"
+        }
+      },
+      "notAiTips": [
+        "用 backdrop-filter: blur() 而非單純透明度 — 沒有模糊的玻璃感是假的",
+        "邊框用 rgba(255,255,255,0.15) 的細線，1px 夠了，不要 2px",
+        "光暈（glow）要不對稱，放在卡片左上角而不是正中心"
+      ],
+      "typographyPairings": [
+        {
+          "display": "Plus Jakarta Sans 700",
+          "body": "Inter 400",
+          "note": "現代科技感"
+        },
+        {
+          "display": "Space Grotesk 700",
+          "body": "DM Sans 400",
+          "note": "幾何精準"
+        }
+      ],
+      "realPalettes": [
+        "rgb(249, 247, 247)",
+        "rgb(32, 3, 60)",
+        "rgb(219, 215, 215)",
+        "rgb(255, 255, 255)",
+        "rgba(255, 255, 255, 0.15)",
+        "rgb(20, 4, 36)",
+        "rgb(136, 63, 255)",
+        "rgb(255, 255, 255)",
+        "rgb(17, 17, 24)",
+        "rgb(39, 39, 230)",
+        "rgb(0, 0, 0)",
+        "rgb(225, 237, 255)",
+        "rgb(0, 0, 238)",
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(123, 0, 22)",
+        "rgba(255, 255, 255, 0)",
+        "rgb(199, 199, 199)",
+        "rgba(24, 24, 24, 0)",
+        "rgba(193, 241, 0, 0)"
+      ],
+      "siteCount": 8,
+      "shotCount": 26
+    },
+    "neobrutalism": {
+      "id": "neobrutalism",
+      "label": "Neobrutalism",
+      "emoji": "🔩",
+      "description": "粗框線、高對比色塊、生猛排版。反精緻，強調個性與直接。適合作品集、創意工具、反叛品牌。",
+      "representativeSites": [
+        {
+          "title": "Mike Matas",
+          "href": "https://mikematas.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Site Not Found | Framer",
+          "href": "https://haptic.app/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Redirecting...",
+          "href": "https://roasted.design/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Field Day Sound",
+          "href": "https://www.fielddaysound.tv/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Skiff - Private, encrypted, secure email - 10 GB free",
+          "href": "https://skiff.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Quaffable Wine Label System: All Three Variants",
+          "href": "https://dribbble.com/shots/27332666-Quaffable-Wine-Label-System-All-Three-Variants",
+          "source": "dribbble"
+        },
+        {
+          "title": "Distressed Badges",
+          "href": "https://dribbble.com/shots/27332571-Distressed-Badges",
+          "source": "dribbble"
+        },
+        {
+          "title": "Distressed Badges",
+          "href": "https://dribbble.com/shots/27332571-Distressed-Badges",
+          "source": "dribbble"
+        },
+        {
+          "title": "Nightshift Division Streetwear Tshirt Graphic For clothing brand",
+          "href": "https://dribbble.com/shots/27334227-Nightshift-Division-Streetwear-Tshirt-Graphic-For-clothing-brand",
+          "source": "dribbble"
+        },
+        {
+          "title": "Nightshift Division Streetwear Tshirt Graphic For clothing brand",
+          "href": "https://dribbble.com/shots/27334227-Nightshift-Division-Streetwear-Tshirt-Graphic-For-clothing-brand",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#fffef0",
+        "--color-surface": "#ffffff",
+        "--color-border": "#000000",
+        "--color-text-primary": "#0d0d0d",
+        "--color-text-secondary": "#333333",
+        "--color-accent": "#ff4d00",
+        "--color-accent-2": "#ffde00",
+        "--color-accent-3": "#00b4d8",
+        "--border-width": "2px",
+        "--border-heavy": "3px",
+        "--radius-sm": "0px",
+        "--radius-md": "4px",
+        "--radius-lg": "8px",
+        "--shadow-brutal": "4px 4px 0px #000000",
+        "--shadow-brutal-lg": "8px 8px 0px #000000",
+        "--shadow-brutal-hover": "6px 6px 0px #000000",
+        "--font-display": "\"Space Grotesk\", sans-serif",
+        "--font-body": "\"Inconsolata\", monospace",
+        "--spacing-section": "80px",
+        "--transition": "all 0.1s ease"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#fffef0",
+          "accent": "#ff4d00",
+          "border": "#000000"
+        }
+      },
+      "notAiTips": [
+        "box-shadow 用純黑色偏移而非模糊 (4px 4px 0 #000) — 這是新野蠻主義的靈魂",
+        "排版要有意識地「不對齊」某個元素，製造張力",
+        "按鈕 hover 時把 shadow 縮小 (4px→2px) 製造按壓感"
+      ],
+      "typographyPairings": [
+        {
+          "display": "Space Grotesk 800",
+          "body": "Inconsolata 400",
+          "note": "技術感粗礦"
+        },
+        {
+          "display": "Archivo Black",
+          "body": "Archivo 400",
+          "note": "統一家族，衝擊感"
+        }
+      ],
+      "realPalettes": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0)",
+        "rgb(51, 51, 51)",
+        "rgb(0, 0, 0)",
+        "rgb(0, 0, 0)",
+        "rgb(19, 19, 19)",
+        "rgb(255, 255, 255)",
+        "rgb(251, 94, 255)",
+        "rgb(0, 0, 0)",
+        "rgb(223, 223, 223)",
+        "rgb(255, 252, 240)",
+        "rgb(0, 0, 0)",
+        "rgb(0, 3, 16)",
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0)",
+        "rgb(249, 247, 244)",
+        "rgb(12, 12, 12)",
+        "rgb(0, 0, 0)",
+        "rgb(236, 234, 229)"
+      ],
+      "siteCount": 16,
+      "shotCount": 15
+    },
+    "minimal_float": {
+      "id": "minimal_float",
+      "label": "Minimal Float",
+      "emoji": "🕊️",
+      "description": "極致留白，元素像漂浮在空氣中。沉默而有力。適合高端作品集、奢侈品牌、設計師個人網站。",
+      "representativeSites": [
+        {
+          "title": "Experience email at its best - Tatem",
+          "href": "https://tatem.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Fey: Make better investments.",
+          "href": "https://www.feyapp.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Workflow Automation Builder UIUX Design | SaaS Drag & Drop",
+          "href": "https://dribbble.com/shots/27333638-Workflow-Automation-Builder-UIUX-Design-SaaS-Drag-Drop",
+          "source": "dribbble"
+        },
+        {
+          "title": "Courier Delivery Mobile App UIUX Design | Parcel Tracking",
+          "href": "https://dribbble.com/shots/27333768-Courier-Delivery-Mobile-App-UIUX-Design-Parcel-Tracking",
+          "source": "dribbble"
+        },
+        {
+          "title": "AI Healthcare Website",
+          "href": "https://dribbble.com/shots/27333724-AI-Healthcare-Website",
+          "source": "dribbble"
+        },
+        {
+          "title": "AI Healthcare Website",
+          "href": "https://dribbble.com/shots/27333724-AI-Healthcare-Website",
+          "source": "dribbble"
+        },
+        {
+          "title": "QuickFix – Home Services Mobile App",
+          "href": "https://dribbble.com/shots/27332307-QuickFix-Home-Services-Mobile-App",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#fafaf8",
+        "--color-surface": "#ffffff",
+        "--color-border": "#e8e8e4",
+        "--color-text-primary": "#111111",
+        "--color-text-secondary": "#666660",
+        "--color-text-muted": "#aaa9a4",
+        "--color-accent": "#111111",
+        "--radius-sm": "2px",
+        "--radius-md": "6px",
+        "--radius-lg": "12px",
+        "--shadow-float": "0 2px 40px rgba(0,0,0,0.06)",
+        "--shadow-hover": "0 8px 60px rgba(0,0,0,0.1)",
+        "--font-display": "\"Editorial New\", \"Playfair Display\", serif",
+        "--font-body": "\"Suisse Intl\", \"Helvetica Neue\", sans-serif",
+        "--spacing-section": "160px",
+        "--letter-spacing-display": "-0.03em",
+        "--line-height-body": "1.8",
+        "--transition": "all 0.5s cubic-bezier(0.16, 1, 0.3, 1)"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#fafaf8",
+          "text": "#111111",
+          "muted": "#aaa9a4"
+        }
+      },
+      "notAiTips": [
+        "字距 (letter-spacing) 設為 -0.03em 讓大標題更緊湊、更像手工設計",
+        "使用 serif 字體當標題 + sans-serif 當內文，製造古典×現代的對比",
+        "section padding 要大到讓你覺得「會不會太多留白了？」— 那才是對的"
+      ],
+      "typographyPairings": [
+        {
+          "display": "Playfair Display 300 italic",
+          "body": "Helvetica Neue 300",
+          "note": "奢侈品牌感"
+        },
+        {
+          "display": "Cormorant Garamond 500",
+          "body": "Inter 300",
+          "note": "文學藝術感"
+        }
+      ],
+      "realPalettes": [
+        "rgb(10, 10, 10)",
+        "rgba(255, 255, 255, 0.95)",
+        "rgba(255, 255, 255, 0.06)",
+        "rgba(255, 255, 255, 0.7)",
+        "rgba(255, 255, 255, 0.55)",
+        "rgba(255, 255, 255, 0.35)",
+        "rgba(255, 255, 255, 0.1)",
+        "rgba(252, 252, 252, 0.08)",
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgba(255, 255, 255, 0.047)",
+        "rgba(255, 255, 255, 0.5)",
+        "rgb(134, 143, 151)",
+        "rgba(255, 255, 255, 0.8)",
+        "rgb(230, 230, 230)",
+        "rgba(255, 255, 255, 0.6)",
+        "rgba(255, 255, 255, 0.08)",
+        "rgba(255, 255, 255, 0.05)",
+        "#100100100",
+        "#e0e0e0"
+      ],
+      "siteCount": 2,
+      "shotCount": 41
+    },
+    "bento_grid": {
+      "id": "bento_grid",
+      "label": "Bento Grid",
+      "emoji": "🍱",
+      "description": "日式便當盒格局，模組化資訊卡片。Apple 風格的資訊展示。適合 SaaS 功能介紹、作品集、技術文件。",
+      "representativeSites": [
+        {
+          "title": "Locomotive | Montreal web agency",
+          "href": "https://locomotive.ca/en?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "CHRISTOPHER IRELAND CREATIVE",
+          "href": "https://christopherireland.net/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Opal Camera Inc.",
+          "href": "https://opalcamera.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Amie - AI Note Taker",
+          "href": "https://amie.so/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Save time and money with our premium and exclusive Framer & Webflow templates.",
+          "href": "https://www.jp.works/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Workflow Automation Builder UIUX Design | SaaS Drag & Drop",
+          "href": "https://dribbble.com/shots/27333638-Workflow-Automation-Builder-UIUX-Design-SaaS-Drag-Drop",
+          "source": "dribbble"
+        },
+        {
+          "title": "Courier Delivery Mobile App UIUX Design | Parcel Tracking",
+          "href": "https://dribbble.com/shots/27333768-Courier-Delivery-Mobile-App-UIUX-Design-Parcel-Tracking",
+          "source": "dribbble"
+        },
+        {
+          "title": "Newly ai app creation landing page web design 3d animation",
+          "href": "https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation",
+          "source": "dribbble"
+        },
+        {
+          "title": "Education Management Web Design",
+          "href": "https://dribbble.com/shots/27320617-Education-Management-Web-Design",
+          "source": "dribbble"
+        },
+        {
+          "title": "Website Design: Call to Action (CTA) for AI-Powered Platform",
+          "href": "https://dribbble.com/shots/27332273-Website-Design-Call-to-Action-CTA-for-AI-Powered-Platform",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#f5f5f0",
+        "--color-surface": "#ffffff",
+        "--color-surface-dark": "#1a1a1a",
+        "--color-border": "#e0e0db",
+        "--color-text-primary": "#1a1a1a",
+        "--color-text-secondary": "#666666",
+        "--color-accent": "#007aff",
+        "--color-accent-2": "#34c759",
+        "--color-accent-3": "#ff9500",
+        "--radius-sm": "12px",
+        "--radius-md": "20px",
+        "--radius-lg": "28px",
+        "--gap": "12px",
+        "--shadow-card": "0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04)",
+        "--shadow-card-hover": "0 4px 20px rgba(0,0,0,0.12)",
+        "--font-display": "\"SF Pro Display\", \"-apple-system\", \"Helvetica Neue\", sans-serif",
+        "--font-body": "\"SF Pro Text\", \"-apple-system\", \"Helvetica Neue\", sans-serif",
+        "--spacing-section": "80px",
+        "--transition": "all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#f5f5f0",
+          "surface": "#ffffff",
+          "accent": "#007aff"
+        },
+        "borderRadius": {
+          "card": "20px"
+        }
+      },
+      "notAiTips": [
+        "不同 grid cell 設定不同 background-color，製造色彩層次而不是全白",
+        "某些 cell 要橫跨兩欄 (col-span-2)，打破完美對稱感",
+        "每個 card 的 padding 要一致，但 font-size 可以不同 — 製造資訊層次"
+      ],
+      "typographyPairings": [
+        {
+          "display": "-apple-system, BlinkMacSystemFont",
+          "body": "Inter 400",
+          "note": "Apple 原生感"
+        },
+        {
+          "display": "Geist 600",
+          "body": "Geist 400",
+          "note": "Vercel 現代感"
+        }
+      ],
+      "realPalettes": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(49, 45, 251)",
+        "rgb(242, 241, 236)",
+        "rgb(0, 0, 0)",
+        "rgba(0, 0, 0, 0.79)",
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0) rgb(0, 0, 0) rgba(0, 0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0)",
+        "rgb(229, 231, 235)",
+        "rgb(149, 149, 149)",
+        "rgb(118, 118, 118)",
+        "rgba(0, 0, 0, 0.1)",
+        "rgb(255, 219, 1)",
+        "rgb(250, 250, 250)",
+        "rgb(0, 0, 0)",
+        "rgb(205, 205, 205)",
+        "rgb(92, 92, 92)",
+        "rgb(17, 168, 255)"
+      ],
+      "siteCount": 25,
+      "shotCount": 28
+    },
+    "dark_luxury": {
+      "id": "dark_luxury",
+      "label": "Dark Luxury",
+      "emoji": "🖤",
+      "description": "深黑底色配金色/米色調，精品奢華感。適合高端品牌、奢侈品、精品餐廳、高端服務。",
+      "representativeSites": [
+        {
+          "title": "UNVEIL®",
+          "href": "https://unveil.fr/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Stryds",
+          "href": "https://stryds.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "404 - Page not found",
+          "href": "https://ohm.studio/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Vitra",
+          "href": "https://dribbble.com/shots/27333147-Vitra",
+          "source": "dribbble"
+        },
+        {
+          "title": "Cute Bull Logo",
+          "href": "https://dribbble.com/shots/27334031-Cute-Bull-Logo",
+          "source": "dribbble"
+        },
+        {
+          "title": "Logo Design for Construction FinTech",
+          "href": "https://dribbble.com/shots/27077669-Logo-Design-for-Construction-FinTech",
+          "source": "dribbble"
+        },
+        {
+          "title": "Heart-in Flight ✦ Logo",
+          "href": "https://dribbble.com/shots/27333144-Heart-in-Flight-Logo",
+          "source": "dribbble"
+        },
+        {
+          "title": "Heart-in Flight ✦ Logo",
+          "href": "https://dribbble.com/shots/27333144-Heart-in-Flight-Logo",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#0c0c0a",
+        "--color-bg-2": "#141410",
+        "--color-surface": "#1c1c18",
+        "--color-border": "rgba(212,175,55,0.2)",
+        "--color-text-primary": "#f5f0e8",
+        "--color-text-secondary": "rgba(245,240,232,0.6)",
+        "--color-gold": "#d4af37",
+        "--color-gold-light": "#e8c95a",
+        "--color-gold-muted": "rgba(212,175,55,0.3)",
+        "--color-accent": "#d4af37",
+        "--radius-sm": "2px",
+        "--radius-md": "4px",
+        "--radius-lg": "8px",
+        "--shadow-luxury": "0 0 80px rgba(212,175,55,0.08)",
+        "--font-display": "\"Cormorant Garamond\", \"Didot\", serif",
+        "--font-display-alt": "\"Playfair Display\", serif",
+        "--font-body": "\"Montserrat\", sans-serif",
+        "--font-body-light": "\"Montserrat\", 300, sans-serif",
+        "--spacing-section": "160px",
+        "--letter-spacing-display": "0.05em",
+        "--letter-spacing-ui": "0.15em",
+        "--transition": "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#0c0c0a",
+          "gold": "#d4af37",
+          "surface": "#1c1c18"
+        }
+      },
+      "notAiTips": [
+        "用 letter-spacing: 0.15em 在小標籤和按鈕上，製造高級雜誌感",
+        "金色不要用純 #FFD700，用 #d4af37（古金）更高端",
+        "分隔線用 1px solid rgba(gold,0.2) 而非實線 — 精品的邊界是暗示，不是宣告"
+      ],
+      "typographyPairings": [
+        {
+          "display": "Cormorant Garamond 300 italic",
+          "body": "Montserrat 300",
+          "note": "頂級奢侈品牌"
+        },
+        {
+          "display": "Playfair Display 400",
+          "body": "Lato 300",
+          "note": "精品飯店感"
+        }
+      ],
+      "realPalettes": [
+        "rgb(0, 0, 0)",
+        "rgb(16, 16, 16)",
+        "rgb(51, 51, 51)",
+        "rgb(253, 253, 253)",
+        "rgb(111, 111, 111)",
+        "rgb(166, 255, 0)",
+        "rgb(4, 1, 38)",
+        "rgb(32, 32, 32)",
+        "rgb(0, 0, 238)",
+        "rgb(61, 61, 61)",
+        "rgb(23, 23, 23)",
+        "rgb(0, 0, 0)",
+        "#a0a0100",
+        "#100100100",
+        "#e0e0100",
+        "#c0a0100",
+        "#e0e0e0",
+        "#e0100100",
+        "#100100100",
+        "#000000"
+      ],
+      "siteCount": 3,
+      "shotCount": 18
+    },
+    "aurora_ui": {
+      "id": "aurora_ui",
+      "label": "Aurora UI",
+      "emoji": "🌌",
+      "description": "暗色底上的彩色漸層光暈，像極光或宇宙星雲。適合 AI 產品、科技新創、創意工具。",
+      "representativeSites": [
+        {
+          "title": "RetailFlow - Smart Retail management",
+          "href": "https://dribbble.com/shots/27326146-RetailFlow-Smart-Retail-management",
+          "source": "dribbble"
+        },
+        {
+          "title": "Newly ai app creation landing page web design 3d animation",
+          "href": "https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation",
+          "source": "dribbble"
+        },
+        {
+          "title": "Charted - Color system",
+          "href": "https://dribbble.com/shots/27332229-Charted-Color-system",
+          "source": "dribbble"
+        },
+        {
+          "title": "Softbank Natural AI Phone intro",
+          "href": "https://dribbble.com/shots/27333576-Softbank-Natural-AI-Phone-intro",
+          "source": "dribbble"
+        },
+        {
+          "title": "Landing Page Design for an Open-Source AI Tool",
+          "href": "https://dribbble.com/shots/27331769-Landing-Page-Design-for-an-Open-Source-AI-Tool",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#060612",
+        "--color-bg-2": "#0d0d20",
+        "--color-surface": "rgba(255,255,255,0.05)",
+        "--color-border": "rgba(255,255,255,0.1)",
+        "--color-text-primary": "#ffffff",
+        "--color-text-secondary": "rgba(255,255,255,0.65)",
+        "--color-aurora-1": "#7c3aed",
+        "--color-aurora-2": "#2563eb",
+        "--color-aurora-3": "#059669",
+        "--color-aurora-4": "#db2777",
+        "--gradient-aurora": "radial-gradient(ellipse at 20% 50%, rgba(124,58,237,0.3) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(37,99,235,0.25) 0%, transparent 60%), radial-gradient(ellipse at 60% 80%, rgba(5,150,105,0.2) 0%, transparent 50%)",
+        "--gradient-cta": "linear-gradient(135deg, #7c3aed, #2563eb)",
+        "--radius-sm": "8px",
+        "--radius-md": "16px",
+        "--radius-lg": "24px",
+        "--shadow-aurora": "0 0 120px rgba(124,58,237,0.15)",
+        "--font-display": "\"Syne\", sans-serif",
+        "--font-body": "\"Inter\", sans-serif",
+        "--spacing-section": "120px",
+        "--transition": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#060612",
+          "aurora1": "#7c3aed",
+          "aurora2": "#2563eb",
+          "aurora3": "#059669"
+        }
+      },
+      "notAiTips": [
+        "光暈 (radial-gradient) 要用多個，位置不對稱，有的要超出畫面",
+        "不要讓所有文字都是純白 — 次要文字用 rgba(255,255,255,0.65) 製造層次",
+        "CTA 按鈕的漸層方向要和背景光暈相反，製造視覺對比"
+      ],
+      "typographyPairings": [
+        {
+          "display": "Syne 700",
+          "body": "Inter 400",
+          "note": "AI 科技前衛感"
+        },
+        {
+          "display": "Clash Display 600",
+          "body": "General Sans 400",
+          "note": "新銳品牌感"
+        }
+      ],
+      "realPalettes": [
+        "#000000",
+        "#202000",
+        "#404020",
+        "#202020",
+        "#002000",
+        "#808080",
+        "#e0a0e0",
+        "#e080e0",
+        "#100a0e0",
+        "#e0c0e0",
+        "#e0e0100",
+        "#100c0e0",
+        "#100100100",
+        "#000020",
+        "#2020a0",
+        "#2040c0",
+        "#202080",
+        "#202060",
+        "#000000",
+        "#202020"
+      ],
+      "siteCount": 0,
+      "shotCount": 32
+    },
+    "claymorphism": {
+      "id": "claymorphism",
+      "label": "Claymorphism",
+      "emoji": "🫧",
+      "description": "3D 黏土感，大圓角，鮮豔飽和色，擬真陰影。適合兒童產品、遊戲、教育 App、有趣的 SaaS。",
+      "representativeSites": [
+        {
+          "title": "Home | Traffic Productions",
+          "href": "https://www.traffic.productions/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Kons",
+          "href": "https://kons.fyi/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Umbrel - Personal home cloud and OS for self-hosting",
+          "href": "https://umbrel.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Yung Studio — Welcome!",
+          "href": "https://www.yung.studio/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Hypershell Energy Analytics UI – Exosuit Mobile App",
+          "href": "https://dribbble.com/shots/27333818-Hypershell-Energy-Analytics-UI-Exosuit-Mobile-App",
+          "source": "dribbble"
+        },
+        {
+          "title": "Social Networking App UI Design",
+          "href": "https://dribbble.com/shots/27330747-Social-Networking-App-UI-Design",
+          "source": "dribbble"
+        },
+        {
+          "title": "Travel app design",
+          "href": "https://dribbble.com/shots/27331519-Travel-app-design",
+          "source": "dribbble"
+        },
+        {
+          "title": "QuickFix – Home Services Mobile App",
+          "href": "https://dribbble.com/shots/27332307-QuickFix-Home-Services-Mobile-App",
+          "source": "dribbble"
+        },
+        {
+          "title": "Softbank Natural AI Phone intro",
+          "href": "https://dribbble.com/shots/27333576-Softbank-Natural-AI-Phone-intro",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#f0f4ff",
+        "--color-surface": "#ffffff",
+        "--color-text-primary": "#1a1a2e",
+        "--color-text-secondary": "#4a4a6a",
+        "--color-clay-pink": "#ff6b9d",
+        "--color-clay-purple": "#a855f7",
+        "--color-clay-blue": "#3b82f6",
+        "--color-clay-green": "#10b981",
+        "--color-clay-yellow": "#fbbf24",
+        "--radius-sm": "16px",
+        "--radius-md": "28px",
+        "--radius-lg": "40px",
+        "--radius-pill": "9999px",
+        "--shadow-clay": "0 8px 0 rgba(0,0,0,0.15), 0 16px 32px rgba(0,0,0,0.1)",
+        "--shadow-clay-sm": "0 4px 0 rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.08)",
+        "--font-display": "\"Nunito\", sans-serif",
+        "--font-body": "\"Nunito\", sans-serif",
+        "--spacing-section": "80px",
+        "--transition": "all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#f0f4ff",
+          "pink": "#ff6b9d",
+          "purple": "#a855f7"
+        },
+        "borderRadius": {
+          "clay": "28px",
+          "pill": "9999px"
+        }
+      },
+      "notAiTips": [
+        "shadow 的第一層用純 offset (0 8px 0 rgba) 製造 3D 底部厚度感",
+        "顏色要鮮豔但避免螢光 — 用 500 level 而不是 400，保持重量感",
+        "元素 hover 時加 translateY(-4px) 配合 shadow 增加 — 製造按壓感"
+      ],
+      "typographyPairings": [
+        {
+          "display": "Nunito 800",
+          "body": "Nunito 400",
+          "note": "圓潤可愛"
+        },
+        {
+          "display": "Fredoka One",
+          "body": "Poppins 400",
+          "note": "活潑歡樂"
+        }
+      ],
+      "realPalettes": [
+        "rgb(21, 21, 21)",
+        "rgb(243, 243, 243)",
+        "rgb(255, 255, 255)",
+        "rgba(255, 255, 255, 0.96)",
+        "rgb(117, 117, 117)",
+        "rgb(0, 184, 73)",
+        "rgb(245, 114, 0)",
+        "rgb(0, 139, 245)",
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(227, 160, 129)",
+        "rgba(255, 255, 255, 0.62)",
+        "rgb(171, 171, 171)",
+        "rgba(0, 0, 0, 0.83)",
+        "rgb(211, 211, 211)",
+        "rgba(0, 0, 0, 0.8)",
+        "rgb(10, 10, 10)",
+        "rgb(224, 224, 224)",
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)"
+      ],
+      "siteCount": 4,
+      "shotCount": 28
+    },
+    "organic_nature": {
+      "id": "organic_nature",
+      "label": "Organic Nature",
+      "emoji": "🌿",
+      "description": "大地色系、有機曲線、手繪質感。反科技，強調人情味與可持續性。適合健康品牌、有機食品、生活方式品牌。",
+      "representativeSites": [
+        {
+          "title": "herding.app",
+          "href": "https://www.herdi.ng/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Max Yinger ☞ UI Engineer",
+          "href": "https://yinger.dev/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Family | Family",
+          "href": "https://family.co/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Branding & Web Agency | EPIC Agency",
+          "href": "https://www.epic.net/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Flying Papers - Home",
+          "href": "https://www.flyingpapers.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Logo archive - selection of logo marks",
+          "href": "https://dribbble.com/shots/27333381-Logo-archive-selection-of-logo-marks",
+          "source": "dribbble"
+        },
+        {
+          "title": "Logo Design for Construction FinTech",
+          "href": "https://dribbble.com/shots/27077669-Logo-Design-for-Construction-FinTech",
+          "source": "dribbble"
+        },
+        {
+          "title": "Gefeen Logo Design",
+          "href": "https://dribbble.com/shots/27334139-Gefeen-Logo-Design",
+          "source": "dribbble"
+        },
+        {
+          "title": "Mile Square Cafe Identity Design",
+          "href": "https://dribbble.com/shots/27329616-Mile-Square-Cafe-Identity-Design",
+          "source": "dribbble"
+        },
+        {
+          "title": "10 years retrospective",
+          "href": "https://dribbble.com/shots/27331353-10-years-retrospective",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#f5f0e8",
+        "--color-bg-2": "#ede8dc",
+        "--color-surface": "#faf7f2",
+        "--color-border": "#d4cbb8",
+        "--color-text-primary": "#2c2416",
+        "--color-text-secondary": "#5c4f3a",
+        "--color-sage": "#8a9e7a",
+        "--color-terracotta": "#c4714a",
+        "--color-earth": "#a67c52",
+        "--color-cream": "#f5f0e8",
+        "--color-accent": "#8a9e7a",
+        "--radius-sm": "4px",
+        "--radius-md": "12px",
+        "--radius-lg": "60px",
+        "--radius-organic": "30% 70% 70% 30% / 30% 30% 70% 70%",
+        "--shadow-soft": "0 4px 24px rgba(44,36,22,0.1)",
+        "--font-display": "\"Cormorant\", serif",
+        "--font-body": "\"Jost\", sans-serif",
+        "--font-handwritten": "\"Caveat\", cursive",
+        "--spacing-section": "100px",
+        "--transition": "all 0.4s ease"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#f5f0e8",
+          "sage": "#8a9e7a",
+          "terracotta": "#c4714a",
+          "earth": "#a67c52"
+        }
+      },
+      "notAiTips": [
+        "使用 border-radius 的不規則四值語法製造有機曲線感 (30% 70% 70% 30% / ...)",
+        "加入一個手寫字體做點綴標籤，但只用一兩處",
+        "圖片用老照片濾鏡 (sepia + contrast) 讓視覺更一致"
+      ],
+      "typographyPairings": [
+        {
+          "display": "Cormorant 500 italic",
+          "body": "Jost 300",
+          "note": "自然有機高端感"
+        },
+        {
+          "display": "Libre Baskerville",
+          "body": "Karla 400",
+          "note": "可持續品牌感"
+        }
+      ],
+      "realPalettes": [
+        "rgb(28, 28, 26)",
+        "rgba(255, 253, 244, 0.596)",
+        "rgba(255, 252, 236, 0.392)",
+        "rgba(255, 255, 254, 0.92)",
+        "rgb(127, 126, 119)",
+        "rgb(22, 22, 21)",
+        "rgba(254, 254, 218, 0.055)",
+        "rgba(255, 255, 236, 0.173)",
+        "rgb(18, 19, 15)",
+        "rgb(228, 223, 218)",
+        "rgba(18, 19, 15, 0.4)",
+        "rgba(228, 223, 218, 0.2)",
+        "rgb(71, 70, 69)",
+        "rgba(112, 112, 112, 0.4)",
+        "color(display-p3 0.203922 0.203922 0.2)",
+        "rgb(18, 18, 18)",
+        "rgb(132, 130, 129)",
+        "rgba(71, 70, 69, 0.7)",
+        "color(display-p3 0.00392157 0.552941 1)",
+        "color(display-p3 0.203922 0.780392 0.34902)"
+      ],
+      "siteCount": 6,
+      "shotCount": 21
+    },
+    "editorial": {
+      "id": "editorial",
+      "label": "Editorial Maximal",
+      "emoji": "📰",
+      "description": "雜誌排版感，大標題主導，混搭字體大小，網格突破。適合媒體品牌、設計工作室、高端部落格。",
+      "representativeSites": [
+        {
+          "title": "Pedro Duarte's Personal Website",
+          "href": "https://ped.ro/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "KidSuper World",
+          "href": "https://kidsuper.world/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Logo archive - selection of logo marks",
+          "href": "https://dribbble.com/shots/27333381-Logo-archive-selection-of-logo-marks",
+          "source": "dribbble"
+        },
+        {
+          "title": "Vitra",
+          "href": "https://dribbble.com/shots/27333147-Vitra",
+          "source": "dribbble"
+        },
+        {
+          "title": "Cute Bull Logo",
+          "href": "https://dribbble.com/shots/27334031-Cute-Bull-Logo",
+          "source": "dribbble"
+        },
+        {
+          "title": "Cportesano Cigars",
+          "href": "https://dribbble.com/shots/27332668-Cportesano-Cigars",
+          "source": "dribbble"
+        },
+        {
+          "title": "PropTech CRM Dashboard — Partner Outreach & Deal Flow UI",
+          "href": "https://dribbble.com/shots/27332795-PropTech-CRM-Dashboard-Partner-Outreach-Deal-Flow-UI",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#ffffff",
+        "--color-bg-dark": "#111111",
+        "--color-surface": "#f8f8f6",
+        "--color-border": "#e0e0da",
+        "--color-text-primary": "#111111",
+        "--color-text-secondary": "#555550",
+        "--color-accent": "#ff3300",
+        "--color-accent-2": "#0047ff",
+        "--radius-sm": "0px",
+        "--radius-md": "2px",
+        "--radius-lg": "4px",
+        "--font-display": "\"PP Editorial New\", \"Playfair Display\", serif",
+        "--font-display-wide": "\"Bebel Neue\", \"Anton\", sans-serif",
+        "--font-body": "\"Neue Haas Grotesk\", \"Helvetica Neue\", sans-serif",
+        "--font-mono": "\"Courier New\", monospace",
+        "--font-size-hero": "clamp(4rem, 12vw, 14rem)",
+        "--font-size-display": "clamp(2rem, 5vw, 6rem)",
+        "--spacing-section": "120px",
+        "--letter-spacing-hero": "-0.04em",
+        "--transition": "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#ffffff",
+          "accent": "#ff3300",
+          "text": "#111111"
+        }
+      },
+      "notAiTips": [
+        "Hero 標題要用 clamp() 流體字體大小，最大要夠大（至少 10vw）",
+        "刻意讓一個元素打破 grid 邊界（負 margin 或 absolute position）",
+        "使用 mix-blend-mode: multiply 在圖片上疊加色塊，製造印刷感"
+      ],
+      "typographyPairings": [
+        {
+          "display": "PP Editorial New Italic",
+          "body": "Neue Haas Grotesk",
+          "note": "頂級設計媒體感"
+        },
+        {
+          "display": "Anton 400",
+          "body": "Noto Serif 400",
+          "note": "衝擊力強"
+        }
+      ],
+      "realPalettes": [
+        "rgb(17, 17, 17)",
+        "rgb(255, 255, 255)",
+        "rgb(238, 238, 238)",
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0)",
+        "rgba(255, 255, 255, 0.9)",
+        "rgb(102, 102, 102)",
+        "#100100100",
+        "#000000",
+        "#606060",
+        "#202020",
+        "#e0e0e0",
+        "#404040",
+        "#a0a0100",
+        "#100100100",
+        "#e0e0100",
+        "#c0a0100",
+        "#e0e0e0",
+        "#e0100100",
+        "#100100100"
+      ],
+      "siteCount": 2,
+      "shotCount": 38
+    },
+    "corporate_clean": {
+      "id": "corporate_clean",
+      "label": "Corporate Clean",
+      "emoji": "🏢",
+      "description": "企業級清潔設計，嚴謹網格，藍色信任感。適合 B2B、金融科技、企業服務、醫療健康。",
+      "representativeSites": [
+        {
+          "title": "Customers — Evervault",
+          "href": "https://evervault.com/customers?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Lusion - Award Winning 3D and Interactive Web Studio",
+          "href": "https://lusion.co/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Untitled",
+          "href": "https://shuttle.zip/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Duties.xyz",
+          "href": "https://www.duties.xyz/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Status — Make the jump to web3",
+          "href": "https://status.app/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Newly ai app creation landing page web design 3d animation",
+          "href": "https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation",
+          "source": "dribbble"
+        },
+        {
+          "title": "Education Management Web Design",
+          "href": "https://dribbble.com/shots/27320617-Education-Management-Web-Design",
+          "source": "dribbble"
+        },
+        {
+          "title": "Website Design: Call to Action (CTA) for AI-Powered Platform",
+          "href": "https://dribbble.com/shots/27332273-Website-Design-Call-to-Action-CTA-for-AI-Powered-Platform",
+          "source": "dribbble"
+        },
+        {
+          "title": "Travel app design",
+          "href": "https://dribbble.com/shots/27331519-Travel-app-design",
+          "source": "dribbble"
+        },
+        {
+          "title": "Travel app design",
+          "href": "https://dribbble.com/shots/27331519-Travel-app-design",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#ffffff",
+        "--color-bg-subtle": "#f8fafc",
+        "--color-surface": "#ffffff",
+        "--color-border": "#e2e8f0",
+        "--color-text-primary": "#0f172a",
+        "--color-text-secondary": "#475569",
+        "--color-text-muted": "#94a3b8",
+        "--color-accent": "#2563eb",
+        "--color-accent-hover": "#1d4ed8",
+        "--color-accent-subtle": "#eff6ff",
+        "--color-success": "#059669",
+        "--color-warning": "#d97706",
+        "--radius-sm": "6px",
+        "--radius-md": "10px",
+        "--radius-lg": "16px",
+        "--shadow-xs": "0 1px 2px rgba(0,0,0,0.05)",
+        "--shadow-sm": "0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06)",
+        "--shadow-md": "0 4px 6px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.06)",
+        "--font-display": "\"Inter\", sans-serif",
+        "--font-body": "\"Inter\", sans-serif",
+        "--spacing-section": "80px",
+        "--transition": "all 0.2s ease"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#f8fafc",
+          "accent": "#2563eb",
+          "text": "#0f172a",
+          "border": "#e2e8f0"
+        }
+      },
+      "notAiTips": [
+        "用 3 層陰影（xs, sm, md）製造視覺層次，不同 elevation 的元素用不同陰影",
+        "accent 色只用在真正重要的 CTA 上，其他全部靠 gray scale",
+        "表格和列表的每隔一行背景用 #f8fafc，但只差 2-3% 亮度 — 很細微但很專業"
+      ],
+      "typographyPairings": [
+        {
+          "display": "Inter 700",
+          "body": "Inter 400",
+          "note": "現代企業標準"
+        },
+        {
+          "display": "IBM Plex Sans 600",
+          "body": "IBM Plex Sans 400",
+          "note": "科技企業感"
+        }
+      ],
+      "realPalettes": [
+        "rgb(1, 3, 20)",
+        "rgb(223, 225, 244)",
+        "rgb(255, 255, 255)",
+        "rgba(255, 255, 255, 0.8)",
+        "rgb(186, 188, 210)",
+        "rgba(255, 255, 255, 0.15)",
+        "rgb(0, 0, 0)",
+        "rgb(102, 51, 238)",
+        "rgb(255, 255, 255) rgb(255, 255, 255) rgb(42, 43, 58)",
+        "rgba(255, 255, 255, 0.95)",
+        "rgb(255, 255, 255)",
+        "rgb(240, 241, 250)",
+        "rgb(0, 0, 0)",
+        "rgb(43, 46, 58)",
+        "rgb(228, 230, 239)",
+        "rgb(245, 245, 245)",
+        "rgb(0, 0, 0)",
+        "rgb(229, 231, 235)",
+        "rgb(249, 249, 249)",
+        "rgba(0, 0, 0, 0.6)"
+      ],
+      "siteCount": 31,
+      "shotCount": 38
+    },
+    "kinetic_editorial": {
+      "id": "kinetic_editorial",
+      "label": "Kinetic Editorial",
+      "emoji": "⚡",
+      "description": "動態排版，滾動觸發動畫，文字和圖像的動態配合。適合互動作品集、品牌故事頁、行銷落地頁。",
+      "representativeSites": [
+        {
+          "title": "Atlas Card",
+          "href": "https://atlascard.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Lovi — Smart Skin Care",
+          "href": "https://lovi.care/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Maëlan Le Meur - Artisan graphiste",
+          "href": "https://maelanlemeur.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Logo For Matcha Bar",
+          "href": "https://dribbble.com/shots/27330638-Logo-For-Matcha-Bar",
+          "source": "dribbble"
+        },
+        {
+          "title": "Founders Whiskey",
+          "href": "https://dribbble.com/shots/27332578-Founders-Whiskey",
+          "source": "dribbble"
+        },
+        {
+          "title": "Founders Whiskey",
+          "href": "https://dribbble.com/shots/27332578-Founders-Whiskey",
+          "source": "dribbble"
+        },
+        {
+          "title": "MX Sport Monogram Emblem",
+          "href": "https://dribbble.com/shots/27243664-MX-Sport-Monogram-Emblem",
+          "source": "dribbble"
+        },
+        {
+          "title": "Logo Archive — Recent Works 2025/26",
+          "href": "https://dribbble.com/shots/27332232-Logo-Archive-Recent-Works-2025-26",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#0e0e0e",
+        "--color-surface": "#1a1a1a",
+        "--color-border": "#2a2a2a",
+        "--color-text-primary": "#f0ede8",
+        "--color-text-secondary": "rgba(240,237,232,0.6)",
+        "--color-accent": "#e8ff00",
+        "--color-accent-2": "#ff4500",
+        "--radius-sm": "0px",
+        "--radius-md": "4px",
+        "--radius-lg": "8px",
+        "--font-display": "\"Syne\", sans-serif",
+        "--font-display-wide": "\"Bebas Neue\", sans-serif",
+        "--font-body": "\"DM Sans\", sans-serif",
+        "--font-size-hero": "clamp(5rem, 15vw, 18rem)",
+        "--letter-spacing-hero": "-0.06em",
+        "--spacing-section": "20vh",
+        "--transition-fast": "all 0.15s ease",
+        "--transition-smooth": "all 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+        "--transition-bounce": "all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#0e0e0e",
+          "accent": "#e8ff00",
+          "text": "#f0ede8"
+        }
+      },
+      "notAiTips": [
+        "Hero 標題要大到幾乎超出螢幕，字距設 -0.06em，製造壓迫感",
+        "滾動動畫用 Intersection Observer + CSS translate，不要用純 CSS animation（沒有觸發點）",
+        "accent 色用螢光色（電光黃 #e8ff00）但只用在一個關鍵元素上"
+      ],
+      "typographyPairings": [
+        {
+          "display": "Bebas Neue",
+          "body": "DM Sans 300",
+          "note": "動態媒體感"
+        },
+        {
+          "display": "Syne 800",
+          "body": "Syne 400",
+          "note": "統一又有衝擊力"
+        }
+      ],
+      "realPalettes": [
+        "rgb(0, 0, 0)",
+        "rgb(248, 248, 248)",
+        "rgba(0, 0, 0, 0.32)",
+        "rgba(255, 255, 255, 0.8)",
+        "rgb(30, 30, 30)",
+        "rgb(0, 19, 145)",
+        "rgb(255, 255, 255)",
+        "rgb(128, 128, 128)",
+        "rgb(39, 39, 39)",
+        "rgb(0, 0, 0)",
+        "rgb(21, 21, 129)",
+        "rgb(255, 255, 255)",
+        "rgba(255, 255, 255, 0.9)",
+        "rgb(41, 40, 36)",
+        "rgba(84, 81, 81, 0.7)",
+        "rgb(0, 179, 176)",
+        "rgb(242, 92, 117)",
+        "rgb(32, 162, 227)",
+        "rgb(250, 117, 153)",
+        "rgb(238, 233, 204)"
+      ],
+      "siteCount": 3,
+      "shotCount": 20
+    },
+    "three_d_immersive": {
+      "id": "three_d_immersive",
+      "label": "3D Immersive",
+      "emoji": "🌐",
+      "description": "3D 渲染、WebGL、沉浸式體驗。適合遊戲、科技、高端產品展示、互動作品集。",
+      "representativeSites": [
+        {
+          "title": "SILENCIO ® VISUAL LANGUAGES",
+          "href": "https://silencio.es/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "Twingate: It's time to ditch your VPN",
+          "href": "https://www.twingate.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "AuthKit by WorkOS",
+          "href": "https://authkit.com/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "큰그림컴퍼니 - Bigpicture company",
+          "href": "https://www.bpco.kr/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "SavoirFaire©. Holistic creative studio based in NYC.",
+          "href": "https://savoirfaire.nyc/?ref=godly",
+          "source": "godly"
+        },
+        {
+          "title": "AI Code",
+          "href": "https://dribbble.com/shots/27333490-AI-Code",
+          "source": "dribbble"
+        },
+        {
+          "title": "Newly ai app creation landing page web design 3d animation",
+          "href": "https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation",
+          "source": "dribbble"
+        },
+        {
+          "title": "Softbank Natural AI Phone intro",
+          "href": "https://dribbble.com/shots/27333576-Softbank-Natural-AI-Phone-intro",
+          "source": "dribbble"
+        },
+        {
+          "title": "Bidirectional Slider",
+          "href": "https://dribbble.com/shots/27333850-Bidirectional-Slider",
+          "source": "dribbble"
+        },
+        {
+          "title": "Bidirectional Slider",
+          "href": "https://dribbble.com/shots/27333850-Bidirectional-Slider",
+          "source": "dribbble"
+        }
+      ],
+      "tokens": {
+        "--color-bg": "#000000",
+        "--color-bg-2": "#050510",
+        "--color-surface": "rgba(255,255,255,0.03)",
+        "--color-border": "rgba(255,255,255,0.08)",
+        "--color-text-primary": "#ffffff",
+        "--color-text-secondary": "rgba(255,255,255,0.5)",
+        "--color-accent": "#00f0ff",
+        "--color-accent-2": "#ff006e",
+        "--color-glow-cyan": "rgba(0,240,255,0.4)",
+        "--color-glow-magenta": "rgba(255,0,110,0.3)",
+        "--radius-sm": "4px",
+        "--radius-md": "8px",
+        "--radius-lg": "16px",
+        "--font-display": "\"Orbitron\", sans-serif",
+        "--font-body": "\"Exo 2\", sans-serif",
+        "--font-mono": "\"JetBrains Mono\", monospace",
+        "--spacing-section": "100vh",
+        "--transition": "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+        "--z-canvas": "-1"
+      },
+      "tailwind": {
+        "colors": {
+          "bg": "#000000",
+          "accent": "#00f0ff",
+          "accent2": "#ff006e"
+        }
+      },
+      "notAiTips": [
+        "Three.js canvas 設 position: fixed; z-index: -1 作為背景，內容疊在上面",
+        "UI 文字用少量字，讓 3D 視覺說話，避免文字密集",
+        "掃描線效果 (scanline overlay) 讓 UI 感覺更有深度：background repeating-linear-gradient"
+      ],
+      "typographyPairings": [
+        {
+          "display": "Orbitron 700",
+          "body": "Exo 2 300",
+          "note": "未來科技感"
+        },
+        {
+          "display": "Rajdhani 600",
+          "body": "Source Code Pro 400",
+          "note": "技術沉浸感"
+        }
+      ],
+      "realPalettes": [
+        "rgb(0, 0, 0)",
+        "rgb(219, 218, 217)",
+        "rgb(222, 222, 221)",
+        "rgb(14, 15, 17)",
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(182, 171, 255)",
+        "rgb(238, 243, 95)",
+        "rgb(0, 203, 170)",
+        "rgb(161, 161, 170)",
+        "rgb(141, 141, 150)",
+        "rgb(97, 98, 107)",
+        "rgb(18, 19, 21)",
+        "rgb(5, 6, 15)",
+        "rgb(255, 255, 255)",
+        "rgb(216, 236, 248)",
+        "rgba(199, 211, 234, 0.64)",
+        "rgba(200, 212, 234, 0.78)",
+        "rgb(199, 211, 234)",
+        "rgb(182, 217, 252)"
+      ],
+      "siteCount": 31,
+      "shotCount": 15
+    }
+  },
+  "compiledAt": "2026-05-01T10:12:20.052Z"
+}

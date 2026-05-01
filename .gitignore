@@ -1,0 +1,17 @@
+# Scraper — not included in public repo
+scraper/
+
+# Raw scraped data (too large + contains personal browsing artifacts)
+data/godly-raw.json
+data/dribbble-raw.json
+data/screenshots/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude local settings
+.claude/

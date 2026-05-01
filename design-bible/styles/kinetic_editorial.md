@@ -1,0 +1,154 @@
+# ⚡ Kinetic Editorial
+
+> 動態排版，滾動觸發動畫，文字和圖像的動態配合。適合互動作品集、品牌故事頁、行銷落地頁。
+
+---
+
+## 代表網站 (從 Godly / Dribbble 提取)
+
+- [Atlas Card](https://atlascard.com/?ref=godly) (godly)
+- [Lovi — Smart Skin Care](https://lovi.care/?ref=godly) (godly)
+- [Maëlan Le Meur - Artisan graphiste](https://maelanlemeur.com/?ref=godly) (godly)
+- [Logo For Matcha Bar](https://dribbble.com/shots/27330638-Logo-For-Matcha-Bar) (dribbble)
+- [Founders Whiskey](https://dribbble.com/shots/27332578-Founders-Whiskey) (dribbble)
+- [Founders Whiskey](https://dribbble.com/shots/27332578-Founders-Whiskey) (dribbble)
+- [MX Sport Monogram Emblem](https://dribbble.com/shots/27243664-MX-Sport-Monogram-Emblem) (dribbble)
+- [Logo Archive — Recent Works 2025/26](https://dribbble.com/shots/27332232-Logo-Archive-Recent-Works-2025-26) (dribbble)
+
+---
+
+## 色盤
+
+### CSS Tokens (`:root`)
+```css
+:root {
+  --color-bg: #0e0e0e;
+  --color-surface: #1a1a1a;
+  --color-border: #2a2a2a;
+  --color-text-primary: #f0ede8;
+  --color-text-secondary: rgba(240,237,232,0.6);
+  --color-accent: #e8ff00;
+  --color-accent-2: #ff4500;
+  --radius-sm: 0px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --font-display: "Syne", sans-serif;
+  --font-display-wide: "Bebas Neue", sans-serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-size-hero: clamp(5rem, 15vw, 18rem);
+  --letter-spacing-hero: -0.06em;
+  --spacing-section: 20vh;
+  --transition-fast: all 0.15s ease;
+  --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+```
+
+### Tailwind Config 對應
+```js
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+      "bg": "#0e0e0e",
+      "accent": "#e8ff00",
+      "text": "#f0ede8"
+},
+    }
+  }
+}
+```
+
+### 從真實網站提取的色盤
+rgb(0, 0, 0)  rgb(248, 248, 248)  rgba(0, 0, 0, 0.32)  rgba(255, 255, 255, 0.8)  rgb(30, 30, 30)  rgb(0, 19, 145)  rgb(255, 255, 255)  rgb(128, 128, 128)  rgb(39, 39, 39)  rgb(0, 0, 0)  rgb(21, 21, 129)  rgb(255, 255, 255)
+
+---
+
+## 字體配對
+
+- **Display**: Bebas Neue  /  **Body**: DM Sans 300  — 動態媒體感
+- **Display**: Syne 800  /  **Body**: Syne 400  — 統一又有衝擊力
+
+### Google Fonts 引入範例
+```html
+<!-- 在 <head> 加入 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+```
+
+---
+
+## 元件範例
+
+### Hero Section
+```html
+<!-- Kinetic Editorial Hero -->
+<section class="hero">
+  <h1 class="hero-title">Your Headline</h1>
+  <p class="hero-sub">Supporting copy that breathes.</p>
+  <a href="#" class="btn-primary">Get Started</a>
+</section>
+```
+
+```css
+.hero {
+  background: var(--color-bg);
+  padding: var(--spacing-section) 5%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 7rem);
+  color: var(--color-text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  max-width: 14ch;
+}
+.hero-sub {
+  font-family: var(--font-body);
+  color: var(--color-text-secondary);
+  font-size: 1.125rem;
+  margin-top: 1.5rem;
+  max-width: 50ch;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  background: var(--color-accent);
+  color: #fff;
+  padding: 0.875rem 2rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-weight: 600;
+  margin-top: 2.5rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glass, var(--shadow-card, 0 8px 24px rgba(0,0,0,0.15)));
+}
+```
+
+---
+
+## 讓設計不像 AI 生成的 3 個關鍵
+
+1. Hero 標題要大到幾乎超出螢幕，字距設 -0.06em，製造壓迫感
+2. 滾動動畫用 Intersection Observer + CSS translate，不要用純 CSS animation（沒有觸發點）
+3. accent 色用螢光色（電光黃 #e8ff00）但只用在一個關鍵元素上
+
+---
+
+## 適用場景
+
+| 場景 | 匹配度 |
+|------|--------|
+| SaaS / 科技產品 | ⭐⭐ |
+| 個人作品集 | ⭐⭐⭐ |
+| 電商 / 品牌 | ⭐⭐ |
+| 行銷落地頁 | ⭐⭐⭐ |
+| 企業 / B2B | ⭐ |
