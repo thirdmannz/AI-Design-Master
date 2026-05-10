@@ -655,7 +655,565 @@ document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
 ---
 
+### 📐 13. Swiss Editorial（瑞士編輯）
+
+**最佳場景**：設計工作室、agency portfolio、藝術機構、design-savvy SaaS、企業年報。
+**核心精神**：嚴格 grid、左對齊、極簡色票、排版做所有 hierarchy 工作 — 不靠顏色 / 圓角 / 陰影。是 AI 視覺語言的反義詞。
+
+```css
+:root {
+  /* 色彩：≤3 色，極端 contrast */
+  --color-bg: #ffffff;
+  --color-ink: #000000;
+  --color-accent: #ff3b00;        /* 或單一 editorial accent，例：cobalt #0a3cff / oxblood #8b1a2b */
+  --color-rule: rgba(0,0,0,0.12);  /* 細分隔線 */
+
+  /* 排版：display 用 grotesk，body 用較中性 grotesk */
+  --font-display: "Söhne Breit", "Inter Tight", "Helvetica Now Display", Helvetica, sans-serif;
+  --font-body: "Söhne", "Inter Tight", Helvetica, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --letter-spacing-display: -0.04em;
+  --letter-spacing-kicker: 0.12em;     /* uppercase kicker */
+
+  /* 字級：display 巨大，body 中等 */
+  --font-size-display: clamp(4.5rem, 12vw, 14rem);
+  --font-size-h1: clamp(2.5rem, 5vw, 4.5rem);
+  --font-size-kicker: 0.75rem;
+  --line-height-tight: 0.95;
+
+  /* Radius：全部 0 */
+  --radius-default: 0;
+
+  /* Shadow：無 */
+  --shadow-none: none;
+
+  /* Grid：12-column with baseline */
+  --grid-cols: 12;
+  --grid-gap: 1.5rem;
+  --baseline: 8px;                  /* 基線 grid */
+}
+```
+
+**Google Fonts 引入（fallback）**：
+```html
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+```
+
+**【per-style 元件】Swiss Editorial 必出 / 禁出**：
+
+| 元件 | 規範 |
+|------|------|
+| ✅ Masthead + Kicker | 大 display 字 + 上方 uppercase kicker（`letter-spacing: 0.12em`，字級 12px）|
+| ✅ Numbered Index | 章節以 `01. / 02. / 03.` 編號，左對齊，無圖示 |
+| ✅ Dateline | 內容區頭部放日期/作者，monospace，右對齊或縮排 |
+| ✅ 12-col baseline grid | section padding 對齊 baseline grid，列數比例不對稱（如 4-7-1）|
+| ❌ 不要 Card | 用細分隔線（`border-top: 1px solid var(--color-rule)`）取代 |
+| ❌ 不要 hero CTA pill | 用 underline link 或裸文字 + arrow（`Read essay →`）|
+| ❌ 不要 features grid | 用 numbered list / 兩欄文字 |
+
+**範例：Masthead + Kicker**
+```css
+.masthead {
+  padding: clamp(80px, 12vw, 200px) 0 clamp(40px, 6vw, 80px);
+  border-bottom: 1px solid var(--color-rule);
+}
+.masthead .kicker {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-kicker);
+  letter-spacing: var(--letter-spacing-kicker);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+.masthead h1 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
+  letter-spacing: var(--letter-spacing-display);
+  line-height: var(--line-height-tight);
+  font-weight: 800;
+  max-width: 18ch;
+  margin: 0;
+}
+.masthead .dateline {
+  margin-top: 2rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: rgba(0,0,0,0.6);
+}
+```
+
+**不像AI生成的關鍵**：
+1. 完全不用 `border-radius`、不用 `box-shadow` — 排版 + 細線 + 色塊就是全部 hierarchy
+2. Kicker 永遠用 monospace + uppercase + 大字距，跟 display 字成尺度對比
+3. Section 之間用 1px 細線分隔（`opacity: 0.12`），不要用 padding-only
+
+**參考真實出貨網站**：
+- bureauborsche.com、manualcreative.com、pentagram.com
+- studio-feixen.com、commissionstudio.com、accept-and-proceed.com
+
+---
+
+### 📰 14. Magazine Longform（雜誌長文）
+
+**最佳場景**：媒體網站、editorial 內容、深度報導、產品 launch story、品牌故事頁。
+**核心精神**：dateline + kicker + lede + drop cap，serif/sans 對比，真實攝影 + 邊註。看起來像紙本雜誌的數位版。
+
+```css
+:root {
+  /* 色彩：暖白 + 深黑 + 單一 editorial accent */
+  --color-bg: #f7f4ed;             /* 紙本暖色 */
+  --color-ink: #1a1612;            /* 深咖啡黑 */
+  --color-accent: #b3261e;         /* editorial 紅 */
+  --color-rule: rgba(26,22,18,0.18);
+  --color-marginalia: rgba(26,22,18,0.55);
+
+  /* 排版：serif display + sans body 對比 */
+  --font-display: "GT Sectra", "Tiempos Headline", "Recoleta", "Playfair Display", serif;
+  --font-body: "Söhne", "Inter Tight", "Source Sans 3", sans-serif;
+  --font-marginalia: "Söhne Mono", "JetBrains Mono", monospace;
+
+  --font-size-display: clamp(3rem, 8vw, 6rem);
+  --font-size-lede: clamp(1.25rem, 2vw, 1.5rem);
+  --font-size-body: 1.125rem;
+  --line-height-body: 1.7;
+  --measure: 65ch;                 /* 段落最大寬度 */
+
+  /* Radius：0 或小 */
+  --radius-default: 0;
+  --radius-image: 2px;
+
+  /* Shadow：無或極輕（紙本感）*/
+  --shadow-none: none;
+}
+```
+
+**Google Fonts 引入**：
+```html
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+```
+
+**【per-style 元件】Magazine Longform 必出 / 禁出**：
+
+| 元件 | 規範 |
+|------|------|
+| ✅ Masthead | Title block + 副標 + dateline + author byline |
+| ✅ Kicker | "FEATURE / ESSAY / INTERVIEW" 等 uppercase 分類 tag |
+| ✅ Lede | 第一段加粗、字級稍大、`max-width: 50ch` |
+| ✅ Drop cap | `:first-letter` 放大 4-5x，`float: left` |
+| ✅ 跨頁圖 | full-bleed image + caption |
+| ✅ Marginalia | 邊註（small monospace text 浮在右側 margin）|
+| ✅ Pull quote | 大字 serif 引言，左右留白 |
+| ❌ 不要 features grid | 內容是線性閱讀流 |
+| ❌ 不要 trusted-by 區 | 用 author bio 取代 |
+| ❌ 不要 CTA 按鈕 | 用 underline link |
+
+**範例：Lede + Drop cap**
+```css
+.article-lede {
+  font-family: var(--font-body);
+  font-size: var(--font-size-lede);
+  line-height: 1.55;
+  font-weight: 600;
+  max-width: 50ch;
+  margin: 0 0 2.5rem;
+}
+.article-body p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 5em;
+  font-weight: 800;
+  float: left;
+  line-height: 0.85;
+  margin: 0.1em 0.1em 0 0;
+  color: var(--color-accent);
+}
+.article-body p {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  max-width: var(--measure);
+  margin: 0 auto 1.5em;
+}
+.pull-quote {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.2;
+  max-width: 24ch;
+  margin: 3rem auto;
+  text-align: center;
+  border-top: 1px solid var(--color-rule);
+  border-bottom: 1px solid var(--color-rule);
+  padding: 2rem 0;
+}
+```
+
+**不像AI生成的關鍵**：
+1. Body 寬度限制在 `var(--measure)`（65ch），不要讓段落鋪滿全寬
+2. Drop cap + pull quote + marginalia 三件套用至少一個 — 這是紙本特徵，AI codegen 不會做
+3. Display 用 serif、body 用 sans —— 跟 AI 預設「Inter+Inter」相反
+
+**參考真實出貨網站**：
+- thepudding.cool、pitchfork.com/features、theatlantic.com (any feature)
+- nytimes.com/interactive、mitpressjournals.org、harpers.org
+
+---
+
+### 👗 15. Fashion / Luxury Editorial（時尚精品）
+
+**最佳場景**：時尚 / 精品 / 香水 / 珠寶 / 高端餐飲 / 旅宿品牌。
+**核心精神**：大圖、極小字、all-caps tracking、不對稱排版、無 card、minimal nav。文字是配角，視覺是主角。
+
+```css
+:root {
+  /* 色彩：奶油白 + 深黑 + 單一沉穩配色 */
+  --color-bg: #f5f1eb;             /* 奶油色 */
+  --color-ink: #181614;            /* 軟黑 */
+  --color-accent: #8b6f47;         /* 駝色（或 deep oxblood / forest green）*/
+  --color-rule: rgba(24,22,20,0.15);
+
+  /* 排版：condensed serif display + tiny sans */
+  --font-display: "Saol Display", "GT Sectra Display", "Tiempos Headline", "Cormorant Garamond", serif;
+  --font-body: "Söhne", "Inter Tight", "Helvetica Now", sans-serif;
+
+  --font-size-display: clamp(4rem, 11vw, 12rem);
+  --font-size-caption: 0.7rem;     /* tiny caption */
+  --letter-spacing-display: -0.03em;
+  --letter-spacing-caption: 0.25em;  /* all-caps wide tracking */
+
+  --line-height-tight: 0.92;
+
+  --radius-default: 0;
+  --shadow-none: none;
+}
+```
+
+**Google Fonts 引入（fallback）**：
+```html
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
+```
+
+**【per-style 元件】Fashion / Luxury 必出 / 禁出**：
+
+| 元件 | 規範 |
+|------|------|
+| ✅ Full-bleed photo hero | 100vw 大圖，無文字 overlay 或極簡 caption 在角落 |
+| ✅ Minimal nav | 5-7 個 nav item，all-caps、tiny、wide tracking |
+| ✅ Asymmetric split | 50/50 或 60/40 圖文分割，文字在留白多的一側 |
+| ✅ Tiny caption | 角落 / 下方放 tiny all-caps 文字（`SS24 — LOOK 03 — PARIS`）|
+| ❌ 不要 Card | 無框、無陰影 |
+| ❌ 不要 button pill | 用裸 underline 或 small text + arrow |
+| ❌ 不要置中 hero | 不對稱 grid 才有 luxury 感 |
+| ❌ 不要 features 區 | 用 collection grid 取代（多張產品大圖）|
+
+**範例：Hero + Tiny caption**
+```css
+.lookbook-hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+.lookbook-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.lookbook-caption {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  font-family: var(--font-body);
+  font-size: var(--font-size-caption);
+  letter-spacing: var(--letter-spacing-caption);
+  text-transform: uppercase;
+  color: var(--color-bg);
+  mix-blend-mode: difference;
+}
+.collection-title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
+  letter-spacing: var(--letter-spacing-display);
+  line-height: var(--line-height-tight);
+  font-weight: 500;          /* serif display 不要太粗 */
+  font-style: italic;        /* 可選：italic display 更精品 */
+}
+```
+
+**不像AI生成的關鍵**：
+1. 文字越少越好 — 一個 hero 可能只有 3-5 個字 + tiny caption
+2. 全程不出現 button — CTA 是裸文字 + arrow（`SHOP THE COLLECTION →`）
+3. 用 `mix-blend-mode: difference` 讓 caption 在不同底圖上自動可讀
+
+**參考真實出貨網站**：
+- loewe.com、jacquemus.com、bottegaveneta.com
+- aesop.com、mansurgavriel.com、leset.com、khaite.com
+
+---
+
+### 🧱 16. Brutalist / Anti-Design（粗野主義）
+
+**最佳場景**：個人作品集、實驗網站、藝術家 portfolio、反主流品牌、技術 blog。
+**核心精神**：擁抱瀏覽器預設、monospace、無圓角、無陰影、左上對齊。不是「醜」，是**有意拒絕當代 SaaS 美學**。
+
+```css
+:root {
+  /* 色彩：高對比、極簡、或刻意失調 */
+  --color-bg: #ffffff;
+  --color-ink: #000000;
+  --color-accent: #0000ff;          /* 預設 link blue（或 #ff00ff acid pink）*/
+  --color-rule: #000000;
+
+  /* 排版：mono + 偶爾 serif（Times default 也 OK）*/
+  --font-display: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: "JetBrains Mono", "IBM Plex Mono", ui-monospace, monospace;
+  --font-serif: "Times New Roman", Times, serif;     /* 偶爾 mix */
+
+  --font-size-display: clamp(2rem, 5vw, 4rem);
+  --font-size-body: 1rem;
+  --line-height-body: 1.5;
+
+  /* Radius：0 */
+  --radius-default: 0;
+
+  /* Shadow：無 */
+  --shadow-none: none;
+
+  /* 邊框：粗黑或無 */
+  --border-default: 1px solid var(--color-ink);
+  --border-heavy: 2px solid var(--color-ink);
+}
+```
+
+**【per-style 元件】Brutalist 必出 / 禁出**：
+
+| 元件 | 規範 |
+|------|------|
+| ✅ Slab heading | 大字 mono、左上對齊，可超出 viewport（`overflow: hidden` 切掉）|
+| ✅ Index list | 章節用 `01 / 02 / 03` mono 編號，hover 加 background 反白 |
+| ✅ Raw form | input 預設樣式或加粗黑框，無 radius 無 placeholder fade |
+| ✅ Default underline link | `text-decoration: underline`，hover 加 background 色塊 |
+| ❌ 不要 box-shadow | 完全不用陰影 |
+| ❌ 不要 border-radius | 全部 0，包含 image |
+| ❌ 不要 backdrop-filter | 永不解鎖 |
+| ❌ 不要 gradient | 永不解鎖 |
+
+**範例：Slab heading + Index list**
+```css
+.brutalist-slab {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 1rem 0;
+  border-top: var(--border-heavy);
+  border-bottom: var(--border-heavy);
+}
+.index-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-body);
+}
+.index-list li {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: var(--border-default);
+  cursor: pointer;
+}
+.index-list li:hover {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+.index-list .index-num {
+  flex: 0 0 3rem;
+  opacity: 0.5;
+}
+```
+
+**不像AI生成的關鍵**：
+1. Link 用瀏覽器預設樣式（藍色 + underline），不要 hover 後變漸層
+2. Form input 不要加 `border-radius` 跟 placeholder 淡化效果 — 直接放預設或粗黑框
+3. 故意讓 heading `overflow: hidden` 切掉一半 — 製造張力
+
+**參考真實出貨網站**：
+- craigmod.com、bloomberg.com/businessweek (feature 頁)、berkshirehathaway.com
+- brutalistwebsites.com（策展）、mschf.com、cabel.com、jamesoff.net
+
+---
+
+### 🅰️ 17. Type-First Monochrome（排版優先單色）
+
+**最佳場景**：design-savvy SaaS、AI 產品（諷刺：最不像 AI 的視覺反而適合 AI 產品）、設計師 portfolio、創意工具。
+**核心精神**：排版做所有 hierarchy，單色 + 巨大字級 bleed，零 gradient / glass / shadow。是當代頂級工作室最常用的「不裝飾」策略。
+
+```css
+:root {
+  /* 色彩：3 色封頂（black / white / 1 accent）*/
+  --color-bg: #fafaf7;             /* 微暖白 */
+  --color-ink: #0a0a0a;            /* 軟黑 */
+  --color-accent: #2c5fff;         /* 單一 vivid accent */
+  --color-rule: rgba(10,10,10,0.1);
+
+  /* 排版：variable display + 自身 body */
+  --font-display: "Inter Tight", "Söhne", "GT Walsheim", system-ui, sans-serif;
+  --font-body: "Inter", "Söhne", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* 字級：display 巨大 bleed，body 中等 */
+  --font-size-display: clamp(5rem, 14vw, 16rem);
+  --font-size-h1: clamp(2.5rem, 5vw, 4.5rem);
+  --font-size-body: 1.0625rem;
+  --letter-spacing-display: -0.045em;     /* 巨字要更緊 */
+  --line-height-tight: 0.9;
+
+  /* Radius：0 或極小 */
+  --radius-default: 0;
+  --radius-image: 4px;
+
+  /* Shadow：無 */
+  --shadow-none: none;
+}
+```
+
+**Google Fonts 引入**：
+```html
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+```
+
+**【per-style 元件】Type-First Monochrome 必出 / 禁出**：
+
+| 元件 | 規範 |
+|------|------|
+| ✅ Bleed heading | display 字級可超出 viewport 邊界（`margin-left: -3vw`）製造張力 |
+| ✅ Numbered sections | `01 / Build` `02 / Ship` `03 / Scale` 編號 + 短 label |
+| ✅ Left-aligned everything | hero / sections / CTA 全左對齊 |
+| ✅ Single accent | 整站只用一個 accent 色，用在 hover / link / 關鍵字底色 |
+| ❌ 不要 features grid | 用 numbered sections + 大字 bleed 取代 |
+| ❌ 不要 logo cloud | 用 quote 文字（`"Used by teams at Stripe, Linear, Figma"`）|
+| ❌ 不要 icons | 排版做 hierarchy，不用 icon |
+| ❌ 不要 gradient / blur / shadow | 永不解鎖 |
+
+**範例：Bleed heading + Numbered section**
+```css
+.bleed-heading {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
+  font-weight: 800;
+  letter-spacing: var(--letter-spacing-display);
+  line-height: var(--line-height-tight);
+  margin: 0;
+  margin-left: -2vw;          /* 故意 bleed 出邊界 */
+  max-width: 14ch;
+}
+.numbered-section {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 2rem;
+  padding: clamp(40px, 6vw, 80px) 0;
+  border-top: 1px solid var(--color-rule);
+  align-items: baseline;
+}
+.numbered-section .num {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--color-ink);
+  opacity: 0.5;
+}
+.numbered-section .label {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.accent-mark {
+  background: var(--color-accent);
+  color: var(--color-bg);
+  padding: 0 0.2em;            /* 只 padding 左右，當 highlighter 用 */
+}
+```
+
+**不像AI生成的關鍵**：
+1. 不用 icon — 用排版（字級對比 + 字距 + 顏色）做 hierarchy
+2. 整站只有 1 個 accent 色，**只用在 link hover 跟 highlighter** — 不用在大面積背景
+3. Display 字級故意 bleed 出 viewport（`margin-left: -2vw`）— AI codegen 永遠把字塞在 container 內
+
+**參考真實出貨網站**：
+- mschf.com、readymag.com、linear.app（接近，但比 linear 更 typography-driven）
+- vercel.com/design、stripe.press、framer.com（部分 page）、figma.com/design-systems
+
+---
+
+## 風格總覽（17 個風格）
+
+| # | 風格 | 預設第一推 / 解鎖條件 |
+|---|------|----------------|
+| 1 | Glassmorphism | 🔒 user 主動指名「AI/futuristic/glass」才推 |
+| 2 | Neobrutalism | ✅ 預設可推 |
+| 3 | Minimal Float | ✅ 預設可推 |
+| 4 | Bento Grid | 🔒 user 要結構化 dashboard 才推 |
+| 5 | Dark Luxury | ✅ 預設可推 |
+| 6 | Aurora UI | 🔒 user 主動指名「AI/futuristic」才推 |
+| 7 | Claymorphism | 🔒 user 主動指名「fun/playful/clay」才推 |
+| 8 | Organic Nature | ✅ 預設可推 |
+| 9 | Editorial Maximal | ✅ 預設可推 |
+| 10 | Corporate Clean | ✅ 預設可推 |
+| 11 | Kinetic Editorial | ✅ 預設可推 |
+| 12 | 3D Immersive | ✅ 預設可推 |
+| 13 | **Swiss Editorial** ⭐新 | ✅ 預設第一推（agency / SaaS / enterprise）|
+| 14 | **Magazine Longform** ⭐新 | ✅ 預設第一推（媒體 / 行銷落地頁）|
+| 15 | **Fashion / Luxury** ⭐新 | ✅ 預設第一推（電商 / 品牌）|
+| 16 | **Brutalist / Anti-Design** ⭐新 | ✅ 預設第二推（個人 portfolio / 實驗）|
+| 17 | **Type-First Monochrome** ⭐新 | ✅ 預設第一推（SaaS / AI 產品 / design tool）|
+
+---
+
+## ⛔ AI Tells Blocklist（最高優先級硬性禁令）
+
+**這份清單比所有風格 token 都優先。** 輸出前要對照這份檢查 — 踩到任何一條就重產，除非該條對應的風格被 user 明確選擇。
+
+「AI 味」不是來自字距 / 底色這種化妝品細節，而是來自這些**結構性 + 元件級**的 default。它們是 v0 / Lovable / Bolt / Cursor / 一般 AI codegen 的指紋：
+
+### 元件級禁令（除非該風格明確解鎖，否則一律禁用）
+
+| # | 禁用項 | AI 指紋強度 | 解鎖條件 |
+|---|-------|-----------|---------|
+| 1 | `border-radius: 9999px` 用在所有 button / badge（pill 化）| ⛔⛔⛔ | 僅 Claymorphism 解鎖 |
+| 2 | Hero 上方放 emoji-prefix subtitle pill（"✨ New" / "🎉 Launch" / "🚀 Now live"）| ⛔⛔⛔ | 永不解鎖 — 直接砍掉 |
+| 3 | Card 預設加 `backdrop-filter: blur()` | ⛔⛔ | 僅 Glassmorphism 解鎖 |
+| 4 | 背景放 gradient blob / aurora / radial blur | ⛔⛔ | 僅 Aurora UI 解鎖 |
+| 5 | 預設組合：Inter + Lucide icons + tailwind `slate-*` / `gray-*` palette | ⛔⛔⛔ | 永不解鎖 — 必須換掉至少一個 |
+| 6 | "Trusted by" / "As featured in" logo cloud 固定放 hero 下方 | ⛔⛔ | 僅 Corporate Clean 解鎖 |
+| 7 | Features 區塊一律 3-column card grid + 同樣 icon 風格 | ⛔⛔⛔ | 永不解鎖（必須換 layout — 見 1d 風格-元件對照表）|
+| 8 | 全部置中對齊（hero / section title / CTA 全 `text-align: center`）| ⛔⛔ | 僅 Aurora UI / Glassmorphism 解鎖；其他風格至少一個 section 要左對齊或不對稱 |
+| 9 | 同一個 `box-shadow: 0 2px 4px rgba(0,0,0,0.1)` 套用在每個 card | ⛔⛔ | 永不解鎖 — 至少要 3 級 elevation |
+| 10 | "Get started" CTA 跟 "Learn more" 並排，前者填色、後者外框 | ⛔ | 僅 Corporate Clean / Bento Grid 解鎖；其他風格用其他 CTA 結構 |
+
+### 結構級禁令（這些是骨架的 AI 味，比顏色重要）
+
+- ⛔ **不要每次都出 Hero / Nav / Card / Button / Footer 五件套** — 元件清單依風格不同，見 Step 3 的「風格-元件對照表」
+- ⛔ **不要把所有資訊都塞進 card 裡** — Editorial / Swiss / Magazine / Brutalist 風格用 baseline grid + dateline + kicker，不用 card
+- ⛔ **不要 hero 一定置中、CTA 一定置中** — 至少要有一個風格出非置中的版本
+- ⛔ **不要把 features / pricing / testimonials / FAQ / CTA 五段一定全出齊** — 只出當前風格 + use case 真正需要的
+
+### 自我檢查程序（產出前必跑）
+
+每次要輸出 CSS / 元件範例之前，**先回答這 5 個問題**：
+1. 我的 button radius 是多少？是 9999？為什麼？
+2. 我的 hero 是置中嗎？為什麼？
+3. 我的 features 區是 3-column card grid 嗎？為什麼？
+4. 我用了 Inter + Lucide + slate palette 的組合嗎？
+5. 我有放 backdrop-blur 或 gradient blob 嗎？對應的風格是哪個？
+
+任一個答不出「為什麼」就回去改。
+
+---
+
 ## 通用「不像AI生成」原則
+
+⚠️ 這份原則是**化妝品級**修正。先過上面的 Blocklist，再看這些細節。
 
 這些原則適用於所有風格：
 
@@ -682,31 +1240,124 @@ document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
 ---
 
-## Step 3：輸出完整設計系統
+## Step 2.5：Constraints / Anti-AI Mode（新增 — 必跑）
 
-用戶確認風格後，輸出：
+⚠️ **這一步不能跳。** 風格選好後、輸出設計系統前，先讓 user 從清單勾 **2-3 個**硬性 constraint。這些 constraint 強迫模型脫離 AI 預設組合。
 
-1. **完整 CSS Custom Properties**（完整 `:root {}` 區塊）
+用 AskUserQuestion 工具（multiSelect: true）問：
+
+**為了避免「AI 生成感」，你希望套用哪些 constraint？（建議勾 2-3 個）**
+
+- 🚫 **No rounded corners** — `--radius` 全部設為 0 或 ≤4px
+- 🚫 **No gradients** — 完全不用 `linear-gradient` / `radial-gradient`
+- 🎨 **Two-color palette only** — 整站只用 2 色 + 黑白
+- 🅰️ **No icons** — 完全不用 icon library，hierarchy 全靠排版
+- 💨 **No backdrop-blur** — 永遠不用 `backdrop-filter`
+- 📐 **Asymmetric layout** — Hero 不置中，至少一個 section 左對齊或不對稱 grid
+- 🔠 **Type-first hierarchy** — 大字級對比 + 字距 + 顏色做 hierarchy，不靠陰影 / 圓角
+- 📷 **Real photography** — 使用真實攝影圖（Unsplash / 自家素材）取代 illustration
+- 🚫 **No card shadows** — 永遠不用 `box-shadow`，用細線分隔
+- 📏 **Strict grid** — 12-col baseline grid，所有元素對齊 baseline
+
+**Default constraints by style**（user 沒勾時，這些是該風格的隱含 constraint）：
+- Swiss Editorial → No rounded corners + No card shadows + Strict grid
+- Magazine Longform → Real photography + Type-first hierarchy
+- Fashion / Luxury → No card shadows + Asymmetric layout + Real photography
+- Brutalist → No rounded corners + No gradients + No card shadows + No icons
+- Type-First Monochrome → No icons + Type-first hierarchy + Two-color palette only
+- Glassmorphism / Aurora UI / Claymorphism → 不疊加額外 constraint（這些風格本質就需要 blur/gradient/radius）
+
+把 user 勾的 constraint 跟風格 default 合併，作為 Step 3 的硬性產出規則。
+
+---
+
+## Step 3：輸出完整設計系統（雙變體）
+
+用戶確認風格 + constraint 後，**輸出 2 個變體讓 user 選**：
+
+### Variant A — 保守版（完全照推薦風格 + token）
+依照所選風格的標準 token，產出完整設計系統。這是「安全選擇」。
+
+### Variant B — 實驗版（套用所有 constraint，至少違反一個 AI default）
+依照所選風格的 token + user 勾的所有 constraint，**主動違反至少一個常見 AI default**。明確標記違反了哪個 default、為什麼這樣做：
+- 例：「Variant B 把 hero 改成左對齊（違反 AI default：所有 hero 都置中）— 因為你選了 Asymmetric Layout constraint」
+- 例：「Variant B 拿掉所有 box-shadow，用 1px 細線分隔取代（違反 AI default：每個 card 都加陰影）— Swiss Editorial 風格的核心」
+
+---
+
+### 每個 Variant 的輸出內容
+
+1. **完整 CSS Custom Properties**（完整 `:root {}` 區塊，依風格 + constraint 調整）
 2. **Google Fonts 引入連結**
 3. **Tailwind config 對應版本**（如果用 Tailwind）
-4. **核心元件 CSS**：Hero、Nav、Card、Button、Footer
-5. **「不像AI」的 3 個具體實作提醒**
-6. **推薦的 Godly/Dribbble 參考網站**（從 `design-bible.json` 讀取）
+4. **元件 CSS — 依「風格-元件對照表」產出**（⚠️ 不要用統一 Hero/Nav/Card/Button/Footer 五件套！）
+5. **AI Tells 自我檢查報告** — 對照 Blocklist 10 條，確認沒踩到（或解鎖原因）
+6. **「不像AI」的 3 個具體實作提醒**（依該風格 + constraint 客製）
+7. **推薦的參考網站**（從 `design-bible.json` 讀取該風格的 representativeSites）
+
+---
+
+### 風格-元件對照表（⭐ 必看 — 不再使用「五件套」universal template）
+
+不同風格出不同元件。**永遠不要把 Swiss Editorial / Brutalist / Magazine 套上 Hero+Nav+Card+Button+Footer 模板** — 這些風格本來就沒有 card 跟 pill button。
+
+| 風格 | 必出元件 | 禁出元件 |
+|------|---------|---------|
+| Glassmorphism | Hero（置中可）, Nav（pill 可解鎖）, Glass Card, Button（pill 可解鎖）, Footer | — |
+| Neobrutalism | Hero（左/置中皆可）, Nav, Solid Card with hard shadow, Block Button, Footer | 不用 backdrop-blur |
+| Minimal Float | Hero, Nav, Floating Card, Button (rounded), Footer | 不用 pill 9999, 不用 gradient blob |
+| Bento Grid | Hero, Nav, **Bento Grid Block**（取代 Card）, Button, Footer | 不用 hero CTA 三件套 |
+| Dark Luxury | Hero（dark）, Nav (minimal), Frosted Card, Button (gold accent), Footer | 不用 gradient blob |
+| Aurora UI | Hero（置中可，gradient bg 可解鎖）, Nav, Glow Card, Button (gradient 可解鎖), Footer | — |
+| Claymorphism | Hero, Nav, Clay Card (大 radius), Button (pill 可解鎖), Footer | — |
+| Organic Nature | Hero, Nav, Organic Card (有機 radius), Button, Footer | 不用 pill 9999 |
+| Editorial Maximal | Masthead, Nav, Article Card 或 Index List, Underline Link（取代 Button）, Footer | 不用 features 3-grid, 不用 trusted-by |
+| Corporate Clean | Hero, Nav, Feature Card (3-col 解鎖), Button (rounded), Trusted-by Cloud (解鎖), Footer | — |
+| Kinetic Editorial | Animated Masthead, Nav, Scroll-driven Section, Button, Footer | 不用 static features grid |
+| 3D Immersive | 3D Canvas, Minimal Nav, Floating UI Layer, Button, Footer | 不用 trusted-by, 不用 features grid |
+| **Swiss Editorial** ⭐ | **Masthead + Kicker, Numbered Index, Dateline, 12-col baseline grid** | ❌ Card, ❌ Hero CTA pill, ❌ features 3-grid |
+| **Magazine Longform** ⭐ | **Masthead, Kicker, Lede, Drop cap, Pull quote, Marginalia, Full-bleed image** | ❌ features grid, ❌ trusted-by, ❌ CTA button (用 underline link) |
+| **Fashion / Luxury** ⭐ | **Full-bleed photo hero, Minimal nav, Asymmetric split, Tiny caption, Collection grid** | ❌ Card, ❌ button pill, ❌ 置中 hero, ❌ features 區 |
+| **Brutalist / Anti-Design** ⭐ | **Slab heading, Index list, Raw form, Default underline link** | ❌ box-shadow, ❌ border-radius, ❌ backdrop-filter, ❌ gradient |
+| **Type-First Monochrome** ⭐ | **Bleed heading, Numbered sections, Single accent, Left-aligned everything** | ❌ features grid, ❌ logo cloud, ❌ icons, ❌ gradient/blur/shadow |
 
 ---
 
 ## 設計風格選擇矩陣
 
-| 網站類型 | 優先推薦 | 備選 |
-|---------|---------|------|
-| SaaS / 工具 | Aurora UI, Glassmorphism | Bento Grid, Corporate Clean |
-| 個人作品集 | Minimal Float, Neobrutalism | Editorial Maximal, Kinetic |
-| 電商 / 品牌 | Organic Nature, Dark Luxury | Claymorphism, Editorial |
-| 行銷落地頁 | Aurora UI, Kinetic Editorial | Glassmorphism, Bento Grid |
-| 企業 / B2B | Corporate Clean, Minimal Float | Bento Grid |
-| 遊戲 / 互動 | 3D Immersive, Kinetic Editorial | Neobrutalism |
-| 健康 / 生活 | Organic Nature, Minimal Float | Claymorphism |
-| AI 產品 | Aurora UI, Glassmorphism | Bento Grid |
+> ⚠️ **重要原則**：Glassmorphism / Aurora UI / Claymorphism / Bento Grid 是當代 AI codegen 的視覺指紋。它們是有效的設計語言，但**僅在 user 主動指名「我要 AI/futuristic/glass 感」時才推薦**。預設路徑必須走別條。
+
+### 預設推薦表（user 沒主動指名 AI 感時用這個）
+
+| 網站類型 | 第一推薦 | 第二推薦 | 備選 |
+|---------|---------|---------|------|
+| SaaS / 工具 | **Type-First Monochrome**（新）, Corporate Clean | Editorial Maximal, Minimal Float | Bento Grid（user 要結構化 dashboard 感才推）|
+| 個人作品集 | Minimal Float, Neobrutalism | **Brutalist**（新）, **Swiss Editorial**（新）| Editorial Maximal, Kinetic |
+| 電商 / 品牌 | **Fashion / Luxury Editorial**（新）, Dark Luxury | Organic Nature, Editorial Maximal | Magazine Longform |
+| 行銷落地頁 | **Magazine Longform**（新）, Editorial Maximal | Type-First Monochrome, Corporate Clean | Kinetic Editorial |
+| 企業 / B2B | Corporate Clean, Minimal Float | Type-First Monochrome | Editorial Maximal |
+| 遊戲 / 互動 | 3D Immersive, Kinetic Editorial | Neobrutalism | Brutalist |
+| 健康 / 生活 | Organic Nature, Minimal Float | Magazine Longform | Editorial Maximal |
+| AI 產品 | **Type-First Monochrome**（新）, Editorial Maximal | Corporate Clean, Minimal Float | Aurora UI（user 主動要「AI/futuristic」才推）|
+| 媒體 / 內容 | Magazine Longform, Editorial Maximal | Swiss Editorial | Type-First Monochrome |
+| 設計工作室 / Agency | Swiss Editorial, Editorial Maximal | Type-First Monochrome, Brutalist | Kinetic Editorial |
+
+### 「user 明確要 AI/glass/futuristic 感」時才解鎖
+
+只有當 user 在 Step 1 的「核心感受」回答**「神秘前衛、科技未來感」**或在自由文字裡提到「AI / 科技 / glass / futuristic / 未來感」時，才推薦：
+- **Aurora UI** — 漸層光暈、深色基底
+- **Glassmorphism** — 霧面玻璃卡片
+- **Claymorphism** — 圓胖 3D 質感
+- **Bento Grid** — 大方塊網格（這個對「結構化 dashboard」也適用，但 hero 不要 bento 化）
+
+推薦時要主動補一句：「這些風格目前在 AI codegen 圈用很兇，輸出時會主動避開幾個常見指紋（pill button、subtitle pill、置中 CTA 三件套）— 詳見 AI Tells Blocklist。」
+
+### 推薦時的判斷流程
+
+1. 看 user 對「核心感受」的回答
+2. 沒明確要 AI/futuristic → 走「預設推薦表」第一/第二推薦，**完全不要主動推 Aurora/Glass/Clay/Bento**
+3. 明確要 AI/futuristic → 從預設推薦 + AI 解鎖區各挑 1 個給 user 對比，讓 user 看到非 AI 路徑也存在
+4. user 反問「為什麼不推 Glass/Aurora？」→ 老實說：「這兩個是當代 AI codegen 的視覺指紋，主動推會讓你的網站像被 AI 生成。如果你刻意要這個語言當然 OK，但通常你不會想要。」
 
 ---
 

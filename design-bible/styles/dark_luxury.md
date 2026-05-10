@@ -6,14 +6,18 @@
 
 ## 代表網站 (從 Godly / Dribbble 提取)
 
-- [UNVEIL®](https://unveil.fr/?ref=godly) (godly)
+- [Twingate: It's time to ditch your VPN](https://www.twingate.com/?ref=godly) (godly)
+- [Agence Shopify & Sites web sur-mesure | Pam](https://thisispam.com/?ref=godly) (godly)
+- [10 X Hub | Design Resources](https://10xdesigners.co/?ref=godly) (godly)
+- [Metalab | We make interfaces](https://metalab.com/?ref=godly) (godly)
+- [Umbrel - Personal home cloud and OS for self-hosting](https://umbrel.com/?ref=godly) (godly)
 - [Stryds](https://stryds.com/?ref=godly) (godly)
-- [404 - Page not found](https://ohm.studio/?ref=godly) (godly)
+- [Brisbane Web Developer | Carl Beaverson](https://carlbeaverson.com/?ref=godly) (godly)
+- [Betwin188: Situs Slot Gacor Hari Ini Link Resmi RTP Tinggi & Jackpot Mudah Menang](https://magician.design/?ref=godly) (godly)
 - [Vitra](https://dribbble.com/shots/27333147-Vitra) (dribbble)
-- [Cute Bull Logo](https://dribbble.com/shots/27334031-Cute-Bull-Logo) (dribbble)
 - [Logo Design for Construction FinTech](https://dribbble.com/shots/27077669-Logo-Design-for-Construction-FinTech) (dribbble)
-- [Heart-in Flight ✦ Logo](https://dribbble.com/shots/27333144-Heart-in-Flight-Logo) (dribbble)
-- [Heart-in Flight ✦ Logo](https://dribbble.com/shots/27333144-Heart-in-Flight-Logo) (dribbble)
+- [atomicvibe Logo Archive 01](https://dribbble.com/shots/27332138-atomicvibe-Logo-Archive-01) (dribbble)
+- [Mile Square Cafe Identity Design](https://dribbble.com/shots/27329616-Mile-Square-Cafe-Identity-Design) (dribbble)
 
 ---
 
@@ -64,7 +68,7 @@ module.exports = {
 ```
 
 ### 從真實網站提取的色盤
-rgb(0, 0, 0)  rgb(16, 16, 16)  rgb(51, 51, 51)  rgb(253, 253, 253)  rgb(111, 111, 111)  rgb(166, 255, 0)  rgb(4, 1, 38)  rgb(32, 32, 32)  rgb(0, 0, 238)  rgb(61, 61, 61)  rgb(23, 23, 23)  rgb(0, 0, 0)
+rgb(14, 15, 17)  rgb(0, 0, 0)  rgb(255, 255, 255)  rgb(182, 171, 255)  rgb(238, 243, 95)  rgb(0, 203, 170)  rgb(161, 161, 170)  rgb(141, 141, 150)  rgb(97, 98, 107)  rgb(18, 19, 21)  rgb(0, 0, 0)  rgb(255, 243, 184)
 
 ---
 
@@ -153,5 +157,9 @@ rgb(0, 0, 0)  rgb(16, 16, 16)  rgb(51, 51, 51)  rgb(253, 253, 253)  rgb(111, 111
 | SaaS / 科技產品 | ⭐ |
 | 個人作品集 | ⭐⭐ |
 | 電商 / 品牌 | ⭐⭐⭐ |
-| 行銷落地頁 | ⭐⭐ |
+| 行銷落地頁 | ⭐ |
 | 企業 / B2B | ⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐ |
+
+**AI 視覺指紋強度**：✅ 低

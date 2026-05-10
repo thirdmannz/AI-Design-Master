@@ -6,16 +6,13 @@
 
 ## 代表網站 (從 Godly / Dribbble 提取)
 
-- [Mike Matas](https://mikematas.com/?ref=godly) (godly)
-- [Site Not Found | Framer](https://haptic.app/?ref=godly) (godly)
-- [Redirecting...](https://roasted.design/?ref=godly) (godly)
-- [Field Day Sound](https://www.fielddaysound.tv/?ref=godly) (godly)
-- [Skiff - Private, encrypted, secure email - 10 GB free](https://skiff.com/?ref=godly) (godly)
-- [Quaffable Wine Label System: All Three Variants](https://dribbble.com/shots/27332666-Quaffable-Wine-Label-System-All-Three-Variants) (dribbble)
+- [Kaleido Grafik / We partner with visionary clients to create beautiful digital experiences by fusing thoughtful design with playful thinking.](https://kaleidografik.com/?ref=godly) (godly)
+- [Interactive Money Museum in Dallas | MoMoney](https://www.museumofmoney.com/) (awwwards)
+- [Vibrant Wellness | Interactive Digital Health Experience](https://vibrant.noomoagency.com/) (awwwards)
+- [Logo For Matcha Bar](https://dribbble.com/shots/27330638-Logo-For-Matcha-Bar) (dribbble)
 - [Distressed Badges](https://dribbble.com/shots/27332571-Distressed-Badges) (dribbble)
-- [Distressed Badges](https://dribbble.com/shots/27332571-Distressed-Badges) (dribbble)
-- [Nightshift Division Streetwear Tshirt Graphic For clothing brand](https://dribbble.com/shots/27334227-Nightshift-Division-Streetwear-Tshirt-Graphic-For-clothing-brand) (dribbble)
-- [Nightshift Division Streetwear Tshirt Graphic For clothing brand](https://dribbble.com/shots/27334227-Nightshift-Division-Streetwear-Tshirt-Graphic-For-clothing-brand) (dribbble)
+- [MX Sport Monogram Emblem](https://dribbble.com/shots/27243664-MX-Sport-Monogram-Emblem) (dribbble)
+- [Logo Archive — Recent Works 2025/26](https://dribbble.com/shots/27332232-Logo-Archive-Recent-Works-2025-26) (dribbble)
 
 ---
 
@@ -64,7 +61,7 @@ module.exports = {
 ```
 
 ### 從真實網站提取的色盤
-rgb(0, 0, 0)  rgb(255, 255, 255)  rgb(0, 0, 0)  rgb(51, 51, 51)  rgb(0, 0, 0)  rgb(0, 0, 0)  rgb(19, 19, 19)  rgb(255, 255, 255)  rgb(251, 94, 255)  rgb(0, 0, 0)  rgb(223, 223, 223)  rgb(255, 252, 240)
+rgb(236, 234, 229)  rgb(0, 0, 0)  rgba(0, 0, 0, 0.5)  rgb(255, 255, 255)  rgb(0, 0, 0) rgb(0, 0, 0) rgba(0, 0, 0, 0)  rgb(255, 245, 221)  rgb(17, 17, 17)  lab(90.952 0 -0.0000119209)  rgb(255, 255, 255)  rgb(244, 242, 66)  rgb(0, 0, 244)  oklab(0.177637 0.00000810623 0.00000356138 / 0.6)
 
 ---
 
@@ -152,6 +149,10 @@ rgb(0, 0, 0)  rgb(255, 255, 255)  rgb(0, 0, 0)  rgb(51, 51, 51)  rgb(0, 0, 0)  r
 |------|--------|
 | SaaS / 科技產品 | ⭐ |
 | 個人作品集 | ⭐⭐⭐ |
-| 電商 / 品牌 | ⭐⭐ |
-| 行銷落地頁 | ⭐⭐ |
+| 電商 / 品牌 | ⭐ |
+| 行銷落地頁 | ⭐ |
 | 企業 / B2B | ⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐ |
+
+**AI 視覺指紋強度**：⚠️ 中

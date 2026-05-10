@@ -8,10 +8,9 @@
 
 - [Experience email at its best - Tatem](https://tatem.com/?ref=godly) (godly)
 - [Fey: Make better investments.](https://www.feyapp.com/?ref=godly) (godly)
-- [Workflow Automation Builder UIUX Design | SaaS Drag & Drop](https://dribbble.com/shots/27333638-Workflow-Automation-Builder-UIUX-Design-SaaS-Drag-Drop) (dribbble)
-- [Courier Delivery Mobile App UIUX Design | Parcel Tracking](https://dribbble.com/shots/27333768-Courier-Delivery-Mobile-App-UIUX-Design-Parcel-Tracking) (dribbble)
-- [AI Healthcare Website](https://dribbble.com/shots/27333724-AI-Healthcare-Website) (dribbble)
-- [AI Healthcare Website](https://dribbble.com/shots/27333724-AI-Healthcare-Website) (dribbble)
+- [THE LOOKBACK](https://tlb.betteroff.studio/) (awwwards)
+- [Newly ai app creation landing page web design 3d animation](https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation) (dribbble)
+- [Travel app design](https://dribbble.com/shots/27331519-Travel-app-design) (dribbble)
 - [QuickFix – Home Services Mobile App](https://dribbble.com/shots/27332307-QuickFix-Home-Services-Mobile-App) (dribbble)
 
 ---
@@ -145,8 +144,12 @@ rgb(10, 10, 10)  rgba(255, 255, 255, 0.95)  rgba(255, 255, 255, 0.06)  rgba(255,
 
 | 場景 | 匹配度 |
 |------|--------|
-| SaaS / 科技產品 | ⭐ |
+| SaaS / 科技產品 | ⭐⭐ |
 | 個人作品集 | ⭐⭐⭐ |
 | 電商 / 品牌 | ⭐⭐ |
 | 行銷落地頁 | ⭐⭐ |
 | 企業 / B2B | ⭐⭐⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐ |
+
+**AI 視覺指紋強度**：✅ 低

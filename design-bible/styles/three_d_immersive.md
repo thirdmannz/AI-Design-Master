@@ -6,16 +6,17 @@
 
 ## 代表網站 (從 Godly / Dribbble 提取)
 
-- [SILENCIO ® VISUAL LANGUAGES](https://silencio.es/?ref=godly) (godly)
-- [Twingate: It's time to ditch your VPN](https://www.twingate.com/?ref=godly) (godly)
-- [AuthKit by WorkOS](https://authkit.com/?ref=godly) (godly)
-- [큰그림컴퍼니 - Bigpicture company](https://www.bpco.kr/?ref=godly) (godly)
-- [SavoirFaire©. Holistic creative studio based in NYC.](https://savoirfaire.nyc/?ref=godly) (godly)
+- [Reflect Notes](https://reflect.app/home?ref=godly) (godly)
+- [A new cooperative way to create content + get paid - SuperHi Plus](https://superhi.plus/?ref=godly) (godly)
+- [Desktop.fm](https://desktop.fm/?ref=godly) (godly)
+- [Phantom: The money app that'll take you places](https://phantom.app/?ref=godly) (godly)
+- [reboot](https://reboot.studio/?ref=godly) (godly)
+- [ChainZoku: Mint your Zoku, Take a Side](https://chainzoku.io/?ref=godly) (godly)
+- [Samara - Backyard Homes and ADUs](https://www.samara.com/?ref=godly) (godly)
+- [Liveblocks | Realtime infrastructure for multiplayer apps and agents](https://liveblocks.io/?ref=godly) (godly)
+- [RetailFlow - Smart Retail management](https://dribbble.com/shots/27326146-RetailFlow-Smart-Retail-management) (dribbble)
 - [AI Code](https://dribbble.com/shots/27333490-AI-Code) (dribbble)
-- [Newly ai app creation landing page web design 3d animation](https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation) (dribbble)
-- [Softbank Natural AI Phone intro](https://dribbble.com/shots/27333576-Softbank-Natural-AI-Phone-intro) (dribbble)
-- [Bidirectional Slider](https://dribbble.com/shots/27333850-Bidirectional-Slider) (dribbble)
-- [Bidirectional Slider](https://dribbble.com/shots/27333850-Bidirectional-Slider) (dribbble)
+- [Charted - Color system](https://dribbble.com/shots/27332229-Charted-Color-system) (dribbble)
 
 ---
 
@@ -63,7 +64,7 @@ module.exports = {
 ```
 
 ### 從真實網站提取的色盤
-rgb(0, 0, 0)  rgb(219, 218, 217)  rgb(222, 222, 221)  rgb(14, 15, 17)  rgb(0, 0, 0)  rgb(255, 255, 255)  rgb(182, 171, 255)  rgb(238, 243, 95)  rgb(0, 203, 170)  rgb(161, 161, 170)  rgb(141, 141, 150)  rgb(97, 98, 107)
+rgb(3, 0, 20)  rgb(255, 255, 255)  rgba(239, 237, 253, 0.7)  rgba(84, 57, 255, 0.16)  rgba(255, 255, 255, 0.3)  rgba(196, 187, 255, 0.1)  rgb(80, 70, 228)  rgba(255, 255, 255, 0.08)  rgb(0, 0, 0)  rgba(255, 255, 255, 0.04)  rgb(0, 51, 229)  rgb(240, 247, 255)
 
 ---
 
@@ -149,8 +150,12 @@ rgb(0, 0, 0)  rgb(219, 218, 217)  rgb(222, 222, 221)  rgb(14, 15, 17)  rgb(0, 0,
 
 | 場景 | 匹配度 |
 |------|--------|
-| SaaS / 科技產品 | ⭐⭐ |
+| SaaS / 科技產品 | ⭐ |
 | 個人作品集 | ⭐⭐ |
-| 電商 / 品牌 | ⭐⭐ |
-| 行銷落地頁 | ⭐⭐ |
+| 電商 / 品牌 | ⭐ |
+| 行銷落地頁 | ⭐ |
 | 企業 / B2B | ⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐ |
+
+**AI 視覺指紋強度**：⚠️ 中

@@ -1,0 +1,95 @@
+{
+  "sites": [
+    {
+      "href": "https://x.com/minimal_gallery",
+      "title": "Minimal Gallery (@minimal_gallery) / X",
+      "tags": [],
+      "cssVars": {},
+      "fonts": [
+        "Times New Roman",
+        "TwitterChirp",
+        "-apple-system"
+      ],
+      "colors": [
+        "rgb(255, 255, 255)",
+        "rgb(0, 0, 0)",
+        "rgb(0, 0, 0) rgb(0, 0, 0) rgb(239, 243, 244)",
+        "rgb(15, 20, 25)",
+        "rgb(207, 217, 222)",
+        "rgb(29, 155, 240)",
+        "rgba(15, 20, 25, 0.75)",
+        "rgb(0, 0, 238)",
+        "rgba(255, 255, 255, 0.35)",
+        "rgb(239, 243, 244)"
+      ],
+      "borderRadii": [
+        "9999px"
+      ],
+      "spacings": [],
+      "shadows": [
+        "rgba(101, 119, 134, 0.2) 0px 0px 8px 0px, rgba(101, 119, 134, 0.25) 0px 1px 3px 1px"
+      ],
+      "metaDesc": "",
+      "ogImage": "",
+      "isDark": false,
+      "hasAnimations": false,
+      "hasParallax": false,
+      "hasGrid": false,
+      "hasFlex": false,
+      "hasHeroVideo": false,
+      "hasCanvas": false,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\minimalgallery\\https___x_com_minimal_gallery.jpg",
+      "source": "minimalgallery",
+      "scrapedAt": "2026-05-10T10:53:39.627Z"
+    },
+    {
+      "href": "https://readymag.com/readymag/unlearned/?utm_source=minimalgallery&utm_medium=partnership_banner&utm_campaign=unlearned&utm_content=main_banner",
+      "title": "UNLEARNED",
+      "tags": [],
+      "cssVars": {},
+      "fonts": [
+        "Times New Roman",
+        "-apple-system",
+        "dyns",
+        "gzjd"
+      ],
+      "colors": [
+        "rgb(255, 255, 255)",
+        "rgb(40, 40, 40)",
+        "rgb(0, 0, 238)"
+      ],
+      "borderRadii": [],
+      "spacings": [
+        "-534.797px",
+        "-32.2734px",
+        "-520.734px",
+        "-31.95px",
+        "-400.753px"
+      ],
+      "shadows": [],
+      "metaDesc": "Stefan Sagmeister, Shantell Martin, and other creatives reflect on what they had to unlearn after design school. An editorial project by the Readymag team.",
+      "ogImage": "https://c-p.rmcdn.net/50dad5df6b52d70000000006/Image-4645b496-f10e-481b-9e63-11d09e30994e.png",
+      "isDark": false,
+      "hasAnimations": false,
+      "hasParallax": false,
+      "hasGrid": false,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": false,
+      "heroTextAlign": "",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "underline",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\minimalgallery\\https___readymag_com_readymag_unlearned__utm_source_minimalgallery_utm_medium_pa.jpg",
+      "source": "minimalgallery",
+      "scrapedAt": "2026-05-10T10:53:43.065Z"
+    }
+  ],
+  "scrapedAt": "2026-05-10T10:53:43.143Z"
+}

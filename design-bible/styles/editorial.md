@@ -7,12 +7,13 @@
 ## 代表網站 (從 Godly / Dribbble 提取)
 
 - [Pedro Duarte's Personal Website](https://ped.ro/?ref=godly) (godly)
-- [KidSuper World](https://kidsuper.world/?ref=godly) (godly)
-- [Logo archive - selection of logo marks](https://dribbble.com/shots/27333381-Logo-archive-selection-of-logo-marks) (dribbble)
-- [Vitra](https://dribbble.com/shots/27333147-Vitra) (dribbble)
-- [Cute Bull Logo](https://dribbble.com/shots/27334031-Cute-Bull-Logo) (dribbble)
-- [Cportesano Cigars](https://dribbble.com/shots/27332668-Cportesano-Cigars) (dribbble)
-- [PropTech CRM Dashboard — Partner Outreach & Deal Flow UI](https://dribbble.com/shots/27332795-PropTech-CRM-Dashboard-Partner-Outreach-Deal-Flow-UI) (dribbble)
+- [Home - Emilie Aubry](https://www.emilieaubry.com/) (awwwards)
+- [Sleep Well Creatives](https://sleep-well-creatives.com/) (awwwards)
+- [Occupied](https://occupied.unadsgn.tw/) (awwwards)
+- [Weekend MaxMara Gift Guide](https://weekend-mm-2025-gift-guide-production.monogrid.io/) (awwwards)
+- [Workflow Automation Builder UIUX Design | SaaS Drag & Drop](https://dribbble.com/shots/27333638-Workflow-Automation-Builder-UIUX-Design-SaaS-Drag-Drop) (dribbble)
+- [Courier Delivery Mobile App UIUX Design | Parcel Tracking](https://dribbble.com/shots/27333768-Courier-Delivery-Mobile-App-UIUX-Design-Parcel-Tracking) (dribbble)
+- [AI Healthcare Website](https://dribbble.com/shots/27333724-AI-Healthcare-Website) (dribbble)
 
 ---
 
@@ -61,7 +62,7 @@ module.exports = {
 ```
 
 ### 從真實網站提取的色盤
-rgb(17, 17, 17)  rgb(255, 255, 255)  rgb(238, 238, 238)  rgb(255, 255, 255)  rgb(0, 0, 0)  rgba(255, 255, 255, 0.9)  rgb(102, 102, 102)  #100100100  #000000  #606060  #202020  #e0e0e0
+rgb(17, 17, 17)  rgb(255, 255, 255)  rgb(238, 238, 238)  rgb(0, 0, 0)  rgba(255, 255, 255, 0.08)  rgb(255, 255, 255)  rgb(254, 241, 208)  rgb(51, 51, 51)  rgb(255, 255, 255)  rgb(0, 66, 175)  rgb(69, 137, 247)  rgb(36, 81, 181)
 
 ---
 
@@ -147,8 +148,12 @@ rgb(17, 17, 17)  rgb(255, 255, 255)  rgb(238, 238, 238)  rgb(255, 255, 255)  rgb
 
 | 場景 | 匹配度 |
 |------|--------|
-| SaaS / 科技產品 | ⭐ |
+| SaaS / 科技產品 | ⭐⭐⭐ |
 | 個人作品集 | ⭐⭐⭐ |
 | 電商 / 品牌 | ⭐⭐⭐ |
-| 行銷落地頁 | ⭐⭐ |
-| 企業 / B2B | ⭐ |
+| 行銷落地頁 | ⭐⭐⭐ |
+| 企業 / B2B | ⭐⭐ |
+| 媒體 / 內容 | ⭐⭐⭐ |
+| 設計工作室 / Agency | ⭐⭐⭐ |
+
+**AI 視覺指紋強度**：✅ 低

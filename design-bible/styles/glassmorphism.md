@@ -8,14 +8,7 @@
 
 - [Stripe Sessions 2026 | The global internet economy conference](https://stripe.com/sessions?ref=godly) (godly)
 - [Online code, design, and project management courses • SuperHi](https://superhi.com/?ref=godly) (godly)
-- [10 X Hub | Design Resources](https://10xdesigners.co/?ref=godly) (godly)
-- [Logan Liffick](https://loganliffick.com/?ref=godly) (godly)
-- [Wise Design](https://wise.design/?ref=godly) (godly)
-- [Workflow Automation Builder UIUX Design | SaaS Drag & Drop](https://dribbble.com/shots/27333638-Workflow-Automation-Builder-UIUX-Design-SaaS-Drag-Drop) (dribbble)
-- [Designer Profile - Logoarchive](https://dribbble.com/shots/27331230-Designer-Profile-Logoarchive) (dribbble)
-- [Designer Profile - Logoarchive](https://dribbble.com/shots/27331230-Designer-Profile-Logoarchive) (dribbble)
-- [Running Mobile App](https://dribbble.com/shots/27320453-Running-Mobile-App) (dribbble)
-- [Running Mobile App](https://dribbble.com/shots/27320453-Running-Mobile-App) (dribbble)
+- [Mouthful of Dust - SLV](https://www.slv.vic.gov.au/mouthful-of-dust/) (awwwards)
 
 ---
 
@@ -150,8 +143,12 @@ rgb(249, 247, 247)  rgb(32, 3, 60)  rgb(219, 215, 215)  rgb(255, 255, 255)  rgba
 
 | 場景 | 匹配度 |
 |------|--------|
-| SaaS / 科技產品 | ⭐⭐⭐ |
+| SaaS / 科技產品 | ⭐⭐ |
 | 個人作品集 | ⭐⭐ |
-| 電商 / 品牌 | ⭐⭐ |
-| 行銷落地頁 | ⭐⭐⭐ |
+| 電商 / 品牌 | ⭐ |
+| 行銷落地頁 | ⭐⭐ |
 | 企業 / B2B | ⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐ |
+
+**AI 視覺指紋強度**：⛔⛔⛔ 高 — 僅 user 主動指名 AI/futuristic 才推薦

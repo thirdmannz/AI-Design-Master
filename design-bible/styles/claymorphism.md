@@ -6,15 +6,7 @@
 
 ## 代表網站 (從 Godly / Dribbble 提取)
 
-- [Home | Traffic Productions](https://www.traffic.productions/?ref=godly) (godly)
 - [Kons](https://kons.fyi/?ref=godly) (godly)
-- [Umbrel - Personal home cloud and OS for self-hosting](https://umbrel.com/?ref=godly) (godly)
-- [Yung Studio — Welcome!](https://www.yung.studio/?ref=godly) (godly)
-- [Hypershell Energy Analytics UI – Exosuit Mobile App](https://dribbble.com/shots/27333818-Hypershell-Energy-Analytics-UI-Exosuit-Mobile-App) (dribbble)
-- [Social Networking App UI Design](https://dribbble.com/shots/27330747-Social-Networking-App-UI-Design) (dribbble)
-- [Travel app design](https://dribbble.com/shots/27331519-Travel-app-design) (dribbble)
-- [QuickFix – Home Services Mobile App](https://dribbble.com/shots/27332307-QuickFix-Home-Services-Mobile-App) (dribbble)
-- [Softbank Natural AI Phone intro](https://dribbble.com/shots/27333576-Softbank-Natural-AI-Phone-intro) (dribbble)
 
 ---
 
@@ -62,7 +54,7 @@ module.exports = {
 ```
 
 ### 從真實網站提取的色盤
-rgb(21, 21, 21)  rgb(243, 243, 243)  rgb(255, 255, 255)  rgba(255, 255, 255, 0.96)  rgb(117, 117, 117)  rgb(0, 184, 73)  rgb(245, 114, 0)  rgb(0, 139, 245)  rgb(0, 0, 0)  rgb(255, 255, 255)  rgb(227, 160, 129)  rgba(255, 255, 255, 0.62)
+rgba(255, 255, 255, 0.96)  rgb(117, 117, 117)  rgb(0, 184, 73)  rgb(245, 114, 0)  rgb(0, 139, 245)
 
 ---
 
@@ -150,6 +142,10 @@ rgb(21, 21, 21)  rgb(243, 243, 243)  rgb(255, 255, 255)  rgba(255, 255, 255, 0.9
 |------|--------|
 | SaaS / 科技產品 | ⭐ |
 | 個人作品集 | ⭐⭐ |
-| 電商 / 品牌 | ⭐⭐⭐ |
-| 行銷落地頁 | ⭐⭐ |
+| 電商 / 品牌 | ⭐⭐ |
+| 行銷落地頁 | ⭐ |
 | 企業 / B2B | ⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐ |
+
+**AI 視覺指紋強度**：⛔⛔⛔ 高 — 僅 user 主動指名 AI/futuristic 才推薦

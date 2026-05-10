@@ -1,0 +1,66 @@
+{
+  "sites": [
+    {
+      "href": "https://webflow.grsm.io/rmlto4xn3gm4",
+      "title": "Webflow — Pixel perfect sites built by designers",
+      "tags": [],
+      "source": "httpster",
+      "failed": true,
+      "error": "page.goto: net::ERR_NAME_NOT_RESOLVED at https://webflow.grsm.io/rmlto4xn3gm4\nCall log:\n\u001b[2m  - navigating to \"https://webflow.grsm.io/rmlto4xn3gm4\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    {
+      "href": "https://mobbin.com/?via=httpster",
+      "title": "Mobbin — UI & UX design inspiration for mobile & web apps",
+      "tags": [],
+      "cssVars": {
+        "--max-content-width": "1920px",
+        "--navbar-height": "101px",
+        "--filterbar-height": "52px",
+        "--searchbar-top": "120px",
+        "--searchbar-min-bottom": "120px"
+      },
+      "fonts": [
+        "saans",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(255, 255, 255)",
+        "rgb(20, 20, 20)",
+        "rgba(237, 237, 237, 0.72)",
+        "rgb(112, 112, 112)",
+        "rgb(173, 173, 173)"
+      ],
+      "borderRadii": [
+        "12px",
+        "9999px",
+        "16px 16px 0px 0px"
+      ],
+      "spacings": [
+        "180px",
+        "32px",
+        "80px",
+        "120px",
+        "116px"
+      ],
+      "shadows": [],
+      "metaDesc": "Save hours of UI & UX research with our library of 600,000+ fully searchable mobile & web app screenshots.",
+      "ogImage": "https://mobbin.com/og_image.png?v=4.0",
+      "isDark": false,
+      "hasAnimations": false,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": true,
+      "hasCanvas": false,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\httpster\\https___mobbin_com__via_httpster.jpg",
+      "source": "httpster",
+      "scrapedAt": "2026-05-10T10:53:19.027Z"
+    }
+  ],
+  "scrapedAt": "2026-05-10T10:53:19.141Z"
+}

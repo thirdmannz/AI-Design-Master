@@ -6,16 +6,10 @@
 
 ## 代表網站 (從 Godly / Dribbble 提取)
 
-- [Locomotive | Montreal web agency](https://locomotive.ca/en?ref=godly) (godly)
-- [CHRISTOPHER IRELAND CREATIVE](https://christopherireland.net/?ref=godly) (godly)
-- [Opal Camera Inc.](https://opalcamera.com/?ref=godly) (godly)
-- [Amie - AI Note Taker](https://amie.so/?ref=godly) (godly)
-- [Save time and money with our premium and exclusive Framer & Webflow templates.](https://www.jp.works/?ref=godly) (godly)
-- [Workflow Automation Builder UIUX Design | SaaS Drag & Drop](https://dribbble.com/shots/27333638-Workflow-Automation-Builder-UIUX-Design-SaaS-Drag-Drop) (dribbble)
-- [Courier Delivery Mobile App UIUX Design | Parcel Tracking](https://dribbble.com/shots/27333768-Courier-Delivery-Mobile-App-UIUX-Design-Parcel-Tracking) (dribbble)
-- [Newly ai app creation landing page web design 3d animation](https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation) (dribbble)
-- [Education Management Web Design](https://dribbble.com/shots/27320617-Education-Management-Web-Design) (dribbble)
-- [Website Design: Call to Action (CTA) for AI-Powered Platform](https://dribbble.com/shots/27332273-Website-Design-Call-to-Action-CTA-for-AI-Powered-Platform) (dribbble)
+- [Carevia — Wellness Pharmacy Mobile App](https://dribbble.com/shots/27333332-Carevia-Wellness-Pharmacy-Mobile-App) (dribbble)
+- [Bidirectional Slider](https://dribbble.com/shots/27333850-Bidirectional-Slider) (dribbble)
+- [Dark Dashboard Finance UI](https://dribbble.com/shots/27332491-Dark-Dashboard-Finance-UI) (dribbble)
+- [Billing — Untitled UI](https://dribbble.com/shots/27331481-Billing-Untitled-UI) (dribbble)
 
 ---
 
@@ -63,7 +57,7 @@ module.exports = {
 ```
 
 ### 從真實網站提取的色盤
-rgb(0, 0, 0)  rgb(255, 255, 255)  rgb(49, 45, 251)  rgb(242, 241, 236)  rgb(0, 0, 0)  rgba(0, 0, 0, 0.79)  rgb(255, 255, 255)  rgb(0, 0, 0) rgb(0, 0, 0) rgba(0, 0, 0, 0)  rgb(255, 255, 255)  rgb(0, 0, 0)  rgb(229, 231, 235)  rgb(149, 149, 149)
+#100100100  #e0e0e0  #202020  #808060  #404020  #a0a080  #202020  #404040  #100100100  #606060  #e0e0e0  #808080
 
 ---
 
@@ -149,8 +143,12 @@ rgb(0, 0, 0)  rgb(255, 255, 255)  rgb(49, 45, 251)  rgb(242, 241, 236)  rgb(0, 0
 
 | 場景 | 匹配度 |
 |------|--------|
-| SaaS / 科技產品 | ⭐⭐⭐ |
+| SaaS / 科技產品 | ⭐⭐ |
 | 個人作品集 | ⭐⭐ |
-| 電商 / 品牌 | ⭐⭐ |
-| 行銷落地頁 | ⭐⭐⭐ |
-| 企業 / B2B | ⭐⭐⭐ |
+| 電商 / 品牌 | ⭐ |
+| 行銷落地頁 | ⭐ |
+| 企業 / B2B | ⭐⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐ |
+
+**AI 視覺指紋強度**：⛔⛔⛔ 高 — 僅 user 主動指名 AI/futuristic 才推薦

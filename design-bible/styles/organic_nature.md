@@ -8,14 +8,15 @@
 
 - [herding.app](https://www.herdi.ng/?ref=godly) (godly)
 - [Max Yinger ☞ UI Engineer](https://yinger.dev/?ref=godly) (godly)
+- [The AI workspace that works for you. | Notion](https://notion.so/?ref=godly) (godly)
+- [Raw Materials | An Unusual Design Company](https://therawmaterials.com/?ref=godly) (godly)
 - [Family | Family](https://family.co/?ref=godly) (godly)
+- [Maëlan Le Meur - Artisan graphiste](https://maelanlemeur.com/?ref=godly) (godly)
 - [Branding & Web Agency | EPIC Agency](https://www.epic.net/?ref=godly) (godly)
 - [Flying Papers - Home](https://www.flyingpapers.com/?ref=godly) (godly)
 - [Logo archive - selection of logo marks](https://dribbble.com/shots/27333381-Logo-archive-selection-of-logo-marks) (dribbble)
 - [Logo Design for Construction FinTech](https://dribbble.com/shots/27077669-Logo-Design-for-Construction-FinTech) (dribbble)
-- [Gefeen Logo Design](https://dribbble.com/shots/27334139-Gefeen-Logo-Design) (dribbble)
-- [Mile Square Cafe Identity Design](https://dribbble.com/shots/27329616-Mile-Square-Cafe-Identity-Design) (dribbble)
-- [10 years retrospective](https://dribbble.com/shots/27331353-10-years-retrospective) (dribbble)
+- [Cportesano Cigars](https://dribbble.com/shots/27332668-Cportesano-Cigars) (dribbble)
 
 ---
 
@@ -155,5 +156,9 @@ rgb(28, 28, 26)  rgba(255, 253, 244, 0.596)  rgba(255, 252, 236, 0.392)  rgba(25
 | SaaS / 科技產品 | ⭐ |
 | 個人作品集 | ⭐⭐ |
 | 電商 / 品牌 | ⭐⭐⭐ |
-| 行銷落地頁 | ⭐⭐ |
+| 行銷落地頁 | ⭐ |
 | 企業 / B2B | ⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐ |
+
+**AI 視覺指紋強度**：✅ 低

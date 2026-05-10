@@ -6,11 +6,7 @@
 
 ## 代表網站 (從 Godly / Dribbble 提取)
 
-- [RetailFlow - Smart Retail management](https://dribbble.com/shots/27326146-RetailFlow-Smart-Retail-management) (dribbble)
-- [Newly ai app creation landing page web design 3d animation](https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation) (dribbble)
-- [Charted - Color system](https://dribbble.com/shots/27332229-Charted-Color-system) (dribbble)
-- [Softbank Natural AI Phone intro](https://dribbble.com/shots/27333576-Softbank-Natural-AI-Phone-intro) (dribbble)
-- [Landing Page Design for an Open-Source AI Tool](https://dribbble.com/shots/27331769-Landing-Page-Design-for-an-Open-Source-AI-Tool) (dribbble)
+*(Run scraper to populate with real examples)*
 
 ---
 
@@ -60,7 +56,7 @@ module.exports = {
 ```
 
 ### 從真實網站提取的色盤
-#000000  #202000  #404020  #202020  #002000  #808080  #e0a0e0  #e080e0  #100a0e0  #e0c0e0  #e0e0100  #100c0e0
+*(From scraped sites)*
 
 ---
 
@@ -146,8 +142,12 @@ module.exports = {
 
 | 場景 | 匹配度 |
 |------|--------|
-| SaaS / 科技產品 | ⭐⭐⭐ |
+| SaaS / 科技產品 | ⭐⭐ |
 | 個人作品集 | ⭐⭐ |
-| 電商 / 品牌 | ⭐⭐ |
-| 行銷落地頁 | ⭐⭐⭐ |
+| 電商 / 品牌 | ⭐ |
+| 行銷落地頁 | ⭐⭐ |
 | 企業 / B2B | ⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐ |
+
+**AI 視覺指紋強度**：⛔⛔⛔ 高 — 僅 user 主動指名 AI/futuristic 才推薦

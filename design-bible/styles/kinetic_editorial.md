@@ -7,13 +7,16 @@
 ## 代表網站 (從 Godly / Dribbble 提取)
 
 - [Atlas Card](https://atlascard.com/?ref=godly) (godly)
+- [AuthKit by WorkOS](https://authkit.com/?ref=godly) (godly)
+- [Digital tools for creatives – 099 Supply](https://099.supply/?ref=godly) (godly)
+- [Status — Make the jump to web3](https://status.app/?ref=godly) (godly)
 - [Lovi — Smart Skin Care](https://lovi.care/?ref=godly) (godly)
-- [Maëlan Le Meur - Artisan graphiste](https://maelanlemeur.com/?ref=godly) (godly)
-- [Logo For Matcha Bar](https://dribbble.com/shots/27330638-Logo-For-Matcha-Bar) (dribbble)
-- [Founders Whiskey](https://dribbble.com/shots/27332578-Founders-Whiskey) (dribbble)
-- [Founders Whiskey](https://dribbble.com/shots/27332578-Founders-Whiskey) (dribbble)
-- [MX Sport Monogram Emblem](https://dribbble.com/shots/27243664-MX-Sport-Monogram-Emblem) (dribbble)
-- [Logo Archive — Recent Works 2025/26](https://dribbble.com/shots/27332232-Logo-Archive-Recent-Works-2025-26) (dribbble)
+- [Cosmos](https://cosmos.so/?ref=godly) (godly)
+- [GitHub · Change is constant. GitHub keeps you ahead. · GitHub](https://github.com/?ref=godly) (godly)
+- [Eco: The Stablecoin Network That Makes Money Programmable](https://eco.com/?ref=godly) (godly)
+- [AI Code](https://dribbble.com/shots/27333490-AI-Code) (dribbble)
+- [Newly ai app creation landing page web design 3d animation](https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation) (dribbble)
+- [Charted - Color system](https://dribbble.com/shots/27332229-Charted-Color-system) (dribbble)
 
 ---
 
@@ -61,7 +64,7 @@ module.exports = {
 ```
 
 ### 從真實網站提取的色盤
-rgb(0, 0, 0)  rgb(248, 248, 248)  rgba(0, 0, 0, 0.32)  rgba(255, 255, 255, 0.8)  rgb(30, 30, 30)  rgb(0, 19, 145)  rgb(255, 255, 255)  rgb(128, 128, 128)  rgb(39, 39, 39)  rgb(0, 0, 0)  rgb(21, 21, 129)  rgb(255, 255, 255)
+rgb(0, 0, 0)  rgb(248, 248, 248)  rgba(0, 0, 0, 0.32)  rgba(255, 255, 255, 0.8)  rgb(30, 30, 30)  rgb(0, 19, 145)  rgb(255, 255, 255)  rgb(128, 128, 128)  rgb(39, 39, 39)  rgb(5, 6, 15)  rgb(255, 255, 255)  rgb(216, 236, 248)
 
 ---
 
@@ -147,8 +150,12 @@ rgb(0, 0, 0)  rgb(248, 248, 248)  rgba(0, 0, 0, 0.32)  rgba(255, 255, 255, 0.8) 
 
 | 場景 | 匹配度 |
 |------|--------|
-| SaaS / 科技產品 | ⭐⭐ |
+| SaaS / 科技產品 | ⭐ |
 | 個人作品集 | ⭐⭐⭐ |
-| 電商 / 品牌 | ⭐⭐ |
+| 電商 / 品牌 | ⭐ |
 | 行銷落地頁 | ⭐⭐⭐ |
 | 企業 / B2B | ⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐⭐ |
+
+**AI 視覺指紋強度**：✅ 低

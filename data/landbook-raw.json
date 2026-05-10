@@ -1,0 +1,1555 @@
+{
+  "sites": [
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/92432-moneda-self-custodial-neo-finance",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:55:52.953Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/90272-without-a-strategic-branding-agency",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:55:55.830Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/93827-discover-the-acf-01-tourbillon-with-its-patented-double-wishbone-system-wrk",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:55:59.781Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94431-leadify-ai-saas-and-startup-template",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:03.836Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/85824-form-and-fun-studio",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:08.173Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/86105-arc-100-electric-boats",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:11.344Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94502-intercom-the-only-helpdesk-designed-for-the-ai-agent-era",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:14.465Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94502-intercom-the-only-helpdesk-designed-for-the-ai-agent-era#website-tabpane-pages",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:18.462Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94413-roll-and-hill",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:22.210Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94560-websites-marketing-and-design-idyllic-new-plymouth",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:26.030Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94105-superfastA-R-premium-saas-template-for-fast-founders",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:29.272Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/93975-lab37",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:32.287Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/90501-lihmon",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:35.800Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94280-a-better-lou",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:38.937Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94053-automate-food-distribution-with-ai-agents-burnt",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:42.462Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94410-highnote-built-for-you",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:45.902Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94410-highnote-built-for-you#website-tabpane-pages",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:49.554Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94410-highnote-built-for-you#website-tabpane-history",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:53.382Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94347-stratic-a-premium-ai-agency-website-template",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:56:57.719Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/93940-verve-is-a-strategic-branding-agency-and-two-time-european-design-agency-of-the-year-winner-verve",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:57:01.621Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/93940-verve-is-a-strategic-branding-agency-and-two-time-european-design-agency-of-the-year-winner-verve#website-tabpane-pages",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:57:05.659Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/93940-verve-is-a-strategic-branding-agency-and-two-time-european-design-agency-of-the-year-winner-verve#website-tabpane-history",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:57:08.605Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94562-anne-boysen-my-design-portfolio",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:57:11.773Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/93859-levels-live-healthier-longer-levels",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:57:15.264Z"
+    },
+    {
+      "href": "https://www.cloudflare.com/?utm_source=challenge&utm_campaign=m",
+      "title": "Connect, protect, and build everywhere | Cloudflare",
+      "tags": [],
+      "landbookDetail": "https://land-book.com/websites/94412-prenatal-vitamin-supplements-for-women-and-men-wenatal",
+      "cssVars": {
+        "--accent": "136, 58, 234",
+        "--accent-light": "224, 204, 250",
+        "--accent-dark": "49, 10, 101",
+        "--accent-gradient": "linear-gradient( 45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60% )"
+      },
+      "fonts": [
+        "ui-sans-serif",
+        "Inter",
+        "Times New Roman"
+      ],
+      "colors": [
+        "rgb(0, 0, 0)",
+        "rgb(255, 255, 255)",
+        "rgb(255, 102, 51)",
+        "rgb(75, 85, 99)",
+        "rgb(107, 114, 128)",
+        "rgb(165, 165, 165)",
+        "rgb(153, 61, 31)",
+        "rgb(229, 231, 235)"
+      ],
+      "borderRadii": [
+        "8px",
+        "100% 0px 0px",
+        "4px",
+        "8px 8px 0px 0px",
+        "9999px"
+      ],
+      "spacings": [
+        "24px",
+        "32px",
+        "48px",
+        "40px",
+        "8px"
+      ],
+      "shadows": [
+        "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px",
+        "rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.05) 0px 2px 4px -2px"
+      ],
+      "metaDesc": "Make employees, applications and networks faster and more secure everywhere, while reducing complexity and cost.",
+      "ogImage": "https://cf-assets.www.cloudflare.com/dzlvafdwdttg/5hEMO0prBW3wDvchZU0iBZ/8e05bb4c55f8906e58d09dbc861c0f22/CF_logo_horizontal_singlecolor_wht.svg",
+      "isDark": true,
+      "hasAnimations": true,
+      "hasParallax": false,
+      "hasGrid": true,
+      "hasFlex": true,
+      "hasHeroVideo": false,
+      "hasCanvas": true,
+      "heroTextAlign": "start",
+      "hasDropCap": false,
+      "hasAside": false,
+      "hasNumberedIndex": false,
+      "linkUnderline": "none",
+      "screenshotPath": "C:\\Projects\\DesignSkill\\data\\screenshots\\landbook\\https___www_cloudflare_com__utm_source_challenge_utm_campaign_m.jpg",
+      "source": "landbook",
+      "scrapedAt": "2026-05-10T10:57:18.779Z"
+    }
+  ],
+  "scrapedAt": "2026-05-10T10:57:18.873Z"
+}

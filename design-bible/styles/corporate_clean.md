@@ -7,15 +7,16 @@
 ## 代表網站 (從 Godly / Dribbble 提取)
 
 - [Customers — Evervault](https://evervault.com/customers?ref=godly) (godly)
+- [Opal Camera Inc.](https://opalcamera.com/?ref=godly) (godly)
 - [Lusion - Award Winning 3D and Interactive Web Studio](https://lusion.co/?ref=godly) (godly)
+- [Amie - AI Note Taker](https://amie.so/?ref=godly) (godly)
 - [Untitled](https://shuttle.zip/?ref=godly) (godly)
 - [Duties.xyz](https://www.duties.xyz/?ref=godly) (godly)
-- [Status — Make the jump to web3](https://status.app/?ref=godly) (godly)
-- [Newly ai app creation landing page web design 3d animation](https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation) (dribbble)
+- [Endless](https://endless.design/?ref=godly) (godly)
+- [Superpower](https://superpower.com/?ref=godly) (godly)
 - [Education Management Web Design](https://dribbble.com/shots/27320617-Education-Management-Web-Design) (dribbble)
 - [Website Design: Call to Action (CTA) for AI-Powered Platform](https://dribbble.com/shots/27332273-Website-Design-Call-to-Action-CTA-for-AI-Powered-Platform) (dribbble)
-- [Travel app design](https://dribbble.com/shots/27331519-Travel-app-design) (dribbble)
-- [Travel app design](https://dribbble.com/shots/27331519-Travel-app-design) (dribbble)
+- [Solvara - Yoga Landing Page Design](https://dribbble.com/shots/27333615-Solvara-Yoga-Landing-Page-Design) (dribbble)
 
 ---
 
@@ -67,7 +68,7 @@ module.exports = {
 ```
 
 ### 從真實網站提取的色盤
-rgb(1, 3, 20)  rgb(223, 225, 244)  rgb(255, 255, 255)  rgba(255, 255, 255, 0.8)  rgb(186, 188, 210)  rgba(255, 255, 255, 0.15)  rgb(0, 0, 0)  rgb(102, 51, 238)  rgb(255, 255, 255) rgb(255, 255, 255) rgb(42, 43, 58)  rgba(255, 255, 255, 0.95)  rgb(255, 255, 255)  rgb(240, 241, 250)
+rgb(1, 3, 20)  rgb(223, 225, 244)  rgb(255, 255, 255)  rgba(255, 255, 255, 0.8)  rgb(186, 188, 210)  rgba(255, 255, 255, 0.15)  rgb(0, 0, 0)  rgb(102, 51, 238)  rgb(255, 255, 255) rgb(255, 255, 255) rgb(42, 43, 58)  rgba(255, 255, 255, 0.95)  rgb(255, 255, 255)  rgb(0, 0, 0)
 
 ---
 
@@ -155,6 +156,10 @@ rgb(1, 3, 20)  rgb(223, 225, 244)  rgb(255, 255, 255)  rgba(255, 255, 255, 0.8) 
 |------|--------|
 | SaaS / 科技產品 | ⭐⭐⭐ |
 | 個人作品集 | ⭐⭐ |
-| 電商 / 品牌 | ⭐⭐ |
+| 電商 / 品牌 | ⭐ |
 | 行銷落地頁 | ⭐⭐ |
 | 企業 / B2B | ⭐⭐⭐ |
+| 媒體 / 內容 | ⭐ |
+| 設計工作室 / Agency | ⭐⭐ |
+
+**AI 視覺指紋強度**：✅ 低

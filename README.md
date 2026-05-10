@@ -1,8 +1,8 @@
 # 🎨 AI Design Master
 
-> A Claude Code skill that turns you into a web design expert — powered by real patterns from **godly.website** and **dribbble.com**.
+> A Claude Code skill that turns you into a web design expert — powered by real patterns from **godly.website**, **awwwards**, **siteinspire**, **land-book**, **httpster**, **minimal.gallery**, and **dribbble**.
 
-Stop building websites that look AI-generated. This skill gives you a curated design system of **12 professional styles**, each with real CSS tokens, typography pairings, component examples, and "anti-AI" techniques — distilled from 131 real websites and 320 design shots.
+Stop building websites that look AI-generated. This skill gives you a curated design system of **17 professional styles** (5 of them explicit anti-AI presets), each with real CSS tokens, typography pairings, per-style component examples, and a hard **AI Tells Blocklist** that the model must self-check against before producing output.
 
 [中文說明 →](README.zh.md)
 
@@ -10,10 +10,13 @@ Stop building websites that look AI-generated. This skill gives you a curated de
 
 ## ✨ Features
 
-- **12 Design Styles** — from Glassmorphism to Neobrutalism, each with full CSS custom properties, font pairings, and component snippets
-- **New Design Mode** — answer 3 questions, get a complete design system ready to implement
+- **17 Design Styles** — from Swiss Editorial and Magazine Longform to Brutalist and Type-First Monochrome, each with full CSS custom properties, font pairings, and **per-style component snippets** (no more flattening every style into the same Hero+Nav+Card+Button+Footer template)
+- **AI Tells Blocklist** — 10 hard-banned patterns the model must avoid by default: pill buttons everywhere, Hero+subtitle-pill, backdrop-blur cards, Inter+Lucide+slate combo, gradient blobs, identical 3-column features grids, etc.
+- **Constraints / Anti-AI Mode** — pick 2-3 constraints (no rounded corners, asymmetric layout, two-color palette, type-first hierarchy…) to break out of AI defaults
+- **Dual-Variant Output** — every design system ships in two flavors: a conservative Variant A and an experimental Variant B that intentionally violates at least one AI default
+- **AI-tell-heavy styles gated** — Glassmorphism, Aurora UI, Claymorphism, Bento Grid are only recommended when you explicitly ask for "AI / futuristic / glass" feel. The default route never goes there.
+- **New Design Mode** — answer 4 questions + pick constraints, get two complete design systems to compare
 - **Revamp Mode** — paste your existing codebase, get a diagnosis + step-by-step migration guide
-- **Anti-AI Principles** — specific techniques that make your site feel hand-crafted, not generated
 - **Framework-agnostic** — works with React, Vue, Next.js, plain HTML/CSS, or Tailwind
 
 ---
@@ -73,22 +76,34 @@ Claude will:
 
 ---
 
-## 🎨 The 12 Design Styles
+## 🎨 The 17 Design Styles
 
-| # | Style | Best For |
-|---|-------|----------|
-| 🪟 | **Glassmorphism** | SaaS, AI products, dark interfaces |
-| 🔩 | **Neobrutalism** | Portfolios, creative tools, bold brands |
-| 🕊️ | **Minimal Float** | Luxury brands, high-end portfolios |
-| 🍱 | **Bento Grid** | SaaS feature pages, app landing pages |
-| 🖤 | **Dark Luxury** | Premium brands, hospitality, jewelry |
-| 🌌 | **Aurora UI** | AI products, tech startups, creative tools |
-| 🫧 | **Claymorphism** | EdTech, games, fun SaaS, kids products |
-| 🌿 | **Organic Nature** | Health, food, sustainable brands, wellness |
-| 📰 | **Editorial Maximal** | Media brands, design studios, magazines |
-| 🏢 | **Corporate Clean** | B2B, fintech, enterprise, healthcare |
-| ⚡ | **Kinetic Editorial** | Brand stories, interactive portfolios |
-| 🌐 | **3D Immersive** | Games, premium products, interactive art |
+### Default-recommendable styles (the skill prefers these)
+
+| # | Style | Best For | AI-tell strength |
+|---|-------|----------|------------------|
+| 📐 | **Swiss Editorial** ⭐NEW | Agency portfolios, design studios, design-savvy SaaS, enterprise reports | ✅ Low |
+| 📰 | **Magazine Longform** ⭐NEW | Media sites, deep features, brand stories, product launches | ✅ Low |
+| 👗 | **Fashion / Luxury** ⭐NEW | Fashion, beauty, jewelry, high-end hospitality, perfume brands | ✅ Low |
+| 🧱 | **Brutalist / Anti-Design** ⭐NEW | Personal portfolios, experimental, artist sites, technical blogs | ✅ Low |
+| 🅰️ | **Type-First Monochrome** ⭐NEW | Design-savvy SaaS, AI products (sic), design tools, portfolios | ✅ Low |
+| 🕊️ | **Minimal Float** | Luxury brands, high-end portfolios | ✅ Low |
+| 🖤 | **Dark Luxury** | Premium brands, hospitality, jewelry | ✅ Low |
+| 🌿 | **Organic Nature** | Health, food, sustainable brands, wellness | ✅ Low |
+| 📰 | **Editorial Maximal** | Media brands, design studios, magazines | ✅ Low |
+| 🏢 | **Corporate Clean** | B2B, fintech, enterprise, healthcare | ✅ Low |
+| 🔩 | **Neobrutalism** | Portfolios, creative tools, bold brands | ⚠️ Medium |
+| ⚡ | **Kinetic Editorial** | Brand stories, interactive portfolios | ✅ Low |
+| 🌐 | **3D Immersive** | Games, premium products, interactive art | ⚠️ Medium |
+
+### Gated styles (only when you explicitly ask for "AI / futuristic / glass" feel)
+
+| # | Style | Why gated |
+|---|-------|-----------|
+| 🪟 | **Glassmorphism** | Hallmark of v0/Lovable/Bolt — only opt-in |
+| 🌌 | **Aurora UI** | Same family as Glassmorphism — only opt-in |
+| 🫧 | **Claymorphism** | The pill-button-everywhere style — only opt-in |
+| 🍱 | **Bento Grid** | Heavily AI-trained pattern — only when you actually need a structured dashboard |
 
 Each style includes:
 - Complete CSS custom properties (`:root {}`)
@@ -101,15 +116,40 @@ Each style includes:
 
 ## 💡 Anti-AI Design Principles
 
-Things this skill teaches you that make designs feel hand-crafted:
+The skill enforces three layers of anti-AI guidance, in priority order:
 
-- **Negative letter-spacing** on headlines (`-0.03em`) — AI defaults leave letters too loose
-- **Off-white backgrounds** (`#fafaf8` not `#fff`) — subtle but adds texture
-- **Asymmetric glows** — place light sources at corners, not dead-center
-- **Three shadow elevations** — xs, sm, md for different UI layers, not one-size-fits-all
-- **`clamp()` fluid typography** — hero text that scales correctly, not fixed `px`
-- **Organic border-radius** — four-value syntax `30% 70% 70% 30% / 30% 30% 70% 70%` for natural shapes
-- **Intentional misalignment** — one element breaking the grid to create tension
+### 1. AI Tells Blocklist (hard bans, default-applied)
+
+The model must self-check against these 10 patterns before producing output. They are gated — only unlocked when the user explicitly picks the corresponding style.
+
+- ⛔ `border-radius: 9999px` on all buttons / badges (pill-everything) — only Claymorphism unlocks
+- ⛔ Hero with emoji subtitle pill ("✨ New", "🎉 Launch") — **never unlocked**
+- ⛔ Card with default `backdrop-filter: blur()` — only Glassmorphism unlocks
+- ⛔ Background gradient blob / aurora — only Aurora UI unlocks
+- ⛔ Inter + Lucide + slate-* / gray-* combo — **never unlocked**
+- ⛔ "Trusted by" logo cloud locked under hero — only Corporate Clean unlocks
+- ⛔ 3-column features card grid with identical icon style — **never unlocked**
+- ⛔ All-centered hero / section / CTA — only Aurora / Glass unlock
+- ⛔ Same `box-shadow: 0 2px 4px rgba(0,0,0,0.1)` on every card — never unlocked
+- ⛔ "Get started" + "Learn more" CTA pair (filled + outlined) — only Corporate Clean / Bento unlock
+
+### 2. Constraints / Anti-AI Mode
+
+After picking a style, the user picks 2-3 constraints from a checklist (no rounded corners, no gradients, two-color palette, asymmetric layout, type-first hierarchy, no card shadows, etc.). These force the model out of comfortable defaults.
+
+### 3. Per-style component overrides
+
+The skill **does not** emit Hero+Nav+Card+Button+Footer for every style. Each style has its own component list — Swiss Editorial gets `Masthead+Kicker+Numbered Index+Dateline+12-col baseline grid`, Brutalist gets `Slab heading+Index list+Raw form+Default underline link`, Magazine Longform gets `Masthead+Kicker+Lede+Drop cap+Pull quote+Marginalia+Full-bleed image`. The universal template was the structural cause of "AI shape" — it's gone.
+
+### 4. Cosmetic touches (last priority)
+
+- Negative letter-spacing on headlines (`-0.03em`)
+- Off-white backgrounds (`#fafaf8` not `#fff`)
+- Asymmetric glows
+- Three shadow elevations (xs / sm / md)
+- `clamp()` fluid typography
+- Organic border-radius (`30% 70% 70% 30% / 30% 30% 70% 70%`)
+- Intentional misalignment
 
 ---
 
@@ -117,48 +157,69 @@ Things this skill teaches you that make designs feel hand-crafted:
 
 ```
 AI-Design-Master/
-├── skill.md                    ← Install this to ~/.claude/skills/design.md
+├── skill.md                          ← Install this to ~/.claude/skills/design.md
 ├── design-bible/
-│   └── styles/
-│       ├── glassmorphism.md    ← Detailed reference for each style
-│       ├── neobrutalism.md
-│       ├── minimal_float.md
-│       ├── bento_grid.md
-│       ├── dark_luxury.md
-│       ├── aurora_ui.md
-│       ├── claymorphism.md
-│       ├── organic_nature.md
-│       ├── editorial.md
-│       ├── corporate_clean.md
-│       ├── kinetic_editorial.md
-│       └── three_d_immersive.md
+│   └── styles/                       ← 17 style references (12 original + 5 new anti-AI)
+│       ├── swiss_editorial.md        ⭐NEW
+│       ├── magazine_longform.md      ⭐NEW
+│       ├── fashion_luxury.md         ⭐NEW
+│       ├── brutalist.md              ⭐NEW
+│       ├── type_first_mono.md        ⭐NEW
+│       ├── glassmorphism.md
+│       └── ... (12 more)
+├── scraper/                          ← Source extractors for style references
+│   ├── lib/extract-tokens.js         ← Shared token extraction
+│   ├── scrape-godly.js
+│   ├── scrape-dribbble.js
+│   ├── scrape-awwwards.js            ⭐NEW
+│   ├── scrape-siteinspire.js         ⭐NEW
+│   ├── scrape-landbook.js            ⭐NEW
+│   ├── scrape-httpster.js            ⭐NEW
+│   ├── scrape-minimalgallery.js      ⭐NEW
+│   ├── compile-bible.js              ← Multi-signal classifier (rewritten with source-aware bias)
+│   └── inject-new-styles.py          ← One-shot bootstrap if you can't run Node
 └── data/
-    └── design-bible.json       ← Compiled style database
+    └── design-bible.json             ← 17-style database (5 new ones bootstrapped from manual references)
 ```
 
 ---
 
 ## 🔧 Requirements
 
+### To use the skill
+
 - [Claude Code](https://claude.ai/code) (CLI or desktop app)
 - No other dependencies — the skill runs entirely through Claude
+
+### To re-run the scrapers (optional, for refreshing style references)
+
+- [Node.js 20+](https://nodejs.org)
+- Run: `cd scraper && npm install && npm run all`
+- This will scrape all 7 sources (godly, dribbble, awwwards, siteinspire, land-book, httpster, minimal.gallery), classify them with the new multi-signal classifier, and regenerate `design-bible.json` with full token data.
+- Individual scrapers: `npm run scrape:awwwards`, `npm run scrape:siteinspire`, etc. Each accepts `--dry-run` to test selectors against ~5 sites before doing the full run.
+
+If you don't have Node installed, the skill still works — `inject-new-styles.py` already bootstrapped the 5 new styles into `design-bible.json` using manually-curated reference URLs.
 
 ---
 
 ## 📖 Design Style Quick Reference
 
-### Style Selection Matrix
+### Style Selection Matrix (default route — never recommends gated styles unprompted)
 
-| Site Type | First Pick | Alternatives |
-|-----------|-----------|-------------|
-| SaaS / Tool | Aurora UI, Glassmorphism | Bento Grid, Corporate Clean |
-| Portfolio | Minimal Float, Neobrutalism | Editorial, Kinetic |
-| E-commerce / Brand | Organic Nature, Dark Luxury | Claymorphism, Editorial |
-| Marketing Landing | Aurora UI, Kinetic Editorial | Glassmorphism, Bento Grid |
-| Enterprise / B2B | Corporate Clean, Minimal Float | Bento Grid |
-| Game / Interactive | 3D Immersive, Kinetic Editorial | Neobrutalism |
-| Health / Lifestyle | Organic Nature, Minimal Float | Claymorphism |
-| AI Product | Aurora UI, Glassmorphism | Bento Grid |
+| Site Type | First Pick | Second Pick | Alternatives |
+|-----------|-----------|-------------|-------------|
+| SaaS / Tool | **Type-First Monochrome** ⭐, Corporate Clean | Editorial Maximal, Minimal Float | Bento Grid (only for structured dashboards) |
+| Portfolio | Minimal Float, Neobrutalism | **Brutalist** ⭐, **Swiss Editorial** ⭐ | Editorial, Kinetic |
+| E-commerce / Brand | **Fashion / Luxury** ⭐, Dark Luxury | Organic Nature, Editorial | Magazine Longform |
+| Marketing Landing | **Magazine Longform** ⭐, Editorial Maximal | Type-First Monochrome, Corporate Clean | Kinetic Editorial |
+| Enterprise / B2B | Corporate Clean, Minimal Float | Type-First Monochrome | Editorial Maximal |
+| Game / Interactive | 3D Immersive, Kinetic Editorial | Neobrutalism | Brutalist |
+| Health / Lifestyle | Organic Nature, Minimal Float | Magazine Longform | Editorial Maximal |
+| AI Product | **Type-First Monochrome** ⭐ (sic), Editorial Maximal | Corporate Clean, Minimal Float | Aurora UI (only when explicitly asked for) |
+| Media / Content | Magazine Longform, Editorial Maximal | Swiss Editorial | Type-First Monochrome |
+| Design Studio / Agency | Swiss Editorial, Editorial Maximal | Type-First Monochrome, Brutalist | Kinetic Editorial |
+
+> **Why "AI Product → Type-First Monochrome"?** Because the visual language of "AI products" (glass, aurora, gradient blobs, pill chips) is now the default of every AI codegen tool. The way to actually look like a serious AI product is to look unlike AI codegen output — which means typographically-driven, monochrome, no decoration. Linear, Vercel, Stripe, MSCHF, Readymag — all live there.
 
 ---
 
@@ -181,4 +242,4 @@ MIT — use freely in personal and commercial projects.
 
 ---
 
-*Design knowledge sourced from [godly.website](https://godly.website) and [dribbble.com](https://dribbble.com) — the best curation of real-world web design.*
+*Design knowledge sourced from [godly.website](https://godly.website), [awwwards.com](https://www.awwwards.com), [siteinspire.com](https://www.siteinspire.com), [land-book.com](https://land-book.com), [httpster.net](https://httpster.net), [minimal.gallery](https://minimal.gallery), and [dribbble.com](https://dribbble.com) — with manual hand-picks from Pentagram, Bureau Borsche, Loewe, Jacquemus, Bloomberg Businessweek, MSCHF, Linear, Vercel Design, Stripe Press, and other top-tier shipped sites that intentionally avoid AI defaults.*
