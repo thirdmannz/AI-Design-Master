@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forma — Swiss Editorial × SaaS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Neue+Haas+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<!--
+  STYLE: Swiss Editorial
+  INDUSTRY: SaaS (design system tool)
+  PAGE: Landing page
+
+  ANTI-AI DECISIONS:
+  - No pill buttons (radius: 0)
+  - No subtitle pill hero badge
+  - No 3-col icon features grid — uses numbered list with dividers
+  - No Inter+Lucide+slate combo — uses Neue Haas / custom grid
+  - No centered hero — strict left alignment
+  - No backdrop-filter anywhere
+  - No gradient backgrounds
+  - Copy is Swiss-terse: assertions, no adjectives
+-->
+<style>
+  :root {
+    --color-bg: #f5f4f0;
+    --color-ink: #0d0d0b;
+    --color-accent: #0d0d0b;
+    --color-muted: #6b6b67;
+    --color-rule: #c8c7c2;
+    --color-surface: #eeede9;
+
+    --font-display: "Neue Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --font-body: "Neue Haas Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "SFMono-Regular", "Consolas", monospace;
+
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.5rem;
+    --size-2xl: 2rem;
+    --size-3xl: 3rem;
+    --size-4xl: 4rem;
+    --size-5xl: 6rem;
+    --size-6xl: 9rem;
+
+    --radius-none: 0;
+    --radius-sm: 2px;
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+
+    --grid-cols: 12;
+    --container: 1280px;
+    --gutter: var(--space-8);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--size-base);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* NAV */
+  .nav {
+    border-bottom: 1px solid var(--color-rule);
+    padding: var(--space-4) 0;
+  }
+
+  .nav__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav__logo {
+    font-size: var(--size-base);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--color-ink);
+  }
+
+  .nav__links {
+    display: flex;
+    gap: var(--space-8);
+    list-style: none;
+  }
+
+  .nav__links a {
+    font-size: var(--size-sm);
+    color: var(--color-muted);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 50ms linear;
+  }
+
+  .nav__links a:hover { color: var(--color-ink); }
+
+  .nav__links a:focus-visible {
+    outline: 1px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+
+  .nav__cta {
+    font-size: var(--size-sm);
+    padding: var(--space-2) var(--space-6);
+    background: var(--color-ink);
+    color: var(--color-bg);
+    border: none;
+    border-radius: var(--radius-none);
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: opacity 50ms linear;
+  }
+
+  .nav__cta:hover { opacity: 0.8; }
+  .nav__cta:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 3px; }
+
+  /* HERO — Left-aligned, asymmetric, no subtitle pill */
+  .hero {
+    padding: var(--space-24) 0 var(--space-32);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .hero__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-8);
+    align-items: end;
+  }
+
+  .hero__text { grid-column: 1 / 9; }
+  .hero__meta { grid-column: 10 / 13; align-self: end; }
+
+  .hero__index {
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-8);
+    font-weight: 400;
+  }
+
+  .hero__heading {
+    font-size: clamp(var(--size-4xl), 7vw, var(--size-6xl));
+    font-weight: 400;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-12);
+  }
+
+  .hero__heading em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-8);
+    align-items: center;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    font-size: var(--size-sm);
+    padding: var(--space-4) var(--space-8);
+    background: var(--color-ink);
+    color: var(--color-bg);
+    border: 1px solid var(--color-ink);
+    border-radius: var(--radius-none);
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: background 50ms linear, color 50ms linear;
+  }
+
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--color-ink);
+  }
+
+  .btn-primary:focus-visible {
+    outline: 1px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  .btn-ghost {
+    display: inline-block;
+    font-size: var(--size-sm);
+    padding: var(--space-4) 0;
+    color: var(--color-muted);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    border: none;
+    background: none;
+    transition: color 50ms linear;
+  }
+
+  .btn-ghost:hover { color: var(--color-ink); }
+  .btn-ghost:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 2px; }
+
+  .hero__meta-stat {
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+    line-height: 1.8;
+    letter-spacing: 0.01em;
+  }
+
+  .hero__meta-stat strong {
+    display: block;
+    font-size: var(--size-xl);
+    font-weight: 400;
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+  }
+
+  /* FEATURES — Numbered list, not icon grid */
+  .features {
+    padding: var(--space-24) 0;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .features__header {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-8);
+    margin-bottom: var(--space-16);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .features__label {
+    grid-column: 1 / 4;
+    font-size: var(--size-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding-top: var(--space-1);
+  }
+
+  .features__title {
+    grid-column: 4 / 10;
+    font-size: var(--size-2xl);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .features__list { list-style: none; }
+
+  .feature-item {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-8);
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid var(--color-rule);
+    align-items: baseline;
+  }
+
+  .feature-item__num {
+    grid-column: 1 / 3;
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .feature-item__name {
+    grid-column: 3 / 7;
+    font-size: var(--size-lg);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .feature-item__desc {
+    grid-column: 7 / 12;
+    font-size: var(--size-sm);
+    color: var(--color-muted);
+    line-height: 1.6;
+  }
+
+  /* PRICING — NOT 3-col card grid */
+  .pricing {
+    padding: var(--space-24) 0;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .pricing__header {
+    margin-bottom: var(--space-16);
+  }
+
+  .pricing__label {
+    font-size: var(--size-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .pricing__title {
+    font-size: var(--size-3xl);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .pricing__table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .pricing__table th,
+  .pricing__table td {
+    padding: var(--space-6) var(--space-4);
+    text-align: left;
+    border-bottom: 1px solid var(--color-rule);
+    font-weight: 400;
+  }
+
+  .pricing__table thead th {
+    font-size: var(--size-xs);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding-bottom: var(--space-4);
+  }
+
+  .pricing__table tbody td:first-child {
+    font-size: var(--size-sm);
+    color: var(--color-muted);
+  }
+
+  .pricing__table tbody td:not(:first-child) {
+    font-size: var(--size-lg);
+    letter-spacing: -0.01em;
+  }
+
+  .pricing__table .price-amount {
+    font-size: var(--size-2xl);
+    letter-spacing: -0.03em;
+  }
+
+  /* SOCIAL PROOF — Quote, no logo cloud */
+  .proof {
+    padding: var(--space-24) 0;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .proof__grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-8);
+  }
+
+  .proof__quote {
+    grid-column: 2 / 11;
+    font-size: var(--size-2xl);
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    font-style: italic;
+  }
+
+  .proof__attribution {
+    grid-column: 2 / 6;
+    margin-top: var(--space-8);
+    font-size: var(--size-sm);
+    color: var(--color-muted);
+  }
+
+  /* FOOTER */
+  .footer {
+    padding: var(--space-16) 0;
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .footer__wordmark {
+    font-size: var(--size-sm);
+    color: var(--color-muted);
+  }
+
+  .footer__nav {
+    display: flex;
+    gap: var(--space-8);
+    list-style: none;
+  }
+
+  .footer__nav a {
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 50ms linear;
+  }
+
+  .footer__nav a:hover { color: var(--color-ink); }
+  .footer__nav a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 2px; }
+
+  /* SKIP LINK */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-ink);
+    color: var(--color-bg);
+    font-size: var(--size-sm);
+    text-decoration: none;
+    z-index: 999;
+  }
+
+  .skip-link:focus { top: 0; }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    :root { --gutter: 1.25rem; }
+
+    .nav__links { display: none; }
+
+    .hero { padding: var(--space-16) 0 var(--space-24); }
+    .hero__grid { grid-template-columns: 1fr; }
+    .hero__text { grid-column: 1; }
+    .hero__meta { grid-column: 1; margin-top: var(--space-12); }
+
+    .hero__heading {
+      font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .features__header { grid-template-columns: 1fr; }
+    .features__label, .features__title { grid-column: 1; }
+
+    .feature-item { grid-template-columns: 1fr; gap: var(--space-2); }
+    .feature-item__num { grid-column: 1; }
+    .feature-item__name { grid-column: 1; }
+    .feature-item__desc { grid-column: 1; margin-top: var(--space-2); }
+
+    .pricing__table thead { display: none; }
+    .pricing__table tbody tr { display: block; padding: var(--space-6) 0; }
+    .pricing__table tbody td { display: block; border: none; padding: var(--space-1) 0; }
+    .pricing__table tbody td:first-child { font-size: var(--size-xs); letter-spacing: 0.04em; text-transform: uppercase; }
+
+    .proof__grid { grid-template-columns: 1fr; }
+    .proof__quote { grid-column: 1; font-size: var(--size-xl); }
+    .proof__attribution { grid-column: 1; }
+
+    .footer__inner { flex-direction: column; gap: var(--space-6); }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .hero__grid { grid-template-columns: repeat(8, 1fr); }
+    .hero__text { grid-column: 1 / 7; }
+    .hero__meta { grid-column: 7 / 9; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { transition-duration: 0ms !important; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="/" class="nav__logo" aria-label="Forma home">Forma</a>
+        <ul class="nav__links" role="list">
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/changelog">Changelog</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <a href="/signup" class="nav__cta">Open account</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO — No subtitle pill. Left-aligned. Typographic assertion. -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero__grid">
+        <div class="hero__text">
+          <p class="hero__index">Design infrastructure — 01</p>
+          <h1 class="hero__heading" id="hero-heading">
+            The token<br>
+            layer for<br>
+            <em>shipping teams.</em>
+          </h1>
+          <div class="hero__actions">
+            <a href="/signup" class="btn-primary">Open account</a>
+            <a href="/docs" class="btn-ghost">Read the docs</a>
+          </div>
+        </div>
+        <div class="hero__meta" aria-label="Key statistics">
+          <dl>
+            <div class="hero__meta-stat">
+              <strong>12,000</strong>
+              Design tokens managed
+            </div>
+            <div class="hero__meta-stat" style="margin-top: 1.5rem">
+              <strong>340ms</strong>
+              Median deploy time
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES — Numbered list layout, NOT icon grid -->
+  <section class="features" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="features__header">
+        <p class="features__label">What it does</p>
+        <h2 class="features__title" id="features-heading">
+          Token management<br>
+          for the whole stack.
+        </h2>
+      </div>
+      <ul class="features__list" role="list">
+        <li class="feature-item">
+          <span class="feature-item__num" aria-hidden="true">01</span>
+          <h3 class="feature-item__name">Single source of truth</h3>
+          <p class="feature-item__desc">One token file syncs to Figma, your CSS, your React components, and your docs. Not a plugin — a pipeline.</p>
+        </li>
+        <li class="feature-item">
+          <span class="feature-item__num" aria-hidden="true">02</span>
+          <h3 class="feature-item__name">Version control built in</h3>
+          <p class="feature-item__desc">Every token change is a commit. Roll back to last Tuesday in 30 seconds. Compare two versions side-by-side.</p>
+        </li>
+        <li class="feature-item">
+          <span class="feature-item__num" aria-hidden="true">03</span>
+          <h3 class="feature-item__name">Framework-native output</h3>
+          <p class="feature-item__desc">CSS custom properties, Tailwind config, or Figma REST — same source, different targets.</p>
+        </li>
+        <li class="feature-item">
+          <span class="feature-item__num" aria-hidden="true">04</span>
+          <h3 class="feature-item__name">Contrast validation</h3>
+          <p class="feature-item__desc">Blocks token pairs that fail WCAG AA before they ship. Design system stays accessible by default.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PRICING — Table format, not card grid -->
+  <section class="pricing" aria-labelledby="pricing-heading">
+    <div class="container">
+      <div class="pricing__header">
+        <p class="pricing__label">Pricing</p>
+        <h2 class="pricing__title" id="pricing-heading">Start free. Scale on use.</h2>
+      </div>
+      <table class="pricing__table" aria-label="Pricing comparison">
+        <thead>
+          <tr>
+            <th scope="col">Plan</th>
+            <th scope="col">Price</th>
+            <th scope="col">Token limit</th>
+            <th scope="col">Team seats</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Free</td>
+            <td><span class="price-amount">$0</span> / month</td>
+            <td>500 tokens</td>
+            <td>1 seat</td>
+            <td><a href="/signup" class="btn-primary">Start free</a></td>
+          </tr>
+          <tr>
+            <td>Studio</td>
+            <td><span class="price-amount">$49</span> / month</td>
+            <td>10,000 tokens</td>
+            <td>5 seats</td>
+            <td><a href="/signup?plan=studio" class="btn-primary">Open account</a></td>
+          </tr>
+          <tr>
+            <td>Scale</td>
+            <td><span class="price-amount">$149</span> / month</td>
+            <td>Unlimited</td>
+            <td>25 seats</td>
+            <td><a href="/signup?plan=scale" class="btn-primary">Open account</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PROOF — Single quote, no logo cloud -->
+  <section class="proof" aria-labelledby="proof-heading">
+    <div class="container">
+      <div class="proof__grid">
+        <blockquote class="proof__quote" id="proof-heading">
+          "We cut design-to-dev handoff from a week to an afternoon. Token drift is solved."
+        </blockquote>
+        <footer class="proof__attribution">
+          — Maria Svensson, Head of Design, Luma Systems
+        </footer>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+      <p class="footer__wordmark">Forma — Design infrastructure, 2026</p>
+      <nav aria-label="Footer navigation">
+        <ul class="footer__nav" role="list">
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+          <li><a href="mailto:hello@forma.io">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

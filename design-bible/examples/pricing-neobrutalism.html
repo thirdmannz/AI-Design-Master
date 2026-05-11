@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Depot — Neobrutalism × SaaS Pricing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!--
+  STYLE: Neobrutalism
+  INDUSTRY: SaaS (developer tool / CI-CD)
+  PAGE: Pricing page
+
+  ANTI-AI DECISIONS:
+  - Hard black borders (not soft shadows)
+  - NO rounded cards — offset hard shadow replaces depth
+  - Color palette: white + black + loud yellow + bold red (max 4)
+  - Pricing tiers named by identity, NOT Starter/Pro/Enterprise
+  - NO 3-col equal-height card grid — staggered, different heights
+  - CTA copy: "Build now" not "Get started for free ✨"
+  - Numbers are big and proud, not hidden in fine print
+  - Hard toggle for billing — NOT hidden/deprioritized
+  - FAQ: native <details>, blunt questions
+-->
+<style>
+  :root {
+    --color-bg: #ffffff;
+    --color-ink: #000000;
+    --color-accent-yellow: #fde047;
+    --color-accent-red: #ef4444;
+    --color-surface: #f5f5f5;
+    --color-rule: #000000;
+
+    --font-display: "Syne", "Arial Black", sans-serif;
+    --font-mono: "DM Mono", "Courier New", monospace;
+
+    --radius: 0;
+    --shadow: 4px 4px 0 var(--color-ink);
+    --shadow-lg: 6px 6px 0 var(--color-ink);
+
+    --border: 2px solid var(--color-ink);
+    --border-thick: 3px solid var(--color-ink);
+
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-3: 0.75rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+
+    --container: 1100px;
+    --gutter: 2rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: var(--size-base);
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  .skip {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 0.5rem 1rem;
+    background: var(--color-ink);
+    color: var(--color-bg);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    text-decoration: none;
+    z-index: 999;
+    border: var(--border);
+  }
+  .skip:focus { top: 0; }
+
+  /* NAV */
+  nav {
+    border-bottom: var(--border-thick);
+    padding: var(--space-4) 0;
+  }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--color-ink);
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    text-decoration: none;
+    color: var(--color-ink);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: border-color 100ms;
+  }
+
+  .nav-links a:hover { border-bottom-color: var(--color-ink); }
+  .nav-links a:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 3px; }
+
+  .nav-cta {
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    padding: var(--space-2) var(--space-6);
+    background: var(--color-accent-yellow);
+    color: var(--color-ink);
+    border: var(--border);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: transform 100ms, box-shadow 100ms;
+  }
+
+  .nav-cta:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--color-ink); }
+  .nav-cta:focus-visible { outline: 2px solid var(--color-accent-red); outline-offset: 2px; }
+
+  /* PAGE HEADER */
+  .page-header {
+    padding: var(--space-16) 0 var(--space-12);
+    border-bottom: var(--border);
+  }
+
+  .page-header__eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-4);
+  }
+
+  .page-header__title {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 800;
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-6);
+  }
+
+  .page-header__subtitle {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 55ch;
+  }
+
+  /* BILLING TOGGLE */
+  .billing-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-8) 0 var(--space-12);
+  }
+
+  .toggle-label {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .toggle-btn {
+    display: flex;
+    background: var(--color-surface);
+    border: var(--border);
+  }
+
+  .toggle-option {
+    padding: var(--space-2) var(--space-6);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--color-ink);
+    transition: background 100ms;
+  }
+
+  .toggle-option[aria-pressed="true"],
+  .toggle-option.active {
+    background: var(--color-ink);
+    color: var(--color-bg);
+  }
+
+  .toggle-option:focus-visible { outline: 2px solid var(--color-accent-red); outline-offset: 0; }
+
+  .toggle-savings {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-accent-yellow);
+    border: var(--border);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  /* PRICING CARDS — Staggered, not equal grid */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border: var(--border-thick);
+  }
+
+  .plan {
+    border-right: var(--border);
+    padding: var(--space-8);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .plan:last-child { border-right: none; }
+
+  .plan--featured {
+    background: var(--color-ink);
+    color: var(--color-bg);
+  }
+
+  .plan__badge {
+    position: absolute;
+    top: -1px;
+    right: var(--space-8);
+    font-family: var(--font-display);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-accent-yellow);
+    color: var(--color-ink);
+    border: var(--border);
+    border-top: none;
+  }
+
+  .plan__name {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-6);
+  }
+
+  .plan__price {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin-bottom: var(--space-2);
+  }
+
+  .plan__price small {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    opacity: 0.7;
+  }
+
+  .plan__period {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    opacity: 0.6;
+    margin-bottom: var(--space-8);
+  }
+
+  .plan__cta {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-align: center;
+    padding: var(--space-3) var(--space-6);
+    border: var(--border);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 100ms, box-shadow 100ms;
+    margin-bottom: var(--space-8);
+  }
+
+  .plan--default .plan__cta {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    box-shadow: var(--shadow);
+  }
+
+  .plan--default .plan__cta:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--color-ink); }
+
+  .plan--featured .plan__cta {
+    background: var(--color-accent-yellow);
+    color: var(--color-ink);
+    box-shadow: 4px 4px 0 rgba(255,255,255,0.3);
+  }
+
+  .plan--featured .plan__cta:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 rgba(255,255,255,0.3); }
+
+  .plan__cta:focus-visible { outline: 2px solid var(--color-accent-red); outline-offset: 3px; }
+
+  .plan__divider {
+    border: none;
+    border-top: 1px solid rgba(0,0,0,0.15);
+    margin: 0 0 var(--space-6);
+  }
+
+  .plan--featured .plan__divider { border-top-color: rgba(255,255,255,0.2); }
+
+  .plan__features {
+    list-style: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .plan__feature {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    display: flex;
+    gap: var(--space-3);
+    align-items: flex-start;
+  }
+
+  .plan__feature::before {
+    content: "→";
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  /* COMPARISON TABLE */
+  .compare {
+    padding: var(--space-24) 0;
+    border-top: var(--border-thick);
+  }
+
+  .compare__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-8);
+  }
+
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    border: var(--border-thick);
+  }
+
+  .compare-table th,
+  .compare-table td {
+    padding: var(--space-4) var(--space-6);
+    border: var(--border);
+    text-align: left;
+  }
+
+  .compare-table thead th {
+    background: var(--color-ink);
+    color: var(--color-bg);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .compare-table thead th:first-child { background: var(--color-surface); color: var(--color-ink); }
+  .compare-table thead th.featured { background: var(--color-accent-yellow); color: var(--color-ink); }
+
+  .compare-table tbody td:first-child { font-weight: 500; }
+
+  .compare-table .check { color: var(--color-ink); font-weight: 700; }
+  .compare-table .cross { color: #ccc; }
+
+  /* FAQ */
+  .faq {
+    padding: var(--space-16) 0 var(--space-24);
+    border-top: var(--border-thick);
+  }
+
+  .faq__title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-8);
+  }
+
+  details {
+    border-bottom: var(--border);
+  }
+
+  summary {
+    padding: var(--space-5, 1.25rem) 0;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: -0.01em;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "+"; font-size: 1.5rem; font-weight: 400; line-height: 1; }
+  details[open] summary::after { content: "−"; }
+  summary:focus-visible { outline: 2px solid var(--color-accent-red); outline-offset: 2px; }
+
+  .faq-answer {
+    font-family: var(--font-mono);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    padding-bottom: var(--space-6);
+    max-width: 62ch;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: var(--border-thick);
+    padding: var(--space-8) 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+  }
+
+  .footer-nav a {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--color-ink);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .footer-nav a:hover { text-decoration: underline; }
+  .footer-nav a:focus-visible { outline: 2px solid var(--color-accent-red); outline-offset: 2px; }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    :root { --gutter: 1.25rem; }
+    .nav-links { display: none; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .plan { border-right: none; border-bottom: var(--border); }
+    .compare-table { display: block; overflow-x: auto; }
+    .footer-inner { flex-direction: column; gap: var(--space-4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header>
+  <nav aria-label="Main navigation">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="logo" aria-label="Depot home">DEPOT</a>
+        <ul class="nav-links" role="list">
+          <li><a href="/product">Product</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/pricing" aria-current="page">Pricing</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <a href="/signup" class="nav-cta">Build now</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="page-header" aria-labelledby="page-title">
+    <div class="container">
+      <p class="page-header__eyebrow">Pricing</p>
+      <h1 class="page-header__title" id="page-title">Simple.<br>No tricks.</h1>
+      <p class="page-header__subtitle">
+        Pay for what you build. All plans include unlimited deploys, instant rollbacks, and 24-hour support SLA. No "enterprise add-ons" required for basic functionality.
+      </p>
+    </div>
+  </section>
+
+  <section aria-labelledby="plans-heading">
+    <div class="container">
+      <div class="billing-toggle" role="group" aria-label="Billing period">
+        <span class="toggle-label">Billing:</span>
+        <div class="toggle-btn">
+          <button class="toggle-option active" aria-pressed="true">Monthly</button>
+          <button class="toggle-option" aria-pressed="false">Annual</button>
+        </div>
+        <span class="toggle-savings">Save 20% annually</span>
+      </div>
+
+      <h2 id="plans-heading" class="visually-hidden" style="position:absolute;clip:rect(0,0,0,0);overflow:hidden">Plans</h2>
+
+      <div class="pricing-grid" role="list">
+        <article class="plan plan--default" role="listitem" aria-labelledby="plan-solo-name">
+          <h3 class="plan__name" id="plan-solo-name">Solo</h3>
+          <div class="plan__price" aria-label="Free">$0<small>/mo</small></div>
+          <p class="plan__period">Forever free</p>
+          <a href="/signup" class="plan__cta" aria-describedby="plan-solo-name">Build now</a>
+          <hr class="plan__divider" aria-hidden="true">
+          <ul class="plan__features" aria-label="Solo plan features">
+            <li class="plan__feature">3 projects</li>
+            <li class="plan__feature">100 deploys / month</li>
+            <li class="plan__feature">1 GB bandwidth</li>
+            <li class="plan__feature">Community support</li>
+            <li class="plan__feature">Custom domain</li>
+          </ul>
+        </article>
+
+        <article class="plan plan--featured" role="listitem" aria-labelledby="plan-builder-name">
+          <div class="plan__badge" aria-label="Most popular">Most popular</div>
+          <h3 class="plan__name" id="plan-builder-name">Builder</h3>
+          <div class="plan__price" aria-label="49 dollars per month">$49<small>/mo</small></div>
+          <p class="plan__period">Billed monthly</p>
+          <a href="/signup?plan=builder" class="plan__cta" aria-describedby="plan-builder-name">Build now</a>
+          <hr class="plan__divider" aria-hidden="true">
+          <ul class="plan__features" aria-label="Builder plan features">
+            <li class="plan__feature">Unlimited projects</li>
+            <li class="plan__feature">Unlimited deploys</li>
+            <li class="plan__feature">100 GB bandwidth</li>
+            <li class="plan__feature">Priority support (4h)</li>
+            <li class="plan__feature">Branch previews</li>
+            <li class="plan__feature">Analytics included</li>
+            <li class="plan__feature">5 team seats</li>
+          </ul>
+        </article>
+
+        <article class="plan plan--default" role="listitem" aria-labelledby="plan-team-name">
+          <h3 class="plan__name" id="plan-team-name">Team</h3>
+          <div class="plan__price" aria-label="149 dollars per month">$149<small>/mo</small></div>
+          <p class="plan__period">Billed monthly</p>
+          <a href="/signup?plan=team" class="plan__cta" aria-describedby="plan-team-name">Build now</a>
+          <hr class="plan__divider" aria-hidden="true">
+          <ul class="plan__features" aria-label="Team plan features">
+            <li class="plan__feature">Everything in Builder</li>
+            <li class="plan__feature">1 TB bandwidth</li>
+            <li class="plan__feature">1-hour support SLA</li>
+            <li class="plan__feature">25 team seats</li>
+            <li class="plan__feature">SAML SSO</li>
+            <li class="plan__feature">Audit logs</li>
+            <li class="plan__feature">SLA guarantee</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <h2 class="faq__title" id="faq-heading">Questions</h2>
+      <details>
+        <summary>Is the free tier actually free?</summary>
+        <p class="faq-answer">Yes. $0 forever. No credit card required. We make money when your project grows, not before.</p>
+      </details>
+      <details>
+        <summary>What counts as a deploy?</summary>
+        <p class="faq-answer">Any git push that triggers a build. Rebuilds without code changes don't count. Preview deploys count at 0.5x.</p>
+      </details>
+      <details>
+        <summary>Can I change plans later?</summary>
+        <p class="faq-answer">Yes. Upgrade instantly, downgrade at end of billing cycle. No locked-in contracts on monthly plans.</p>
+      </details>
+      <details>
+        <summary>Do you have enterprise pricing?</summary>
+        <p class="faq-answer">Yes, for teams over 100. <a href="/contact">Contact us directly.</a> We price by usage, not by how many times we can mention "enterprise".</p>
+      </details>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <p class="footer-copy">DEPOT © 2026 — Build without limits</p>
+      <nav aria-label="Footer navigation">
+        <ul class="footer-nav" role="list">
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/terms">Terms</a></li>
+          <li><a href="mailto:hello@depot.run">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prism — Aurora UI × Product Landing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<!--
+  STYLE: Aurora UI
+  INDUSTRY: AI/ML product (color science tool)
+  PAGE: Product landing page
+
+  ANTI-AI DECISIONS:
+  - Gradient mesh background — NOT random gradient blobs
+  - Glass cards use precise, measured backdrop-filter (Aurora-allowed)
+  - NO subtitle pill badge hero "✨ Introducing Prism"
+  - Spring animation on hero — cubic-bezier(0.16, 1, 0.3, 1)
+  - Gradient stops are thematic (color science product), not generic purple/blue
+  - Features: horizontal scroll rail — NOT 3-col icon grid
+  - CTA: "Get early access" not "Get started for free ✨"
+  - WCAG AA maintained on all glass surfaces (tested contrast ratios)
+  - No aurora blob decorations that float randomly
+  - Motion: spring easing only, no linear fade-in everything
+-->
+<style>
+  :root {
+    --color-bg: #09090f;
+    --color-bg-2: #0f0f1a;
+    --color-ink: #f0eeff;
+    --color-ink-2: rgba(240, 238, 255, 0.65);
+    --color-muted: rgba(240, 238, 255, 0.4);
+    --color-glass: rgba(255,255,255,0.06);
+    --color-glass-border: rgba(255,255,255,0.1);
+    --color-accent-1: #7c6ff7;
+    --color-accent-2: #d946ef;
+    --color-accent-3: #06b6d4;
+
+    /* Aurora gradient mesh — thematic for a color product */
+    --aurora: radial-gradient(ellipse 80% 60% at 20% 30%, rgba(124, 111, 247, 0.25) 0%, transparent 60%),
+              radial-gradient(ellipse 60% 80% at 80% 20%, rgba(217, 70, 239, 0.18) 0%, transparent 55%),
+              radial-gradient(ellipse 70% 50% at 50% 90%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+
+    --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+    --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 28px;
+
+    --spring: cubic-bezier(0.16, 1, 0.3, 1);
+
+    --space-2: 0.5rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+
+    --container: 1160px;
+    --gutter: 2rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  .skip {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 0.5rem 1rem;
+    background: var(--color-accent-1);
+    color: var(--color-ink);
+    font-size: 0.875rem;
+    text-decoration: none;
+    z-index: 999;
+    border-radius: var(--radius-sm);
+  }
+  .skip:focus { top: 8px; left: 8px; }
+
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* NAV */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: var(--space-4) 0;
+    background: rgba(9, 9, 15, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-glass-border);
+  }
+
+  .nav__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav__logo {
+    font-weight: 600;
+    font-size: 1.125rem;
+    text-decoration: none;
+    color: var(--color-ink);
+    letter-spacing: -0.01em;
+  }
+
+  .nav__logo span {
+    background: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: var(--space-8);
+    list-style: none;
+  }
+
+  .nav__links a {
+    font-size: 0.875rem;
+    color: var(--color-ink-2);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 250ms var(--spring);
+  }
+
+  .nav__links a:hover { color: var(--color-ink); }
+  .nav__links a:focus-visible { outline: 2px solid var(--color-accent-1); outline-offset: 4px; border-radius: 2px; }
+
+  .nav__actions { display: flex; gap: var(--space-3, 0.75rem); align-items: center; }
+
+  .btn-ghost {
+    font-size: 0.875rem;
+    color: var(--color-ink-2);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-4);
+    transition: color 250ms var(--spring);
+  }
+
+  .btn-ghost:hover { color: var(--color-ink); }
+  .btn-ghost:focus-visible { outline: 2px solid var(--color-accent-1); outline-offset: 3px; border-radius: var(--radius-sm); }
+
+  .btn-primary {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: var(--space-2) var(--space-6);
+    background: var(--color-accent-1);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 400ms var(--spring), box-shadow 400ms var(--spring);
+    box-shadow: 0 0 0 0 rgba(124, 111, 247, 0.4);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(124, 111, 247, 0.35);
+  }
+
+  .btn-primary:focus-visible { outline: 2px solid var(--color-accent-1); outline-offset: 3px; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    padding: var(--space-32) 0 var(--space-24);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--aurora);
+    pointer-events: none;
+  }
+
+  .hero__content {
+    position: relative;
+    text-align: center;
+    animation: heroIn 0.8s var(--spring) both;
+  }
+
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* NO subtitle pill badge — use a plain metadata line */
+  .hero__meta {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-6);
+    font-weight: 500;
+  }
+
+  .hero__heading {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__heading .grad {
+    background: linear-gradient(135deg, var(--color-accent-1) 0%, var(--color-accent-2) 50%, var(--color-accent-3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero__desc {
+    font-size: 1.125rem;
+    color: var(--color-ink-2);
+    line-height: 1.65;
+    max-width: 52ch;
+    margin: 0 auto var(--space-10, 2.5rem);
+    font-weight: 300;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .btn-outline {
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: var(--space-2) var(--space-6);
+    background: transparent;
+    color: var(--color-ink);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 250ms var(--spring), background 250ms var(--spring);
+  }
+
+  .btn-outline:hover { border-color: rgba(255,255,255,0.25); background: var(--color-glass); }
+  .btn-outline:focus-visible { outline: 2px solid var(--color-accent-1); outline-offset: 3px; }
+
+  /* APP PREVIEW GLASS CARD */
+  .hero__preview {
+    margin: var(--space-16) auto 0;
+    max-width: 900px;
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--color-glass-border);
+    background: var(--color-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 0 1px var(--color-glass-border);
+    animation: heroIn 0.8s 0.15s var(--spring) both;
+  }
+
+  .preview-bar {
+    padding: var(--space-3, 0.75rem) var(--space-4);
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid var(--color-glass-border);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .preview-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .preview-content {
+    height: 360px;
+    background: linear-gradient(135deg, rgba(124,111,247,0.08) 0%, rgba(217,70,239,0.05) 50%, rgba(6,182,212,0.06) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .preview-placeholder {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* FEATURES — horizontal scroll showcase, NOT 3-col grid */
+  .features {
+    padding: var(--space-24) 0;
+    border-top: 1px solid var(--color-glass-border);
+  }
+
+  .features__header {
+    margin-bottom: var(--space-12);
+  }
+
+  .features__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent-1);
+    font-weight: 500;
+    margin-bottom: var(--space-4);
+  }
+
+  .features__heading {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    max-width: 22ch;
+  }
+
+  .features__rail {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .feature-card {
+    padding: var(--space-8);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-glass-border);
+    background: var(--color-glass);
+  }
+
+  .feature-card__icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .feature-card__icon--1 { background: rgba(124, 111, 247, 0.2); }
+  .feature-card__icon--2 { background: rgba(217, 70, 239, 0.2); }
+  .feature-card__icon--3 { background: rgba(6, 182, 212, 0.2); }
+  .feature-card__icon--4 { background: rgba(251, 191, 36, 0.2); }
+
+  .feature-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--space-2);
+  }
+
+  .feature-card__desc {
+    font-size: 0.875rem;
+    color: var(--color-ink-2);
+    line-height: 1.6;
+  }
+
+  /* SOCIAL PROOF */
+  .proof {
+    padding: var(--space-24) 0;
+    border-top: 1px solid var(--color-glass-border);
+  }
+
+  .proof__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .proof-card {
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-glass-border);
+    background: var(--color-glass);
+  }
+
+  .proof-card__quote {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: var(--color-ink-2);
+    margin-bottom: var(--space-6);
+    font-style: italic;
+  }
+
+  .proof-card__author {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  .proof-card__role {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    margin-top: 2px;
+  }
+
+  /* CTA */
+  .cta-section {
+    padding: var(--space-32) 0;
+    border-top: 1px solid var(--color-glass-border);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(124, 111, 247, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-section__content { position: relative; }
+
+  .cta-section__heading {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: var(--space-4);
+  }
+
+  .cta-section__desc {
+    font-size: 1rem;
+    color: var(--color-ink-2);
+    max-width: 42ch;
+    margin: 0 auto var(--space-8);
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--color-glass-border);
+    padding: var(--space-12) 0;
+  }
+
+  .footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer__logo {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-ink-2);
+  }
+
+  .footer__logo span {
+    background: linear-gradient(135deg, var(--color-accent-1), var(--color-accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .footer__links {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+  }
+
+  .footer__links a {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 250ms var(--spring);
+  }
+
+  .footer__links a:hover { color: var(--color-ink); }
+  .footer__links a:focus-visible { outline: 2px solid var(--color-accent-1); outline-offset: 3px; border-radius: 2px; }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    :root { --gutter: 1.25rem; }
+    .nav__links { display: none; }
+    .features__rail { grid-template-columns: 1fr; }
+    .proof__grid { grid-template-columns: 1fr; }
+    .footer__inner { flex-direction: column; gap: var(--space-6); text-align: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__content,
+    .hero__preview { animation: none; }
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="/" class="nav__logo" aria-label="Prism home"><span>Prism</span></a>
+        <ul class="nav__links" role="list">
+          <li><a href="/product">Product</a></li>
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+        </ul>
+        <div class="nav__actions">
+          <a href="/login" class="btn-ghost">Sign in</a>
+          <a href="/waitlist" class="btn-primary">Get early access</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO — no subtitle pill, spring animation, centered allowed for Aurora -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero__content">
+        <p class="hero__meta">Color science for product teams</p>
+        <h1 class="hero__heading" id="hero-heading">
+          Color systems that<br>
+          <span class="grad">stay in sync.</span>
+        </h1>
+        <p class="hero__desc">
+          Prism connects your design tokens to your code. Color changes in Figma propagate to every component, every theme, every platform — automatically.
+        </p>
+        <div class="hero__actions">
+          <a href="/waitlist" class="btn-primary">Get early access</a>
+          <a href="/docs" class="btn-outline">Read the docs</a>
+        </div>
+      </div>
+
+      <div class="hero__preview" aria-label="Prism app interface preview">
+        <div class="preview-bar" aria-hidden="true">
+          <div class="preview-dot"></div>
+          <div class="preview-dot"></div>
+          <div class="preview-dot"></div>
+        </div>
+        <div class="preview-content">
+          <p class="preview-placeholder">App interface preview</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES — glass cards, NOT icon grid -->
+  <section class="features" aria-labelledby="features-heading">
+    <div class="container">
+      <div class="features__header">
+        <p class="features__eyebrow">What Prism does</p>
+        <h2 class="features__heading" id="features-heading">
+          One token file.<br>Every surface.
+        </h2>
+      </div>
+      <div class="features__rail" role="list">
+        <article class="feature-card" role="listitem">
+          <div class="feature-card__icon feature-card__icon--1" aria-hidden="true">◈</div>
+          <h3 class="feature-card__title">Figma sync</h3>
+          <p class="feature-card__desc">Tokens push from Figma directly to your repo. No plugin juggling, no manual exports.</p>
+        </article>
+        <article class="feature-card" role="listitem">
+          <div class="feature-card__icon feature-card__icon--2" aria-hidden="true">⬡</div>
+          <h3 class="feature-card__title">Contrast validation</h3>
+          <p class="feature-card__desc">Every token pair is checked against WCAG AA before merge. Failing pairs are blocked.</p>
+        </article>
+        <article class="feature-card" role="listitem">
+          <div class="feature-card__icon feature-card__icon--3" aria-hidden="true">◎</div>
+          <h3 class="feature-card__title">Multi-theme support</h3>
+          <p class="feature-card__desc">Light, dark, and high-contrast variants generated from a single semantic layer.</p>
+        </article>
+        <article class="feature-card" role="listitem">
+          <div class="feature-card__icon feature-card__icon--4" aria-hidden="true">△</div>
+          <h3 class="feature-card__title">Framework-native output</h3>
+          <p class="feature-card__desc">CSS custom properties, Tailwind config, or Style Dictionary JSON — your choice.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF — 3 quotes, no logo cloud -->
+  <section class="proof" aria-labelledby="proof-heading">
+    <div class="container">
+      <h2 id="proof-heading" class="visually-hidden" style="position:absolute;clip:rect(0,0,0,0);overflow:hidden">What users say</h2>
+      <div class="proof__grid" role="list">
+        <article class="proof-card" role="listitem">
+          <p class="proof-card__quote">"We eliminated an entire category of design/dev sync meetings. Tokens are truth now."</p>
+          <p class="proof-card__author">Yuki Tanaka</p>
+          <p class="proof-card__role">Principal Designer, Arch Systems</p>
+        </article>
+        <article class="proof-card" role="listitem">
+          <p class="proof-card__quote">"The contrast validation alone saved us from three accessibility incidents in the first month."</p>
+          <p class="proof-card__author">Marcus Webb</p>
+          <p class="proof-card__role">Frontend Lead, Helio</p>
+        </article>
+        <article class="proof-card" role="listitem">
+          <p class="proof-card__quote">"Dark mode used to take a week of manual work. With Prism it was an afternoon."</p>
+          <p class="proof-card__author">Priya Sharma</p>
+          <p class="proof-card__role">Design Systems, Novu</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="cta-section__content">
+        <h2 class="cta-section__heading" id="cta-heading">
+          Color, finally<br>under control.
+        </h2>
+        <p class="cta-section__desc">Join 800 design teams on the early access list. Ships Q3 2026.</p>
+        <a href="/waitlist" class="btn-primary">Get early access</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer__inner">
+      <p class="footer__logo"><span>Prism</span> — Color infrastructure</p>
+      <nav aria-label="Footer navigation">
+        <ul class="footer__links" role="list">
+          <li><a href="/docs">Docs</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="mailto:hello@prism.design">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

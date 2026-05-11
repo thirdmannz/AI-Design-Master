@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Élan Studio — Fashion/Luxury Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<!--
+  STYLE: Fashion / Luxury
+  INDUSTRY: Design studio portfolio
+  PAGE: Project grid (work index)
+
+  ANTI-AI DECISIONS:
+  - No cards with shadows — images are borderless, images ARE the content
+  - No pill buttons — bare text with underline only
+  - No centered hero — asymmetric, text bottom-left over full-bleed image
+  - No features grid — no icons anywhere
+  - Serif display only (Cormorant Garamond, not Inter)
+  - Color: near-black on warm cream, single accent (none — color = photography)
+  - Generous whitespace: section padding ≥ 8rem
+  - No descriptive copy — project name + year only
+  - Navigation: horizontal top, all-caps small caps, no icons
+-->
+<style>
+  :root {
+    --color-bg: #f8f6f1;
+    --color-ink: #1a1815;
+    --color-muted: #7a7570;
+    --color-rule: #d8d4cb;
+
+    --font-display: "Cormorant Garamond", "Garamond", Georgia, serif;
+    --font-body: "EB Garamond", "Garamond", Georgia, serif;
+
+    --size-xs: 0.6875rem;
+    --size-sm: 0.8125rem;
+    --size-base: 1rem;
+    --size-lg: 1.25rem;
+    --size-xl: 1.75rem;
+    --size-2xl: 2.5rem;
+    --size-3xl: 4rem;
+    --size-4xl: 6rem;
+    --size-5xl: 9rem;
+
+    --space-2: 0.5rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+    --space-40: 10rem;
+
+    --container: 1400px;
+    --gutter: 3rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--size-base);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .skip {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 0.5rem 1rem;
+    background: var(--color-ink);
+    color: var(--color-bg);
+    font-family: var(--font-body);
+    font-size: var(--size-sm);
+    text-decoration: none;
+    z-index: 999;
+  }
+  .skip:focus { top: 0; }
+
+  /* NAV */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: var(--space-6) var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    mix-blend-mode: normal;
+    background: transparent;
+  }
+
+  .nav__logo {
+    font-family: var(--font-display);
+    font-size: var(--size-lg);
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    color: var(--color-ink);
+    text-transform: uppercase;
+  }
+
+  .nav__links {
+    display: flex;
+    gap: var(--space-12);
+    list-style: none;
+  }
+
+  .nav__links a {
+    font-family: var(--font-body);
+    font-size: var(--size-xs);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-ink);
+    opacity: 0.7;
+    transition: opacity 200ms ease;
+  }
+
+  .nav__links a:hover { opacity: 1; }
+
+  .nav__links a:focus-visible {
+    outline: 1px solid var(--color-ink);
+    outline-offset: 4px;
+    opacity: 1;
+  }
+
+  /* INTRO */
+  .intro {
+    padding: calc(var(--space-24) + 4rem) var(--gutter) var(--space-24);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    align-items: end;
+  }
+
+  .intro__heading {
+    font-family: var(--font-display);
+    font-size: clamp(var(--size-4xl), 7vw, var(--size-5xl));
+    font-weight: 300;
+    line-height: 0.88;
+    letter-spacing: -0.02em;
+    font-style: italic;
+  }
+
+  .intro__body {
+    font-family: var(--font-body);
+    font-size: var(--size-lg);
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--color-muted);
+    max-width: 38ch;
+    justify-self: end;
+    align-self: end;
+    padding-bottom: 0.5em;
+  }
+
+  /* WORK GRID — Asymmetric, NOT equal-column card grid */
+  .work {
+    padding: 0 var(--gutter) var(--space-40);
+  }
+
+  .work__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-2);
+  }
+
+  /* Large-small alternating rhythm */
+  .project {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .project--large { grid-column: span 2; }
+
+  .project__img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    display: block;
+    /* Replaced by background-color as placeholder */
+    background-color: #c8c4bb;
+    transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project--large .project__img { aspect-ratio: 21/9; }
+
+  .project:hover .project__img { transform: scale(1.02); }
+
+  /* Color stand-ins for images */
+  .project:nth-child(1) .project__img { background: #2c2925; }
+  .project:nth-child(2) .project__img { background: #e8e0d5; }
+  .project:nth-child(3) .project__img { background: #3d3530; }
+  .project:nth-child(4) .project__img { background: #b0a89c; }
+  .project:nth-child(5) .project__img { background: #1a1815; }
+
+  .project__caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: var(--space-4) 0 var(--space-8);
+  }
+
+  .project__title {
+    font-family: var(--font-display);
+    font-size: var(--size-xl);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+
+  .project__meta {
+    font-family: var(--font-body);
+    font-size: var(--size-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .project a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .project a:focus-visible .project__img {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+
+  /* ABOUT SECTION — No cards, no decoration */
+  .about {
+    padding: var(--space-40) var(--gutter);
+    border-top: 1px solid var(--color-rule);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: var(--space-16);
+    align-items: start;
+  }
+
+  .about__label {
+    font-family: var(--font-body);
+    font-size: var(--size-xs);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding-top: 0.3em;
+  }
+
+  .about__content {
+    max-width: 60ch;
+  }
+
+  .about__heading {
+    font-family: var(--font-display);
+    font-size: var(--size-3xl);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    font-style: italic;
+    margin-bottom: var(--space-8);
+  }
+
+  .about__body {
+    font-family: var(--font-body);
+    font-size: var(--size-lg);
+    line-height: 1.7;
+    color: var(--color-muted);
+  }
+
+  .about__cta {
+    display: inline-block;
+    margin-top: var(--space-8);
+    font-family: var(--font-body);
+    font-size: var(--size-sm);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    color: var(--color-ink);
+    transition: opacity 200ms ease;
+  }
+
+  .about__cta:hover { opacity: 0.5; }
+  .about__cta:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 4px; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--color-rule);
+    padding: var(--space-12) var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .footer__wordmark {
+    font-family: var(--font-display);
+    font-size: var(--size-sm);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    font-weight: 300;
+  }
+
+  .footer__links {
+    display: flex;
+    gap: var(--space-8);
+    list-style: none;
+  }
+
+  .footer__links a {
+    font-family: var(--font-body);
+    font-size: var(--size-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-muted);
+    transition: color 200ms ease;
+  }
+
+  .footer__links a:hover { color: var(--color-ink); }
+  .footer__links a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 3px; }
+
+  /* MOBILE */
+  @media (max-width: 767px) {
+    :root { --gutter: 1.25rem; }
+
+    .nav { padding: var(--space-4) var(--gutter); }
+    .nav__links { display: none; }
+
+    .intro { grid-template-columns: 1fr; padding-top: calc(var(--space-16) + 4rem); }
+    .intro__body { justify-self: start; }
+
+    .work__grid { grid-template-columns: 1fr; }
+    .project--large { grid-column: span 1; }
+    .project--large .project__img { aspect-ratio: 4/3; }
+
+    .about { grid-template-columns: 1fr; }
+
+    footer { flex-direction: column; gap: var(--space-6); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .project__img { transition: none !important; }
+    .about__cta { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <a href="/" class="nav__logo" aria-label="Élan Studio home">Élan</a>
+    <ul class="nav__links" role="list">
+      <li><a href="/work" aria-current="page">Work</a></li>
+      <li><a href="/studio">Studio</a></li>
+      <li><a href="/journal">Journal</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="intro" aria-label="Studio introduction">
+    <h1 class="intro__heading">
+      Selected<br>
+      <em>work,</em><br>
+      2019–2026
+    </h1>
+    <p class="intro__body">
+      Identity, campaign, and digital work for fashion houses, cultural institutions, and independent brands.
+    </p>
+  </section>
+
+  <section class="work" aria-labelledby="work-heading">
+    <h2 id="work-heading" class="visually-hidden" style="position:absolute;clip:rect(0,0,0,0);overflow:hidden">Projects</h2>
+    <div class="work__grid" role="list">
+
+      <article class="project project--large" role="listitem">
+        <a href="/work/maison-alvarez">
+          <div class="project__img" role="img" aria-label="Maison Alvarez — brand identity photography"></div>
+          <div class="project__caption">
+            <h3 class="project__title">Maison Alvarez</h3>
+            <span class="project__meta">Identity — 2026</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="project" role="listitem">
+        <a href="/work/oslo-film">
+          <div class="project__img" role="img" aria-label="Oslo Film Festival — campaign design"></div>
+          <div class="project__caption">
+            <h3 class="project__title">Oslo Film Festival</h3>
+            <span class="project__meta">Campaign — 2025</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="project" role="listitem">
+        <a href="/work/havre-ceramics">
+          <div class="project__img" role="img" aria-label="Havre Ceramics — e-commerce design"></div>
+          <div class="project__caption">
+            <h3 class="project__title">Havre Ceramics</h3>
+            <span class="project__meta">Digital — 2025</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="project project--large" role="listitem">
+        <a href="/work/seren-ss26">
+          <div class="project__img" role="img" aria-label="Seren SS26 — editorial design"></div>
+          <div class="project__caption">
+            <h3 class="project__title">Seren — SS26</h3>
+            <span class="project__meta">Editorial — 2026</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="project" role="listitem">
+        <a href="/work/nomo-press">
+          <div class="project__img" role="img" aria-label="Nomo Press — brand identity"></div>
+          <div class="project__caption">
+            <h3 class="project__title">Nomo Press</h3>
+            <span class="project__meta">Identity — 2024</span>
+          </div>
+        </a>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="about" aria-labelledby="about-heading">
+    <p class="about__label">Studio</p>
+    <div class="about__content">
+      <h2 class="about__heading" id="about-heading">
+        Work made slowly,<br>on purpose.
+      </h2>
+      <p class="about__body">
+        Élan is a two-person studio based in Lisbon. We work with a small number of clients each year. Our work is deliberate, referential, and made to last longer than a campaign cycle.
+      </p>
+      <a href="/studio" class="about__cta">About the studio</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="footer__wordmark">Élan Studio — Lisbon, 2026</p>
+  <nav aria-label="Footer navigation">
+    <ul class="footer__links" role="list">
+      <li><a href="/work">Work</a></li>
+      <li><a href="/studio">Studio</a></li>
+      <li><a href="mailto:hello@elan.studio">Contact</a></li>
+    </ul>
+  </nav>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nora Berg — Minimal Float Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300&display=swap" rel="stylesheet">
+<!--
+  STYLE: Minimal Float
+  INDUSTRY: Independent designer portfolio
+  PAGE: About / Now page
+
+  ANTI-AI DECISIONS:
+  - "Now page" as the homepage — unusual, personal, anti-template
+  - NO hero section with CTA — starts mid-thought
+  - NO skills grid with icons
+  - NO "I'm passionate about creating experiences" opening
+  - NO card grid of projects
+  - Section padding ≥ 8rem — generous whitespace is the design
+  - Typography: Libre Baskerville (editorial) + DM Sans (functional)
+  - Soft warm off-white — not generic gray
+  - No box-shadow decorations
+  - Links are underlined inline, not button-ified
+  - About opener: opinion, not bio
+  - Work list: client + outcome, not "UX/UI design for startup"
+-->
+<style>
+  :root {
+    --color-bg: #fdfcf9;
+    --color-ink: #1e1d1a;
+    --color-muted: #7a7870;
+    --color-rule: #e0ddd6;
+    --color-link: #1e1d1a;
+
+    --font-display: "Libre Baskerville", Georgia, serif;
+    --font-body: "DM Sans", system-ui, sans-serif;
+
+    --size-xs: 0.75rem;
+    --size-sm: 0.875rem;
+    --size-base: 1rem;
+    --size-lg: 1.125rem;
+    --size-xl: 1.375rem;
+    --size-2xl: 1.875rem;
+    --size-3xl: 2.75rem;
+
+    --space-2: 0.5rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+    --space-32: 8rem;
+    --space-40: 10rem;
+
+    --reading: 58ch;
+    --gutter: 2.5rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 17px; }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: var(--size-base);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .skip {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 0.5rem 1rem;
+    background: var(--color-ink);
+    color: var(--color-bg);
+    font-size: 0.875rem;
+    text-decoration: none;
+    z-index: 999;
+  }
+  .skip:focus { top: 0; }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  /* NAV — Extremely minimal */
+  .nav {
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .nav__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .nav__logo {
+    font-family: var(--font-display);
+    font-size: var(--size-base);
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--color-ink);
+  }
+
+  .nav__links {
+    display: flex;
+    gap: var(--space-8);
+    list-style: none;
+  }
+
+  .nav__links a {
+    font-family: var(--font-body);
+    font-size: var(--size-sm);
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .nav__links a:hover { color: var(--color-ink); }
+  .nav__links a[aria-current="page"] { color: var(--color-ink); }
+  .nav__links a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 3px; }
+
+  /* MAIN SECTIONS */
+  .section {
+    padding: var(--space-32) 0;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section__label {
+    font-family: var(--font-body);
+    font-size: var(--size-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: var(--space-8);
+    font-weight: 400;
+  }
+
+  /* NOW SECTION — anti-template opener */
+  .now__heading {
+    font-family: var(--font-display);
+    font-size: var(--size-3xl);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-style: italic;
+    margin-bottom: var(--space-8);
+    max-width: 20ch;
+  }
+
+  .now__body {
+    font-family: var(--font-body);
+    font-size: var(--size-lg);
+    line-height: 1.75;
+    color: var(--color-ink);
+    max-width: var(--reading);
+  }
+
+  .now__body p + p {
+    margin-top: var(--space-6);
+  }
+
+  .now__body a {
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--color-rule);
+    transition: text-decoration-color 200ms ease;
+  }
+
+  .now__body a:hover { text-decoration-color: var(--color-ink); }
+  .now__body a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 2px; }
+
+  /* WORK LIST */
+  .work__list {
+    list-style: none;
+  }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-8);
+    align-items: baseline;
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  .work-item:first-child { padding-top: 0; }
+  .work-item:last-child { border-bottom: none; }
+
+  .work-item__title {
+    font-family: var(--font-display);
+    font-size: var(--size-xl);
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+
+  .work-item__title a {
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: opacity 200ms ease;
+  }
+
+  .work-item__title a:hover { opacity: 0.5; }
+  .work-item__title a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 3px; }
+
+  .work-item__meta {
+    font-family: var(--font-body);
+    font-size: var(--size-sm);
+    color: var(--color-muted);
+    white-space: nowrap;
+  }
+
+  .work-item__desc {
+    grid-column: 1 / -1;
+    font-family: var(--font-body);
+    font-size: var(--size-sm);
+    color: var(--color-muted);
+    line-height: 1.6;
+    margin-top: var(--space-2);
+  }
+
+  /* ABOUT — opinion first, not bio */
+  .about__body {
+    font-family: var(--font-body);
+    font-size: var(--size-lg);
+    line-height: 1.75;
+    max-width: var(--reading);
+  }
+
+  .about__body p + p {
+    margin-top: var(--space-6);
+  }
+
+  .about__body a {
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--color-rule);
+    transition: text-decoration-color 200ms ease;
+  }
+
+  .about__body a:hover { text-decoration-color: var(--color-ink); }
+  .about__body a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 2px; }
+
+  /* WRITING */
+  .writing__list {
+    list-style: none;
+  }
+
+  .writing-item {
+    padding: var(--space-5, 1.25rem) 0;
+    border-bottom: 1px solid var(--color-rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--space-8);
+  }
+
+  .writing-item:first-child { padding-top: 0; }
+  .writing-item:last-child { border-bottom: none; }
+
+  .writing-item__title a {
+    font-family: var(--font-body);
+    font-size: var(--size-base);
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .writing-item__title a:hover { color: var(--color-muted); }
+  .writing-item__title a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 2px; }
+
+  .writing-item__date {
+    font-family: var(--font-body);
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  /* CONTACT */
+  .contact__body {
+    font-family: var(--font-body);
+    font-size: var(--size-lg);
+    line-height: 1.75;
+    max-width: var(--reading);
+  }
+
+  .contact__body p + p { margin-top: var(--space-6); }
+
+  .contact__body a {
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .contact__body a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 2px; }
+
+  /* FOOTER */
+  footer {
+    padding: var(--space-12) 0;
+    border-top: 1px solid var(--color-rule);
+  }
+
+  .footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .footer__copy {
+    font-family: var(--font-body);
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .footer__links {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+  }
+
+  .footer__links a {
+    font-size: var(--size-xs);
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .footer__links a:hover { color: var(--color-ink); }
+  .footer__links a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 2px; }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    :root { --gutter: 1.25rem; }
+    html { font-size: 16px; }
+
+    .nav__links { gap: var(--space-6); }
+
+    .work-item {
+      grid-template-columns: 1fr;
+      gap: var(--space-2);
+    }
+
+    .work-item__meta { justify-self: start; }
+
+    .writing-item { flex-direction: column; gap: var(--space-1); }
+
+    .footer__inner { flex-direction: column; gap: var(--space-4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="/" class="nav__logo">Nora Berg</a>
+        <ul class="nav__links" role="list">
+          <li><a href="/" aria-current="page">Now</a></li>
+          <li><a href="/work">Work</a></li>
+          <li><a href="/writing">Writing</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- NOW — personal, current, not "welcome to my portfolio" -->
+  <section class="section" aria-labelledby="now-heading">
+    <div class="container">
+      <p class="section__label">Now — May 2026</p>
+      <h1 class="now__heading" id="now-heading">
+        Thinking about<br>
+        what makes a<br>
+        good brief.
+      </h1>
+      <div class="now__body">
+        <p>
+          I've been working with <a href="/work/helio">Helio</a> for the past three months, redesigning their onboarding. The hard part isn't the design — it's figuring out what the onboarding is trying to do. Most briefs confuse the two.
+        </p>
+        <p>
+          Also working on a talk about design systems for <a href="https://example.com">Config</a> in June. The thesis: most design systems are built to document decisions that were never questioned. I'm still not sure I'm right about this.
+        </p>
+        <p>
+          Not taking new projects until August. If you'd like to work together after that, <a href="/contact">reach out now</a> — I schedule 8–10 weeks ahead.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK — outcomes not job titles -->
+  <section class="section" aria-labelledby="work-heading">
+    <div class="container">
+      <p class="section__label">Selected work</p>
+      <h2 id="work-heading" style="position:absolute;clip:rect(0,0,0,0);overflow:hidden">Work</h2>
+      <ul class="work__list" role="list">
+        <li class="work-item">
+          <div>
+            <h3 class="work-item__title">
+              <a href="/work/helio">Helio — onboarding</a>
+            </h3>
+            <p class="work-item__desc">Redesigned signup-to-first-value flow. Activation rate from 24% to 41% in 6 weeks.</p>
+          </div>
+          <span class="work-item__meta" aria-label="Year 2026">2026</span>
+        </li>
+        <li class="work-item">
+          <div>
+            <h3 class="work-item__title">
+              <a href="/work/seld">Seld — design system</a>
+            </h3>
+            <p class="work-item__desc">Component library for a 12-person product team with 3 active platforms. Reduced per-feature design time by half.</p>
+          </div>
+          <span class="work-item__meta" aria-label="Year 2025">2025</span>
+        </li>
+        <li class="work-item">
+          <div>
+            <h3 class="work-item__title">
+              <a href="/work/volta">Volta — product rebrand</a>
+            </h3>
+            <p class="work-item__desc">Full brand + product visual system for a Series B energy startup. Shipped to 3 markets in 4 months.</p>
+          </div>
+          <span class="work-item__meta" aria-label="Year 2025">2025</span>
+        </li>
+        <li class="work-item">
+          <div>
+            <h3 class="work-item__title">
+              <a href="/work/archive">Earlier work →</a>
+            </h3>
+          </div>
+          <span class="work-item__meta">2019–2024</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ABOUT — opinion, not resume -->
+  <section class="section" aria-labelledby="about-heading">
+    <div class="container">
+      <p class="section__label">About</p>
+      <div class="about__body">
+        <p>
+          I've redesigned the same landing page more times than I can count. Each time I notice something I missed before. Design is not a problem you solve; it's a position you hold until a better one becomes clear.
+        </p>
+        <p>
+          I've been working independently since 2019. Before that, I spent six years in-house: two at a consultancy, four at a product company that no longer exists. I learned more from the failure than the consultancy.
+        </p>
+        <p>
+          I'm based in Oslo. I work with product companies in Europe and occasionally North America. I care about clarity, about typography that does actual work, and about design that doesn't make people feel stupid.
+        </p>
+        <p>
+          <a href="/about">More about how I work →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section class="section" aria-labelledby="writing-heading">
+    <div class="container">
+      <p class="section__label">Writing</p>
+      <h2 id="writing-heading" style="position:absolute;clip:rect(0,0,0,0);overflow:hidden">Writing</h2>
+      <ul class="writing__list" role="list">
+        <li class="writing-item">
+          <h3 class="writing-item__title"><a href="/writing/briefs">On the brief that wasn't</a></h3>
+          <time class="writing-item__date" datetime="2026-04">Apr 2026</time>
+        </li>
+        <li class="writing-item">
+          <h3 class="writing-item__title"><a href="/writing/systems">What design systems get wrong about ownership</a></h3>
+          <time class="writing-item__date" datetime="2026-01">Jan 2026</time>
+        </li>
+        <li class="writing-item">
+          <h3 class="writing-item__title"><a href="/writing/onboarding">The activation rate is a symptom</a></h3>
+          <time class="writing-item__date" datetime="2025-10">Oct 2025</time>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" aria-labelledby="contact-heading">
+    <div class="container">
+      <p class="section__label">Contact</p>
+      <div class="contact__body">
+        <p>
+          The best way to reach me is by email: <a href="mailto:nora@noraberg.co">nora@noraberg.co</a>
+        </p>
+        <p>
+          I respond to most things within a day. If you're writing about potential work, please include what you're working on and when you'd need to start. It saves a round trip.
+        </p>
+        <p>
+          I'm also on <a href="https://read.cv/noraberg">Read.cv</a> and occasionally post on <a href="https://are.na/nora-berg">Are.na</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer__inner">
+      <p class="footer__copy">Nora Berg — Oslo, 2026</p>
+      <nav aria-label="Footer links">
+        <ul class="footer__links" role="list">
+          <li><a href="/work">Work</a></li>
+          <li><a href="/writing">Writing</a></li>
+          <li><a href="mailto:nora@noraberg.co">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

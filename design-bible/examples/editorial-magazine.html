@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Design of Silence — Dispatch Magazine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;1,8..60,300;1,8..60,400&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<!--
+  STYLE: Magazine Longform / Editorial Newspaper
+  INDUSTRY: Design publication
+  PAGE: Feature article
+
+  ANTI-AI DECISIONS:
+  - Drop cap on opening paragraph
+  - Marginalia (side notes in the margin)
+  - Pull quote breaks column rhythm
+  - Full-bleed image with caption
+  - NO features grid, NO logo cloud, NO CTA section
+  - NO centered content — strict editorial left-aligned
+  - Byline separate from headline
+  - Section dividers use rules, not cards
+  - Reading column width constrained to ~65-70ch
+  - No sticky CTA, no newsletter-popup interrupts
+  - Comments section uses <article> semantics
+-->
+<style>
+  :root {
+    --color-bg: #faf8f4;
+    --color-ink: #1c1a17;
+    --color-muted: #7a7669;
+    --color-rule: #d4d0c7;
+    --color-accent: #c0392b;
+
+    --font-display: "Playfair Display", Georgia, serif;
+    --font-body: "Source Serif 4", Georgia, serif;
+    --font-sans: "DM Sans", system-ui, sans-serif;
+
+    --reading-width: 68ch;
+    --gutter: 2rem;
+    --space-1: 0.25rem;
+    --space-2: 0.5rem;
+    --space-4: 1rem;
+    --space-6: 1.5rem;
+    --space-8: 2rem;
+    --space-12: 3rem;
+    --space-16: 4rem;
+    --space-24: 6rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 18px; }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .skip {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 0.5rem 1rem;
+    background: var(--color-ink);
+    color: var(--color-bg);
+    font-size: 0.875rem;
+    text-decoration: none;
+    z-index: 999;
+  }
+  .skip:focus { top: 0; }
+
+  /* NAV — Publication masthead style */
+  .masthead {
+    border-bottom: 3px double var(--color-rule);
+    padding: var(--space-4) var(--gutter);
+  }
+
+  .masthead__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .masthead__title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-ink);
+  }
+
+  .masthead__nav {
+    display: flex;
+    gap: var(--space-8);
+    list-style: none;
+  }
+
+  .masthead__nav a {
+    font-family: var(--font-sans);
+    font-size: 0.7222rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-muted);
+    transition: color 150ms ease;
+  }
+
+  .masthead__nav a:hover { color: var(--color-ink); }
+  .masthead__nav a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 3px; color: var(--color-ink); }
+
+  /* SECTION LABEL */
+  .section-flag {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--gutter) var(--space-4);
+    font-family: var(--font-sans);
+    font-size: 0.6667rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    font-weight: 400;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  /* ARTICLE HEADER */
+  .article-header {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-12) var(--gutter) 0;
+  }
+
+  .article-kicker {
+    font-family: var(--font-sans);
+    font-size: 0.7778rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .article-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    max-width: 22ch;
+    margin-bottom: var(--space-8);
+  }
+
+  .article-title em {
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .article-deck {
+    font-family: var(--font-body);
+    font-size: 1.1111rem;
+    font-style: italic;
+    line-height: 1.55;
+    max-width: 55ch;
+    color: var(--color-muted);
+    margin-bottom: var(--space-8);
+  }
+
+  .article-byline {
+    display: flex;
+    gap: var(--space-8);
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+    margin-bottom: var(--space-8);
+  }
+
+  .byline-item {
+    font-family: var(--font-sans);
+    font-size: 0.7222rem;
+    letter-spacing: 0.04em;
+    line-height: 1.4;
+  }
+
+  .byline-item strong {
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+    font-weight: 400;
+    font-size: 0.6111rem;
+    margin-bottom: 2px;
+  }
+
+  /* LEAD IMAGE */
+  .lead-image {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto var(--space-12);
+    padding: 0 var(--gutter);
+  }
+
+  .lead-image figure {
+    margin: 0;
+  }
+
+  .lead-image__img {
+    width: 100%;
+    aspect-ratio: 16/7;
+    object-fit: cover;
+    display: block;
+    background: #2c2925;
+  }
+
+  .lead-image figcaption {
+    font-family: var(--font-sans);
+    font-size: 0.6667rem;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-rule);
+    margin-top: var(--space-2);
+  }
+
+  /* ARTICLE BODY — reading column with margin */
+  .article-body {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: 1fr min(var(--reading-width), 100%) 200px;
+    grid-template-areas: ". content margin";
+    gap: var(--space-8);
+  }
+
+  .article-content {
+    grid-area: content;
+  }
+
+  .article-margin {
+    grid-area: margin;
+    padding-top: 0.2em;
+  }
+
+  /* DROP CAP — first paragraph */
+  .article-content > p:first-child::first-letter {
+    font-family: var(--font-display);
+    font-size: 4.5em;
+    font-weight: 700;
+    float: left;
+    line-height: 0.78;
+    margin-right: 0.08em;
+    margin-top: 0.12em;
+    color: var(--color-ink);
+  }
+
+  .article-content > p {
+    margin-bottom: var(--space-6);
+  }
+
+  .article-content > h2 {
+    font-family: var(--font-display);
+    font-size: 1.4444rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin: var(--space-12) 0 var(--space-4);
+    padding-top: var(--space-8);
+    border-top: 2px solid var(--color-ink);
+  }
+
+  .article-content > h3 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1111rem;
+    font-weight: 400;
+    margin: var(--space-8) 0 var(--space-4);
+  }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    border-top: 3px solid var(--color-ink);
+    border-bottom: 1px solid var(--color-rule);
+    margin: var(--space-12) 0;
+    padding: var(--space-6) 0;
+  }
+
+  .pull-quote blockquote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.4444rem;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+  }
+
+  /* MARGINALIA */
+  .marginal {
+    font-family: var(--font-sans);
+    font-size: 0.6667rem;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    color: var(--color-muted);
+    border-left: 2px solid var(--color-rule);
+    padding-left: var(--space-4);
+    margin-bottom: var(--space-6);
+  }
+
+  .marginal strong {
+    display: block;
+    font-size: 0.6111rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+    font-weight: 400;
+    margin-bottom: var(--space-1);
+  }
+
+  /* INLINE IMAGE */
+  .inline-figure {
+    margin: var(--space-12) 0;
+  }
+
+  .inline-figure__img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    display: block;
+    background: #6b6860;
+  }
+
+  .inline-figure figcaption {
+    font-family: var(--font-sans);
+    font-size: 0.6667rem;
+    letter-spacing: 0.04em;
+    color: var(--color-muted);
+    padding-top: var(--space-2);
+    border-top: 1px solid var(--color-rule);
+    margin-top: var(--space-2);
+  }
+
+  /* AUTHOR BIO */
+  .author-bio {
+    border-top: 2px solid var(--color-ink);
+    padding-top: var(--space-8);
+    margin-top: var(--space-16);
+  }
+
+  .author-bio__label {
+    font-family: var(--font-sans);
+    font-size: 0.6111rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .author-bio__name {
+    font-family: var(--font-display);
+    font-size: 1.1111rem;
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+  }
+
+  .author-bio__desc {
+    font-family: var(--font-body);
+    font-size: 0.8333rem;
+    color: var(--color-muted);
+    line-height: 1.6;
+    max-width: 55ch;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 3px double var(--color-rule);
+    margin-top: var(--space-24);
+    padding: var(--space-8) var(--gutter);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .footer-wordmark {
+    font-family: var(--font-display);
+    font-size: 0.8333rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: var(--space-6);
+    list-style: none;
+  }
+
+  .footer-nav a {
+    font-family: var(--font-sans);
+    font-size: 0.6667rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-muted);
+    transition: color 150ms;
+  }
+
+  .footer-nav a:hover { color: var(--color-ink); }
+  .footer-nav a:focus-visible { outline: 1px solid var(--color-ink); outline-offset: 2px; }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    .article-body {
+      grid-template-columns: 1fr;
+      grid-template-areas: "content";
+    }
+    .article-margin { display: none; }
+  }
+
+  @media (max-width: 767px) {
+    html { font-size: 16px; }
+    :root { --gutter: 1.25rem; }
+    .masthead__nav { display: none; }
+    .footer-inner { flex-direction: column; gap: var(--space-4); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to content</a>
+
+<header>
+  <div class="masthead">
+    <div class="masthead__inner">
+      <a href="/" class="masthead__title" aria-label="Dispatch magazine home">Dispatch</a>
+      <nav aria-label="Publication sections">
+        <ul class="masthead__nav" role="list">
+          <li><a href="/design">Design</a></li>
+          <li><a href="/technology">Technology</a></li>
+          <li><a href="/culture">Culture</a></li>
+          <li><a href="/archive">Archive</a></li>
+          <li><a href="/subscribe">Subscribe</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <p class="section-flag">Design / Systems Thinking</p>
+</header>
+
+<main id="main">
+
+  <div class="article-header">
+    <p class="article-kicker">Essay</p>
+    <h1 class="article-title">The Design of <em>Silence:</em> What Software Gets Wrong About Restraint</h1>
+    <p class="article-deck">Every major platform now offers a "minimal" mode. Almost none of them are actually minimal. On the difference between removing things and making space.</p>
+    <div class="article-byline" role="contentinfo" aria-label="Article metadata">
+      <div class="byline-item"><strong>Author</strong>Kira Lindqvist</div>
+      <div class="byline-item"><strong>Photographs</strong>Elsa Mehta</div>
+      <div class="byline-item"><strong>Published</strong>May 2026</div>
+      <div class="byline-item"><strong>Reading time</strong>12 minutes</div>
+    </div>
+  </div>
+
+  <div class="lead-image">
+    <figure>
+      <div class="lead-image__img" role="img" aria-label="Abstract photograph of negative space in architecture"></div>
+      <figcaption>The Salk Institute, La Jolla, 1965. Louis Kahn insisted the courtyard remain unplanted. The emptiness was the design. <cite>Photo: Elsa Mehta</cite></figcaption>
+    </figure>
+  </div>
+
+  <div class="article-body">
+    <article class="article-content" aria-labelledby="article-h1">
+      <p>
+        There is a Zen koan about the uses of emptiness. A wheel has spokes, but it is the hole in the hub that makes it useful. A vessel has walls, but it is the hollow inside that makes it useful. Software design rarely thinks about the hollow.
+      </p>
+
+      <p>
+        When Dieter Rams reduced the Braun T3 pocket radio to a small rectangle with a single dial, he was not performing minimalism as aesthetic. He was solving a problem about cognitive load. The fewer decisions a user must make about the object itself, the more of their attention is available for what they actually want to do.
+      </p>
+
+      <div class="pull-quote">
+        <blockquote>"The fewer decisions a user must make about the object itself, the more of their attention is available for what they actually want to do."</blockquote>
+      </div>
+
+      <p>
+        This principle has been badly misunderstood by contemporary software design. "Minimal" has become an aesthetic descriptor — flat icons, neutral grays, generous padding — rather than a functional one. The result is interfaces that look restrained and feel cluttered. The visual noise has been removed; the cognitive noise has not.
+      </p>
+
+      <h2>The confetti of micro-interactions</h2>
+
+      <p>
+        Open any contemporary productivity app — the flagship ones, the ones written about in design press — and interact with it for thirty minutes. Count how many times you receive a visual reward you did not ask for. A green checkmark animation. A confetti burst when you complete a task. An inline celebration when you send a message.
+      </p>
+
+      <figure class="inline-figure">
+        <div class="inline-figure__img" role="img" aria-label="Screenshot of micro-interaction patterns across contemporary apps"></div>
+        <figcaption>Left to right: completion animations from four major productivity tools, captured in the same session. Each took between 400ms and 1.2 seconds. <cite>Screenshots: Dispatch</cite></figcaption>
+      </figure>
+
+      <p>
+        These animations are not accidents. They are intentional dopamine triggers, borrowed from the vocabulary of games. The design team behind each of them can almost certainly point to A/B test data showing increased engagement. And yet they represent a fundamental failure of restraint — not because they are ugly, but because they are <em>unsolicited</em>.
+      </p>
+
+      <h2>What restraint actually requires</h2>
+
+      <p>
+        The discipline of restraint is harder than the discipline of simplicity. Simplicity asks: what can we remove? Restraint asks: what should we withhold even though we could offer it?
+      </p>
+
+      <p>
+        The distinction matters because most design teams are better equipped for simplicity. The tooling for simplicity is straightforward — wireframes, user testing, design audits. The tooling for restraint is more philosophical. It requires asking whose attention you are competing for, and why.
+      </p>
+
+      <div class="author-bio">
+        <p class="author-bio__label">About the author</p>
+        <h2 class="author-bio__name">Kira Lindqvist</h2>
+        <p class="author-bio__desc">Kira Lindqvist is a design critic and educator based in Stockholm. She has been writing about the intersection of design theory and software practice for fifteen years. Her essay collection <em>Against the Interface</em> was published by Unit Editions in 2024.</p>
+      </div>
+    </article>
+
+    <aside class="article-margin" aria-label="Marginalia">
+      <div class="marginal">
+        <strong>Note</strong>
+        Rams' "Ten Principles of Good Design" were formulated for Braun between 1978–1979. The most-cited: "Good design is as little design as possible."
+      </div>
+      <div class="marginal">
+        <strong>Reference</strong>
+        <em>The Psychology of Everyday Things</em>, Donald Norman (1988). On affordances and cognitive load.
+      </div>
+      <div class="marginal">
+        <strong>Research</strong>
+        See Baumeister et al., "Ego depletion: is the active self a limited resource?" (1998) on decision fatigue.
+      </div>
+    </aside>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p class="footer-wordmark">Dispatch</p>
+    <nav aria-label="Footer navigation">
+      <ul class="footer-nav" role="list">
+        <li><a href="/about">About</a></li>
+        <li><a href="/subscribe">Subscribe</a></li>
+        <li><a href="/archive">Archive</a></li>
+        <li><a href="/contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

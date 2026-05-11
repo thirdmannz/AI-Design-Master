@@ -2036,5 +2036,324 @@ User 確認 revamp 方向後，要 patch 引入新設計系統的這些檔案：
 
 ---
 
+## 🔍 Mode 3：Reverse Mode（URL → 解剖）
+
+> 用戶貼入一個網站 URL → Skill 解析它的設計語言 → 識別風格、抽取 token、診斷 AI tell、輸出「複製策略」或「反向設計策略」。
+>
+> 與 Revamp 的區別：Revamp 是改造**用戶自己的**程式碼；Reverse Mode 是研究**外部參考網站**。
+
+### 觸發
+
+用戶說：
+- "分析這個網站：[URL]"
+- "這個網站是什麼設計風格？"
+- "我想做類似這個的設計 [URL]"
+- "這個網站有沒有 AI 味？"
+- "幫我解構 [URL]"
+
+---
+
+### Step V1：取得網站內容
+
+```
+if Claude Code + mcp__Claude_in_Chrome__* available:
+  → mcp__Claude_in_Chrome__navigate(url)
+  → mcp__Claude_in_Chrome__get_page_text() for text content
+  → mcp__Claude_in_Chrome__read_page() for DOM structure
+  → mcp__Claude_in_Chrome__javascript_tool("
+      const styles = getComputedStyle(document.documentElement);
+      const props = ['--color-bg','--color-ink','--color-accent','font-family','background-color'];
+      return Object.fromEntries(props.map(p => [p, styles.getPropertyValue(p)]));
+    ")
+
+elif user can paste HTML/CSS:
+  → Ask user: "請貼上網站的 HTML 或 CSS（或截圖）"
+
+else:
+  → Ask user to describe: "請描述你看到的設計：配色、字體、版型、有沒有陰影/圓角/漸層"
+```
+
+---
+
+### Step V2：識別設計風格
+
+用以下 10 個訊號，每個給 0-3 分，最高分者即識別風格：
+
+#### 訊號矩陣
+
+| 訊號 | Swiss | Magazine | Fashion | Brutalist | Type-First | Neobrutalism | Corporate | Editorial | Aurora/Glass | Minimal Float |
+|------|-------|---------|---------|-----------|-----------|-------------|---------|---------|------------|------------|
+| 無圓角 | ✓ | - | - | ✓ | ✓ | ✓ | - | - | - | - |
+| 大量留白 | ✓ | - | ✓ | - | ✓ | - | - | ✓ | - | ✓ |
+| 格線 12-col | ✓ | - | - | - | ✓ | - | ✓ | - | - | - |
+| Serif display | - | ✓ | ✓ | - | - | - | - | ✓ | - | ✓ |
+| 粗黑邊框 | - | - | - | ✓ | - | ✓ | - | - | - | - |
+| 漸層/aurora | - | - | - | - | - | - | - | - | ✓ | - |
+| backdrop-filter | - | - | - | - | - | - | - | - | ✓ | - |
+| 置中 hero | - | - | - | - | - | - | ✓ | - | ✓ | - |
+| 無圖或單圖 | ✓ | - | - | ✓ | ✓ | - | - | - | - | ✓ |
+| 全大寫標題 | - | - | - | ✓ | - | ✓ | - | - | - | - |
+
+輸出：
+```markdown
+## 🎨 風格識別
+
+**最可能：[Style Name]**（信心度：X/10）
+**次選：[Style Name]**（信心度：X/10）
+
+### 識別依據
+- [訊號1]：[在該網站觀察到的具體表現]
+- [訊號2]：...
+- [訊號3]：...
+
+### 參考比對
+與 [design-bible/examples/xxx.html] 的相似度：[描述相似點]
+```
+
+---
+
+### Step V3：抽取設計 Token
+
+從頁面 CSS / computed styles 抽取：
+
+```markdown
+## 🎨 設計 Token 抽取
+
+### 顏色系統
+| Token | 值 | 用途 |
+|-------|-----|------|
+| Background | #[hex] | 主背景 |
+| Ink / Text | #[hex] | 主文字 |
+| Accent | #[hex] | CTA / 連結 |
+| Surface | #[hex] | 卡片/區塊背景 |
+| [其他] | #[hex] | [用途] |
+
+對比驗證：
+- Body text on bg：[比例]:1 → [WCAG AA/AAA/FAIL]
+- Accent on bg：[比例]:1 → [WCAG AA/AAA/FAIL]
+
+### 字體系統
+| 用途 | 字體 | Weight | 大小 |
+|------|------|--------|------|
+| Display/H1 | [font name] | [weight] | [size] |
+| Body | [font name] | [weight] | [size] |
+| Mono/Code | [font name or none] | - | - |
+
+### 間距系統
+- Base spacing unit：[X]px
+- Section padding：[X]rem (desktop)
+- 估算 scale：[4/8/16/32 或自訂]
+
+### 邊框與圓角
+- Border radius：[值] → [符合哪個風格 token]
+- Border style：[無/細/粗/雙]
+- Box shadow：[無/輕/重]
+
+### Motion
+- 有沒有 transition：[有/無]
+- Easing 類型：[linear/ease/spring/instant]
+- Duration：[ms]
+```
+
+---
+
+### Step V4：AI Tells 診斷
+
+對照 AI Tells Blocklist，逐項檢查：
+
+```markdown
+## ⚠️ AI Tells 診斷
+
+| # | AI Tell | 狀態 | 在哪裡發現 |
+|---|---------|------|-----------|
+| 1 | 主 CTA 是 pill button (9999px) | ✅ 無 / ❌ 有 | [CSS class 或位置] |
+| 2 | Hero subtitle pill "✨ New" badge | ✅ 無 / ❌ 有 | [位置] |
+| 3 | Card backdrop-filter blur（非 glass） | ✅ 無 / ❌ 有 | - |
+| 4 | 漸層 blob 背景（非 Aurora） | ✅ 無 / ❌ 有 | - |
+| 5 | Inter + Lucide + slate 三件套 | ✅ 無 / ❌ 有 | - |
+| 6 | Hero → Trusted-by logo cloud 直接跟 | ✅ 無 / ❌ 有 | - |
+| 7 | Features 3-col card + lucide icon | ✅ 無 / ❌ 有 | - |
+| 8 | 全部置中對齊 | ✅ 無 / ❌ 有 | - |
+| 9 | `0 2px 4px rgba(0,0,0,0.1)` 萬用 shadow | ✅ 無 / ❌ 有 | - |
+| 10 | Copy：「Get started for free ✨」 | ✅ 無 / ❌ 有 | - |
+
+**AI 味指數：X/10**（10 = 純 AI template，0 = 完全無 AI tell）
+```
+
+---
+
+### Step V5：Clone 或 Counter-Design 輸出
+
+用 AskUserQuestion（或 numbered text）問：
+
+```
+你想怎麼使用這個分析？
+1. 複製這個風格 — 用同樣 token 做一個新頁面
+2. 反向設計 — 做一個「對立風格」的版本（例：把 Swiss 反做成 Magazine）
+3. 只要 token 表 — 複製配色/字體到我的項目
+4. 只要診斷報告 — 我只想知道這個網站的 AI 味
+```
+
+#### Option 1：Clone Strategy
+
+```markdown
+## 📋 Clone 策略
+
+### 核心 token（直接可用）
+```css
+:root {
+  --color-bg: [抽取的值];
+  --color-ink: [值];
+  --color-accent: [值];
+  --font-display: '[字體]', [fallback];
+  --font-body: '[字體]', [fallback];
+  --radius-md: [值];
+}
+```
+
+### 關鍵差異化技術（讓 clone 不像 clone）
+1. [字體組合差異點]
+2. [間距 scale 差異點]
+3. [版型結構差異點]
+
+### 參考元件
+- Hero：類似 [design-bible/examples/xxx.html] 的 hero 結構
+- 但使用抽取到的 token
+```
+
+#### Option 2：Counter-Design Strategy
+
+```markdown
+## 🔄 反向設計策略
+
+原網站風格：[識別出的風格]
+反向目標風格：[對應反向 — 見下表]
+
+| 原始 | 反向 |
+|------|------|
+| Swiss（冷、minimal） | Magazine（暖、editorial） |
+| Brutalist（粗） | Minimal Float（輕） |
+| Aurora（漸層、未來） | Swiss（無漸層、當下） |
+| Corporate（正式） | Neobrutalism（直白） |
+| Fashion（高冷） | Neobrutalism（大聲） |
+
+反向設計的核心策略：
+1. [顏色系統反轉點]
+2. [版型結構反轉點]
+3. [字體策略反轉點]
+4. [AI Tell 移除點]
+
+輸出：Variant A（忠實 clone）+ Variant B（反向設計）
+```
+
+---
+
+### Reverse Mode 注意事項
+
+- **不爬取、不儲存**：分析完只用於輸出，不把內容存到本地
+- **版權聲明**：抽取的 token（顏色、間距）可自由使用；字體名稱是資訊（授權另查）；程式碼不能直接 copy-paste
+- **AI 味指數謹慎解讀**：0/10 AI tell ≠ 設計好，只代表沒踩到清單；最終品質看 Step V2 識別出的風格是否到位
+- **截圖優先**：如有 Claude Preview / Chrome MCP，截圖比 DOM 文字更準確識別設計語言
+
+---
+
+## 📝 Mode 4：Copy / Microcopy 生成
+
+> 在 Mode 1 Step 3 輸出 HTML/CSS 後，或獨立使用，根據風格 + 產業生成非 AI 味的文案。
+
+### 觸發
+
+用戶說：
+- "幫我寫這個設計的 copy"
+- "hero headline 給幾個選項"
+- "CTA 按鈕文字"
+- "這個版本的 copy 太 AI 了，改掉"
+
+### 執行
+
+1. 確認已知：風格（Mode 1 已定）+ 產業（Mode 1 已定）
+2. 讀取 [design-bible/copy/copy-system.md](design-bible/copy/copy-system.md)
+3. 按該風格的「headline formula」+ 該產業的「copy pattern」生成
+
+### 輸出格式
+
+```markdown
+## ✍️ Copy 選項
+
+### Hero Headline（選 1）
+A: "[符合風格的標題 — Swiss 格式]"
+B: "[符合風格的標題 — 更強硬]"
+C: "[符合風格的標題 — 更詩意]"
+
+### Hero Subheadline（選 1，1 句話）
+"[說清楚產品做什麼，不用 adjective]"
+
+### CTA Button
+Primary: "[動詞 + 受詞，不用 Get started for free]"
+Secondary: "[次要動作]"
+
+### Features Section H2
+"[不用 Everything you need to...]"
+
+### Pricing Tier Names（如需要）
+[不用 Starter/Pro/Enterprise]
+A: [Identity-based names]
+B: [Usage-based names]
+C: [Number-based（Swiss 風格）]
+```
+
+### Anti-AI Copy Checklist 自動跑
+
+每次生成 copy 後，自動對照 [design-bible/copy/copy-system.md](design-bible/copy/copy-system.md) 的「Anti-AI Copy Checklist」，列出：
+
+```markdown
+## ✅ Copy AI Tells 檢查
+- [x] 無 ✨ emoji
+- [x] 無 "Get started for free"
+- [x] 無 "Everything you need to..."
+- [x] 無 3-adjective list
+- [x] CTA 是動詞開頭
+- [ ] ⚠️ Pricing 用 Starter — 建議改：Solo / Builder / Scale
+```
+
+---
+
+## 📚 Reference Examples
+
+當 Skill 輸出設計時，對應到 [design-bible/examples/](design-bible/examples/) 的完整 HTML 參考頁面。在 Step 3 輸出後，可提示：
+
+```markdown
+## 🔗 參考實作
+
+這個設計組合（[Style] × [Industry] × [Page Type]）有對應的完整 HTML 範例：
+→ [design-bible/examples/saas-swiss.html](design-bible/examples/saas-swiss.html)
+
+該範例中：
+- Token 命名慣例已完整
+- AI Tell 全部規避（見 HTML 內的 inline comment）
+- Mobile / tablet / desktop 三段 CSS 都有
+- WCAG AA 已驗證
+
+可作為起點直接修改，而不是從頭寫。
+```
+
+### 風格 × 範例對照
+
+| 風格 | 範例檔 | 頁面類型 |
+|------|--------|---------|
+| Swiss Editorial | [saas-swiss.html](design-bible/examples/saas-swiss.html) | SaaS landing |
+| Type-First Monochrome | [saas-type-first.html](design-bible/examples/saas-type-first.html) | SaaS landing |
+| Neobrutalism | [pricing-neobrutalism.html](design-bible/examples/pricing-neobrutalism.html) | Pricing |
+| Brutalist | [pricing-brutalist.html](design-bible/examples/pricing-brutalist.html) | Agency pricing |
+| Fashion / Luxury | [portfolio-fashion.html](design-bible/examples/portfolio-fashion.html) | Portfolio grid |
+| Magazine Longform | [editorial-magazine.html](design-bible/examples/editorial-magazine.html) | Article |
+| Aurora UI | [landing-aurora.html](design-bible/examples/landing-aurora.html) | Product landing |
+| Corporate Clean | [landing-corporate.html](design-bible/examples/landing-corporate.html) | Enterprise SaaS |
+| Minimal Float | [portfolio-minimal.html](design-bible/examples/portfolio-minimal.html) | About/Now page |
+
+---
+
 *讀取本地設計聖經：`C:\Projects\DesignSkill\data\design-bible.json`*
 *各風格詳細 markdown：`C:\Projects\DesignSkill\design-bible\styles\`*
+*Copy system：`C:\Projects\DesignSkill\design-bible\copy\copy-system.md`*
+*Reference examples：`C:\Projects\DesignSkill\design-bible\examples\`*
