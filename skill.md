@@ -95,9 +95,41 @@
 
 ---
 
-### Step 2：推薦 2-3 個風格
+### Step 2：推薦 2-3 個風格 + Mood Board
 
-根據回答，從以下 12 個風格中推薦最適合的 2-3 個，並說明每個的特點和為什麼適合他的需求：
+根據回答，從以下 17 個風格中推薦最適合的 2-3 個。每個推薦**必須附 mood board**，讓 user 在選風格前先「看到」差異：
+
+#### Mood Board 必含內容（每風格）
+
+1. **代表網站截圖**（3-5 張）— 從 `data/screenshots/` 找該風格 representative sites，列檔名給 user 看（如 `pentagram.com.jpg`, `bureauborsche.com.jpg`）
+2. **Color palette swatches** — 從 `data/design-bible.json` 該 style 的 `tokens` + `realPalettes` 列 5-8 色 hex
+3. **Typography pairing** — 從 `tokens.typographyPairings` 顯示 Display × Body 字體名
+4. **Motion 一句話** — 從 [design-bible/motion/motion-system.md](design-bible/motion/motion-system.md) 找該風格的 duration + easing 摘要
+5. **Image style 一句話** — 從 [design-bible/images/image-system.md](design-bible/images/image-system.md) 找該風格的攝影/插畫策略摘要
+
+#### Mood Board 輸出範例
+
+```markdown
+### 推薦 1：📐 Swiss Editorial
+
+**為什麼適合你**：你回答的「俐落現代 + 設計工具」直接對應 Swiss 嚴格 grid + Helvetica 哲學。
+
+**視覺 mood**
+- 代表網站：pentagram.com, bureauborsche.com, manualcreative.com
+- Palette: #fafaf7 / #0a0a0a / #2c5fff（單 accent）
+- Typography: Inter Tight 700 / Inter 400
+- Motion: 50ms cut，無 transition（Swiss 不動）
+- Images: documentary 黑白攝影，嚴格 grid 對齊
+```
+
+#### 推薦時必說的事
+
+- 為什麼適合此 user 的回答（直接 quote 他 Q1-Q4 答案）
+- 該風格的「不像 AI」核心特徵（從 style markdown 的 `不像 AI 的 3 個關鍵`）
+- 該風格的 motion 跟 image 策略（讓 user 知道整體 vibe）
+- 推薦時建議的 industry bundle 對應
+
+從以下 17 個風格中推薦最適合的 2-3 個：
 
 ---
 
@@ -1357,15 +1389,28 @@ document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
      | Toast | [design-bible/components/toast.md](design-bible/components/toast.md) |
      | Sidebar | [design-bible/components/sidebar.md](design-bible/components/sidebar.md) |
    - 輸出時：先決定**該風格出哪些元件**（看風格-元件對照表 + industry bundle 必出清單），再對每個元件**按選定框架語法**輸出程式碼（React 用 `.tsx`、Vue 用 `.vue`、Astro 用 `.astro`、純 HTML 用 `<section>` 直譯）
-5. **Accessibility 配方**（依風格客製）
+5. **Motion 規格**（依風格客製）
+   - `--motion-duration` / `--motion-easing` tokens（從 [design-bible/motion/motion-system.md](design-bible/motion/motion-system.md) 該風格段）
+   - `prefers-reduced-motion` media query 必含
+   - Scroll-trigger / parallax / spring 規則（如該風格需要）
+   - **Swiss / Brutalist 風格時：明確標註「無 motion」**
+
+6. **Image / Asset 策略**（依風格客製）
+   - 推薦 asset 類型（photography / illustration / abstract / none）
+   - Unsplash / Pexels 關鍵字（從 [design-bible/images/image-system.md](design-bible/images/image-system.md) 該風格段）
+   - Placeholder URL 給 dev mode（Lorem Picsum 模板）
+   - 禁用清單（此風格不該用的圖類型）
+   - **Performance**：`<picture>` + avif/webp + `loading="lazy"` 預設
+
+7. **Accessibility 配方**（依風格客製）
    - Focus state CSS（每個風格有獨特設計，見 [design-bible/a11y/focus-states.md](design-bible/a11y/focus-states.md)）
    - 語意標籤對照（用 `<nav> <main> <section> <article>` 不要 `<div>`，見 [design-bible/a11y/semantic-patterns.md](design-bible/a11y/semantic-patterns.md)）
    - Skip link（每個輸出必出）
    - 該風格的 ARIA 配方（如有 dropdown/modal/tabs，參考 [design-bible/a11y/aria-patterns.md](design-bible/a11y/aria-patterns.md)）
-6. **AI Tells 自我檢查報告** — 對照 Blocklist 10 條，確認沒踩到（或解鎖原因）
-7. **Accessibility self-check 報告** — 對照下方 5 項硬性 gate，任一 fail 就重產
-8. **「不像AI」的 3 個具體實作提醒**（依該風格 + constraint 客製）
-9. **推薦的參考網站**（從 `design-bible.json` 讀取該風格的 representativeSites）
+8. **AI Tells 自我檢查報告** — 對照 Blocklist 10 條，確認沒踩到（或解鎖原因）
+9. **Accessibility self-check 報告** — 對照下方 5 項硬性 gate，任一 fail 就重產
+10. **「不像AI」的 3 個具體實作提醒**（依該風格 + constraint 客製）
+11. **推薦的參考網站**（從 `design-bible.json` 讀取該風格的 representativeSites）
 
 ---
 
