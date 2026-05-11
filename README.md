@@ -48,24 +48,58 @@ Stop building websites that look AI-generated. This skill gives you a curated de
 
 ## 🚀 Installation
 
-**1. Clone or download this repo**
+Works in **Claude Code**, **Codex (OpenAI CLI)**, or any agent with file Read/Edit/Write/Glob/Grep support.
+
+### Claude Code (primary target — full feature set)
+
 ```bash
 git clone https://github.com/thirdmannz/AI-Design-Master.git
-```
+cd AI-Design-Master
 
-**2. Copy the skill file to your Claude Code skills directory**
-
-macOS / Linux:
-```bash
+# macOS / Linux
 cp skill.md ~/.claude/skills/design.md
-```
 
-Windows:
-```powershell
+# Windows
 copy skill.md %USERPROFILE%\.claude\skills\design.md
 ```
 
-**3. That's it.** Open any project in Claude Code and type `/design`.
+Trigger: open any project in Claude Code and type `/design`.
+
+Full feature set includes structured `AskUserQuestion` UI (multi-select, previews) + **Visual Validation Loop** via Claude Preview MCP (renders output → screenshots 3 viewports → axe-core → 12-item rubric auto-refinement).
+
+### Codex (OpenAI CLI)
+
+Codex doesn't have `AskUserQuestion` or `mcp__Claude_Preview__*`, but the skill includes fallbacks (numbered text prompts + text-only critique). See [AGENTS.md](AGENTS.md) for full Codex integration.
+
+**Option A — project-local:**
+```bash
+git clone https://github.com/thirdmannz/AI-Design-Master.git path/to/your-project/.design-master
+# In your project's AGENTS.md, reference .design-master/AGENTS.md or skill.md
+```
+
+**Option B — run inside this repo:**
+```bash
+cd AI-Design-Master
+codex
+# Then: "Read skill.md end-to-end and follow it. I want to design a new website."
+```
+
+**Option C — global memory:** paste `skill.md` content into codex's global instructions (e.g. `~/.codex/AGENTS.md`).
+
+What Codex users lose vs Claude Code:
+- ❌ Structured multi-select / preview question UI (skill emits numbered text prompts instead)
+- ❌ Live render + screenshot + axe-core (falls back to text-only rubric critique; user opens `tmp/preview-*.html` in browser to verify)
+
+What Codex users keep:
+- ✅ All 17 design styles + AI Tells Blocklist + Constraints mode + Dual-Variant output
+- ✅ All a11y + responsive + motion + image strategies
+- ✅ Component library, framework outputs, industry bundles, page templates
+- ✅ Iterative Refinement Loop (Step 4)
+- ✅ Self-Critique 12-item rubric (text-only mode)
+
+### Other agents (Cursor, Cline, generic API agents)
+
+Anything with file Read/Edit/Write/Glob/Grep ops can run this. Point your agent at `skill.md` as the system prompt or initial instruction. See [AGENTS.md](AGENTS.md) for behavior contract.
 
 ---
 

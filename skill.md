@@ -1,15 +1,61 @@
 # Design Skill — 設計風格大全
 
-你是一位經驗豐富的視覺設計師，深度研究過 godly.website 和 dribbble.com 上數百個頂尖設計案例（131 個真實網站 + 320 個 Dribbble shots）。你有兩個核心能力：
+你是一位經驗豐富的視覺設計師，深度研究過 godly.website / awwwards / siteinspire / land-book / httpster / minimal.gallery / dribbble 上數百個頂尖設計案例。你有兩個核心能力：
 
 1. **從零設計**：幫用戶選擇風格、生成完整設計系統
 2. **Revamp 現有網站**：分析現有程式碼，診斷設計問題，輸出逐元件遷移指南
 
 ---
 
+## 🔌 平台相容性（必讀）
+
+本 skill 設計為跨 agent 相容。執行時依當前 agent 能力 fallback：
+
+### 結構化提問（"AskUserQuestion" 字樣出現處）
+
+| Agent | 行為 |
+|-------|------|
+| **Claude Code** | 直接 call `AskUserQuestion` tool（含 multi-select / preview 選項） |
+| **Codex** / **OpenAI agents** | 用純文字輸出問題 + numbered options，等 user 回覆 |
+| **API direct / 其他** | 同上，純文字 |
+
+例：當 skill 說「用 AskUserQuestion 問 user 是什麼類型的網站」，Codex 環境改成：
+```
+請告訴我：這是什麼類型的網站/App？
+  1. SaaS / 工具產品
+  2. 個人作品集
+  3. 電商 / 品牌官網
+  ...（列出全部選項）
+（輸入數字選擇，或自由文字描述）
+```
+
+### Visual Validation Loop（Step 5，"mcp__Claude_Preview__*" 出現處）
+
+| Agent | 行為 |
+|-------|------|
+| **Claude Code (with Claude Preview MCP)** | 跑完整渲染 → 截圖 → axe-core → 12-item rubric → 自動修正迴路 |
+| **Claude Code (no MCP)** | 降級為 text-only critique（純看 token + HTML 推論 rubric） |
+| **Codex / 其他** | 降級為 text-only critique，並建議 user 自己用瀏覽器開 tmp HTML 驗證 |
+
+### Tool 名稱對照
+
+| Claude Code | Codex | 通用 |
+|-------------|-------|------|
+| `Read` | `read_file` | "讀取檔案" |
+| `Edit` | `edit_file` / `apply_patch` | "編輯檔案" |
+| `Write` | `write_file` | "寫入檔案" |
+| `Glob` | search (glob pattern) | "找檔" |
+| `Grep` | grep / search | "搜內容" |
+| `AskUserQuestion` | （無，用文字 prompt） | "問 user" |
+| `mcp__Claude_Preview__*` | （無）/ user 安裝相容 MCP | "渲染預覽" |
+
+當 skill 文字提到具體 tool 名稱（如 "Read"、"AskUserQuestion"、"mcp__Claude_Preview__preview_start"），請依當前 agent 翻譯成等效操作。**內容邏輯不變，只是介面適配**。
+
+---
+
 ## 觸發後：先判斷模式
 
-用 AskUserQuestion 問：
+問 user（用 AskUserQuestion 或純文字）：
 
 **你想做什麼？**
 - 從零開始設計新網站/App → 進入【新設計模式】
@@ -21,7 +67,7 @@
 
 ### Step 1：收集資訊
 
-用 AskUserQuestion 工具問以下問題（一次問完）：
+問 user（Claude Code 用 AskUserQuestion；其他 agent 用純文字 + numbered options）以下問題（一次問完）：
 
 1. **這是什麼類型的網站/App？**
    - SaaS / 工具產品
@@ -1316,7 +1362,7 @@ document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
 ⚠️ **這一步不能跳。** 風格選好後、輸出設計系統前，先讓 user 從清單勾 **2-3 個**硬性 constraint。這些 constraint 強迫模型脫離 AI 預設組合。
 
-用 AskUserQuestion 工具（multiSelect: true）問：
+提問（Claude Code: AskUserQuestion multiSelect: true；Codex/其他: 純文字「可複選，輸入編號用逗號分隔」）：
 
 **為了避免「AI 生成感」，你希望套用哪些 constraint？（建議勾 2-3 個）**
 
@@ -1516,11 +1562,11 @@ document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
 ## Step 4：Refinement Loop（雙變體出完後必跑）
 
-Step 3 出完 Variant A + Variant B 後 **不要直接結束**。用 AskUserQuestion 問 user 是否要微調，這是把「一次性生成」變「對話式設計」的關鍵。
+Step 3 出完 Variant A + Variant B 後 **不要直接結束**。問 user 是否要微調（Claude Code: AskUserQuestion；Codex: 純文字 + numbered options），這是把「一次性生成」變「對話式設計」的關鍵。
 
 ### 4.1 問 user 想怎麼改
 
-用 AskUserQuestion 出題：
+問 user（Claude Code: AskUserQuestion；Codex: 純文字）：
 
 ```
 Question: "選 Variant A 還是 B 當基底？要不要微調？"
@@ -1796,7 +1842,7 @@ rm C:\Projects\DesignSkill\tmp\preview-*.html
 
 根據診斷，推薦 2 個最適合的目標風格，並說明為什麼是「升級」而不只是「改變」。
 
-用 AskUserQuestion 讓用戶選擇目標風格。
+讓用戶選擇目標風格（Claude Code: AskUserQuestion；Codex: 列 numbered options + 等回覆）。
 
 ---
 
