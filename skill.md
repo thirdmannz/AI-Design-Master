@@ -53,6 +53,46 @@
    - 亮色為主（light mode）
    - 都可以，用推薦的
 
+5. **想用什麼框架輸出？**
+   - React + Tailwind（推薦，shadcn/ui 對齊）
+   - Vue + Tailwind
+   - Svelte (4/5)
+   - Astro（marketing / blog / docs 最佳）
+   - Plain HTML + CSS（最 a11y、最快）
+
+6. **是否需要多頁面？**（單選）
+   - 只要 1 個頁面 / hero（最快）
+   - 需要 2-3 個關鍵頁（home + pricing + about 等）
+   - 需要完整網站（5+ pages，含 docs / blog）
+
+### Step 1.5：載入對應的 industry bundle + framework reference
+
+依 Q1 回答，**主動 read** 對應的 industry bundle markdown 取得該產業的元件清單跟風格推薦：
+
+| Q1 答案 | 載入檔 |
+|---------|--------|
+| SaaS / 工具 | [design-bible/industry/saas.md](design-bible/industry/saas.md) |
+| 電商 / 品牌 | [design-bible/industry/ecommerce.md](design-bible/industry/ecommerce.md) |
+| 媒體 / 內容 / 部落格 | [design-bible/industry/editorial.md](design-bible/industry/editorial.md) |
+| 個人作品集 | [design-bible/industry/portfolio.md](design-bible/industry/portfolio.md) |
+| 文件 / 開發者工具 | [design-bible/industry/docs.md](design-bible/industry/docs.md) |
+| 其他 / 企業 / 遊戲 | 走通用流程，不載 industry bundle |
+
+依 Q5 回答，**主動 read** 對應的 framework reference：
+
+| Q5 答案 | 載入檔 |
+|---------|--------|
+| React + Tailwind | [design-bible/frameworks/react-tailwind.md](design-bible/frameworks/react-tailwind.md) |
+| Vue + Tailwind | [design-bible/frameworks/vue-tailwind.md](design-bible/frameworks/vue-tailwind.md) |
+| Svelte | [design-bible/frameworks/svelte.md](design-bible/frameworks/svelte.md) |
+| Astro | [design-bible/frameworks/astro.md](design-bible/frameworks/astro.md) |
+| Plain HTML + CSS | [design-bible/frameworks/html-css.md](design-bible/frameworks/html-css.md) |
+
+依 Q6 多頁需求，後續 Step 3 輸出範圍：
+- **單頁**：只出 hero + 1-2 個 supporting section
+- **2-3 頁**：問 user 是哪幾個 page，每頁出完整骨架
+- **完整網站**：問 user prioritize 哪 3 頁先做，避免一次 dump 太多
+
 ---
 
 ### Step 2：推薦 2-3 個風格
@@ -1290,9 +1330,33 @@ document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 1. **完整 CSS Custom Properties**（完整 `:root {}` 區塊，依風格 + constraint 調整）
 2. **Google Fonts 引入連結**
 3. **Tailwind config 對應版本**（如果用 Tailwind）
-4. **元件 CSS — 依「風格-元件對照表」產出**（⚠️ 不要用統一 Hero/Nav/Card/Button/Footer 五件套！）
+4. **元件程式碼 — 依「風格-元件對照表」+ 選定框架產出**（⚠️ 不要用統一 Hero/Nav/Card/Button/Footer 五件套！）
    - 每個元件**必須包含 mobile + tablet + desktop 三段 CSS**（mobile-first）
    - 詳細規則見 [design-bible/responsive/breakpoints.md](design-bible/responsive/breakpoints.md) 的「每風格的 mobile 適配規則」
+   - **依該元件對應檔載入規格**（每元件都有獨立檔，含 canonical HTML/CSS + 17 風格變體 + a11y + 框架轉換重點）：
+     | 元件 | 檔案 |
+     |------|------|
+     | Hero | [design-bible/components/hero.md](design-bible/components/hero.md) |
+     | Nav | [design-bible/components/nav.md](design-bible/components/nav.md) |
+     | Features | [design-bible/components/features.md](design-bible/components/features.md) |
+     | Pricing | [design-bible/components/pricing.md](design-bible/components/pricing.md) |
+     | Testimonials | [design-bible/components/testimonials.md](design-bible/components/testimonials.md) |
+     | FAQ | [design-bible/components/faq.md](design-bible/components/faq.md) |
+     | CTA | [design-bible/components/cta.md](design-bible/components/cta.md) |
+     | Footer | [design-bible/components/footer.md](design-bible/components/footer.md) |
+     | Form | [design-bible/components/form.md](design-bible/components/form.md) |
+     | Card | [design-bible/components/card.md](design-bible/components/card.md) |
+     | Table | [design-bible/components/table.md](design-bible/components/table.md) |
+     | Stats | [design-bible/components/stats.md](design-bible/components/stats.md) |
+     | Logo Cloud | [design-bible/components/logo-cloud.md](design-bible/components/logo-cloud.md) |
+     | Blog | [design-bible/components/blog.md](design-bible/components/blog.md) |
+     | Empty State | [design-bible/components/empty-state.md](design-bible/components/empty-state.md) |
+     | Loading | [design-bible/components/loading.md](design-bible/components/loading.md) |
+     | 404 | [design-bible/components/404.md](design-bible/components/404.md) |
+     | Modal | [design-bible/components/modal.md](design-bible/components/modal.md) |
+     | Toast | [design-bible/components/toast.md](design-bible/components/toast.md) |
+     | Sidebar | [design-bible/components/sidebar.md](design-bible/components/sidebar.md) |
+   - 輸出時：先決定**該風格出哪些元件**（看風格-元件對照表 + industry bundle 必出清單），再對每個元件**按選定框架語法**輸出程式碼（React 用 `.tsx`、Vue 用 `.vue`、Astro 用 `.astro`、純 HTML 用 `<section>` 直譯）
 5. **Accessibility 配方**（依風格客製）
    - Focus state CSS（每個風格有獨特設計，見 [design-bible/a11y/focus-states.md](design-bible/a11y/focus-states.md)）
    - 語意標籤對照（用 `<nav> <main> <section> <article>` 不要 `<div>`，見 [design-bible/a11y/semantic-patterns.md](design-bible/a11y/semantic-patterns.md)）
