@@ -1609,6 +1609,135 @@ User 選定案後：
 
 ---
 
+## Step 5：Visual Validation Loop（最大護城河）
+
+⭐ **這是 skill 的核心差異化** — 其他 prompt-only skill 沒辦法做。User 確認最終版後 (Step 4.5)，自動跑視覺驗證迴路：
+
+### 5.1 渲染輸出
+
+1. 把最終版 HTML/CSS 寫到 `C:\Projects\DesignSkill\tmp\preview-<timestamp>.html`
+2. 用 `mcp__Claude_Preview__preview_start` 啟動該檔
+3. 等預覽 ready
+
+### 5.2 截圖 3 個 viewport
+
+```
+mcp__Claude_Preview__preview_screenshot (375×667)   → mobile
+mcp__Claude_Preview__preview_screenshot (768×1024)  → tablet
+mcp__Claude_Preview__preview_screenshot (1280×800)  → desktop
+```
+
+### 5.3 跑自動 a11y 檢測
+
+用 `mcp__Claude_Preview__preview_eval` 注入並執行：
+
+```javascript
+// 1. axe-core injection
+await import('https://cdn.jsdelivr.net/npm/axe-core@latest/+esm');
+const results = await axe.run();
+return {
+  violations: results.violations.map(v => ({
+    rule: v.id,
+    impact: v.impact,
+    nodes: v.nodes.length,
+    help: v.help
+  }))
+};
+```
+
+### 5.4 視覺自評（依 rubric）
+
+對照 [design-bible/critique/rubric.md](design-bible/critique/rubric.md) 12 項評分。看截圖 + 看 a11y 結果 + 看 token 配置。
+
+### 5.5 自動修正迴路（max 3 cycles）
+
+如果 fail ≥ 3 項：
+
+```
+cycle = 0
+while (fail_count >= 3 && cycle < 3):
+  identify_failing_items()        # 列出哪些 rubric 項 fail
+  generate_minimal_patch()        # 只改 fail 的部分（diff 形式）
+  apply_patch_to_tmp_html()
+  re_render()
+  screenshot + axe-core 再跑
+  re_score()
+  cycle += 1
+
+if cycle == 3 && fail_count >= 3:
+  warn_user("tried 3 refinement cycles, still failing on: [list]")
+  output_partial + manual_review_suggestion
+```
+
+### 5.6 Chrome MCP 跨瀏覽器驗證（選用）
+
+對 Revamp mode 特別重要：
+
+```
+mcp__Claude_in_Chrome__navigate(url=<原網站>)
+mcp__Claude_in_Chrome__navigate(url=<改造後>)
+取得 page text + 視覺差異
+```
+
+Side-by-side 對照 user 看了直接判斷。
+
+### 5.7 輸出「設計驗證報告」
+
+```markdown
+## 🎯 設計驗證報告
+
+### 📱 三段截圖
+
+[Mobile 375×667 screenshot]
+[Tablet 768×1024 screenshot]
+[Desktop 1280×800 screenshot]
+
+### ✅ Rubric 12 項自評
+
+[12 項 table，見 design-bible/critique/rubric.md 的輸出格式]
+
+**總分：11/12**
+
+### ♿ Accessibility 報告（axe-core）
+
+- Violations: 0
+- Passes: 47
+- Warnings: 1 (color-contrast on `.muted-text` is 4.4:1, just below AA)
+
+### 🔄 自動修正紀錄
+
+Cycle 1: Hero alignment 從 center 改 left（因為選 Swiss Editorial 風格）
+Cycle 2: 加上 `--motion-easing` token，原本缺
+Cycle 3: 提升 `--color-ink` 從 #1a1a1a → #0a0a0a（contrast 從 4.4 → 7:1）
+
+### 📝 建議 user 手動驗的 3 件事
+
+1. Hero 文案是否真的需要 25 字（建議 ≤ 12 字 punch line）
+2. Pricing 是否需要 enterprise tier（看商業模式）
+3. 攝影是否要 commission 或先用 Unsplash placeholder
+```
+
+### 5.8 失敗 fallback
+
+如果 `mcp__Claude_Preview__preview_start` 不可用（e.g. user 環境沒有 MCP）：
+- 降級為 **text-only self-critique**（純看 token + HTML 文字推論 rubric）
+- 仍然輸出評分報告，但 disclaim「未經實際渲染驗證」
+- 建議 user 自己用瀏覽器開檔驗證
+
+### 5.9 預覽檔清理
+
+完成後可選清理：
+
+```bash
+# 保留檔案供 user 參考（不要自動刪）
+# 或 user 確認後手動：
+rm C:\Projects\DesignSkill\tmp\preview-*.html
+```
+
+`tmp/` 應該在 `.gitignore` 內（不 commit 預覽暫存）。
+
+---
+
 ## 【Revamp 模式】
 
 ### Step R1：掃描現有程式碼

@@ -10,14 +10,39 @@ Stop building websites that look AI-generated. This skill gives you a curated de
 
 ## ✨ Features
 
+### Core (M0 baseline)
 - **17 Design Styles** — from Swiss Editorial and Magazine Longform to Brutalist and Type-First Monochrome, each with full CSS custom properties, font pairings, and **per-style component snippets** (no more flattening every style into the same Hero+Nav+Card+Button+Footer template)
 - **AI Tells Blocklist** — 10 hard-banned patterns the model must avoid by default: pill buttons everywhere, Hero+subtitle-pill, backdrop-blur cards, Inter+Lucide+slate combo, gradient blobs, identical 3-column features grids, etc.
 - **Constraints / Anti-AI Mode** — pick 2-3 constraints (no rounded corners, asymmetric layout, two-color palette, type-first hierarchy…) to break out of AI defaults
 - **Dual-Variant Output** — every design system ships in two flavors: a conservative Variant A and an experimental Variant B that intentionally violates at least one AI default
 - **AI-tell-heavy styles gated** — Glassmorphism, Aurora UI, Claymorphism, Bento Grid are only recommended when you explicitly ask for "AI / futuristic / glass" feel. The default route never goes there.
-- **New Design Mode** — answer 4 questions + pick constraints, get two complete design systems to compare
-- **Revamp Mode** — paste your existing codebase, get a diagnosis + step-by-step migration guide
-- **Framework-agnostic** — works with React, Vue, Next.js, plain HTML/CSS, or Tailwind
+
+### Professional layer (M1 — Quality Foundations)
+- **Accessibility built-in** — WCAG AA contrast required, semantic HTML enforced, ARIA patterns, per-style focus rings, keyboard nav with skip links. 5 hard a11y gates run before every output.
+- **Responsive system** — mobile-first 3-breakpoint CSS required for every component; per-style mobile adaptation rules (Kinetic disables parallax on mobile, Glassmorphism drops blur on mobile, etc.)
+- **Iterative Refinement Loop (Step 4)** — after dual variants, user can request local patches ("swap accent color", "make hero asymmetric") and skill emits diffs not full re-renders. Max 5 cycles before suggesting brief revisit.
+
+### Production-ready outputs (M2 — Component × Framework × Industry)
+- **20 component library** — Hero, Nav, Features, Pricing, Testimonials, FAQ, CTA, Footer, Form, Card, Table, Stats, Logo Cloud, Blog (index/post), Empty state, Loading/Skeleton, 404, Modal, Toast, Sidebar. Each with canonical HTML+CSS, 17-style variation matrix, a11y checklist, framework conversion notes.
+- **5 framework outputs** — React+Tailwind (shadcn-aligned), Vue+Tailwind, Svelte 5, Astro, plain HTML+CSS. User picks output format in Step 1.
+- **5 industry bundles** — SaaS, E-commerce, Editorial, Portfolio, Docs. Each bundle pre-defines required components, recommended styles, and industry-specific AI tells to avoid.
+
+### Sensory layer (M3 — Motion + Image)
+- **Motion design system** — per-style motion language: Swiss/Brutalist no-motion, Aurora spring, Kinetic parallax, Type-First letter stagger, Magazine slow fade. Universal `prefers-reduced-motion` respect. Duration scale + easing tokens.
+- **Image/Asset strategy** — per-style photography/illustration/abstract/none guidance with Unsplash keywords, placeholder URLs, performance defaults (`<picture>` + avif/webp + lazy loading)
+- **Mood board generation** — Step 2 recommends styles with mood boards (screenshots + palette swatches + typography sample + motion line + image style line)
+
+### Multi-page coherence (M4)
+- **10 page-level templates** — Homepage, Pricing, About, Blog Index/Post, Docs, Landing, 404, Auth, Checkout. Each with anatomy + component composition + per-style adaptations.
+- **Revamp R4 completion** — 10 substeps: token diff, component migration map, AI Tells risk warnings, rollback guide with git revert commands, design system integration table. Multi-phase commits supported.
+
+### Visual self-validation (M5 — the moat)
+- **Step 5: Visual Validation Loop** — uses **Claude Preview MCP** to render output → screenshot 3 viewports → run axe-core → self-score against 12-item rubric → auto-refine (max 3 cycles) if ≥3 items fail
+- **Self-Critique Rubric** — 12 hard gates: AI Tells / token consistency / hero alignment / WCAG AA / focus visible / forbidden components / type hierarchy / whitespace / color count / motion fit / mobile / "studio-quality" feel
+- **Design validation report** — 3 viewports + 12-item scorecard + axe-core report + refinement log + manual review suggestions
+
+### Framework-agnostic + No mandatory build
+- Works with React, Vue, Svelte, Astro, plain HTML/CSS, or Tailwind
 
 ---
 
@@ -159,14 +184,62 @@ The skill **does not** emit Hero+Nav+Card+Button+Footer for every style. Each st
 AI-Design-Master/
 ├── skill.md                          ← Install this to ~/.claude/skills/design.md
 ├── design-bible/
-│   └── styles/                       ← 17 style references (12 original + 5 new anti-AI)
-│       ├── swiss_editorial.md        ⭐NEW
-│       ├── magazine_longform.md      ⭐NEW
-│       ├── fashion_luxury.md         ⭐NEW
-│       ├── brutalist.md              ⭐NEW
-│       ├── type_first_mono.md        ⭐NEW
-│       ├── glassmorphism.md
-│       └── ... (12 more)
+│   ├── styles/                       ← 17 style references (12 original + 5 new anti-AI)
+│   │   ├── swiss_editorial.md
+│   │   ├── magazine_longform.md
+│   │   ├── fashion_luxury.md
+│   │   ├── brutalist.md
+│   │   ├── type_first_mono.md
+│   │   └── ... (12 more)
+│   ├── a11y/                         ← M1: Accessibility reference
+│   │   ├── contrast-rules.md
+│   │   ├── semantic-patterns.md
+│   │   ├── aria-patterns.md
+│   │   ├── focus-states.md           ← Per-style focus CSS for all 17 styles
+│   │   └── keyboard-nav.md
+│   ├── responsive/                   ← M1: Mobile-first breakpoint system
+│   │   └── breakpoints.md            ← Per-style mobile adaptation rules
+│   ├── components/                   ← M2: 20 component library
+│   │   ├── hero.md
+│   │   ├── nav.md
+│   │   ├── features.md
+│   │   ├── pricing.md
+│   │   ├── testimonials.md
+│   │   ├── faq.md
+│   │   ├── cta.md
+│   │   ├── footer.md
+│   │   ├── form.md
+│   │   ├── card.md
+│   │   ├── table.md
+│   │   ├── stats.md
+│   │   ├── logo-cloud.md
+│   │   ├── blog.md
+│   │   ├── empty-state.md
+│   │   ├── loading.md
+│   │   ├── 404.md
+│   │   ├── modal.md
+│   │   ├── toast.md
+│   │   └── sidebar.md
+│   ├── frameworks/                   ← M2: 5 framework outputs
+│   │   ├── react-tailwind.md
+│   │   ├── vue-tailwind.md
+│   │   ├── svelte.md
+│   │   ├── astro.md
+│   │   └── html-css.md
+│   ├── industry/                     ← M2: 5 industry bundles
+│   │   ├── saas.md
+│   │   ├── ecommerce.md
+│   │   ├── editorial.md
+│   │   ├── portfolio.md
+│   │   └── docs.md
+│   ├── motion/                       ← M3: Per-style motion language
+│   │   └── motion-system.md
+│   ├── images/                       ← M3: Per-style image/asset strategy
+│   │   └── image-system.md
+│   ├── pages/                        ← M4: 10 page-level templates
+│   │   └── page-templates.md
+│   └── critique/                     ← M5: Self-validation rubric
+│       └── rubric.md
 ├── scraper/                          ← Source extractors for style references
 │   ├── lib/extract-tokens.js         ← Shared token extraction
 │   ├── scrape-godly.js
