@@ -15,9 +15,9 @@
 - [Brisbane Web Developer | Carl Beaverson](https://carlbeaverson.com/?ref=godly) (godly)
 - [Betwin188: Situs Slot Gacor Hari Ini Link Resmi RTP Tinggi & Jackpot Mudah Menang](https://magician.design/?ref=godly) (godly)
 - [Vitra](https://dribbble.com/shots/27333147-Vitra) (dribbble)
+- [Cute Bull Logo](https://dribbble.com/shots/27334031-Cute-Bull-Logo) (dribbble)
 - [Logo Design for Construction FinTech](https://dribbble.com/shots/27077669-Logo-Design-for-Construction-FinTech) (dribbble)
-- [atomicvibe Logo Archive 01](https://dribbble.com/shots/27332138-atomicvibe-Logo-Archive-01) (dribbble)
-- [Mile Square Cafe Identity Design](https://dribbble.com/shots/27329616-Mile-Square-Cafe-Identity-Design) (dribbble)
+- [10 years retrospective](https://dribbble.com/shots/27331353-10-years-retrospective) (dribbble)
 
 ---
 
@@ -147,6 +147,36 @@ rgb(14, 15, 17)  rgb(0, 0, 0)  rgb(255, 255, 255)  rgb(182, 171, 255)  rgb(238, 
 1. 用 letter-spacing: 0.15em 在小標籤和按鈕上，製造高級雜誌感
 2. 金色不要用純 #FFD700，用 #d4af37（古金）更高端
 3. 分隔線用 1px solid rgba(gold,0.2) 而非實線 — 精品的邊界是暗示，不是宣告
+
+---
+
+## Accessibility 配方
+
+**對比策略**：Dark bg + gold accent 容易 fail — gold 對黑通常 ~3.5:1，需 dim down 或加 letter-spacing 視覺加重。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 16px rgba(var(--color-accent-rgb), 0.5);
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 

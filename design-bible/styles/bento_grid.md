@@ -6,10 +6,10 @@
 
 ## 代表網站 (從 Godly / Dribbble 提取)
 
+- [Workflow Automation Builder UIUX Design | SaaS Drag & Drop](https://dribbble.com/shots/27333638-Workflow-Automation-Builder-UIUX-Design-SaaS-Drag-Drop) (dribbble)
+- [Fleety — TMS Dashboard v2](https://dribbble.com/shots/27332533-Fleety-TMS-Dashboard-v2) (dribbble)
 - [Carevia — Wellness Pharmacy Mobile App](https://dribbble.com/shots/27333332-Carevia-Wellness-Pharmacy-Mobile-App) (dribbble)
-- [Bidirectional Slider](https://dribbble.com/shots/27333850-Bidirectional-Slider) (dribbble)
-- [Dark Dashboard Finance UI](https://dribbble.com/shots/27332491-Dark-Dashboard-Finance-UI) (dribbble)
-- [Billing — Untitled UI](https://dribbble.com/shots/27331481-Billing-Untitled-UI) (dribbble)
+- [Running Mobile App](https://dribbble.com/shots/27320453-Running-Mobile-App) (dribbble)
 
 ---
 
@@ -57,7 +57,7 @@ module.exports = {
 ```
 
 ### 從真實網站提取的色盤
-#100100100  #e0e0e0  #202020  #808060  #404020  #a0a080  #202020  #404040  #100100100  #606060  #e0e0e0  #808080
+#100100100  #e0e0e0  #c0c0c0  #e0e0100  #100e0100  #a0a0a0  #100100100  #e0e0e0  #e0e0100  #c0e0e0  #c0c0e0  #e0100100
 
 ---
 
@@ -136,6 +136,36 @@ module.exports = {
 1. 不同 grid cell 設定不同 background-color，製造色彩層次而不是全白
 2. 某些 cell 要橫跨兩欄 (col-span-2)，打破完美對稱感
 3. 每個 card 的 padding 要一致，但 font-size 可以不同 — 製造資訊層次
+
+---
+
+## Accessibility 配方
+
+**對比策略**：Card 內 text 對 card bg ≥ 4.5:1（不是對 page bg）。每格獨立檢查。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+*:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: -2px;
+  border-radius: inherit;
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 

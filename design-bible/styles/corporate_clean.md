@@ -14,9 +14,10 @@
 - [Duties.xyz](https://www.duties.xyz/?ref=godly) (godly)
 - [Endless](https://endless.design/?ref=godly) (godly)
 - [Superpower](https://superpower.com/?ref=godly) (godly)
-- [Education Management Web Design](https://dribbble.com/shots/27320617-Education-Management-Web-Design) (dribbble)
 - [Website Design: Call to Action (CTA) for AI-Powered Platform](https://dribbble.com/shots/27332273-Website-Design-Call-to-Action-CTA-for-AI-Powered-Platform) (dribbble)
-- [Solvara - Yoga Landing Page Design](https://dribbble.com/shots/27333615-Solvara-Yoga-Landing-Page-Design) (dribbble)
+- [Landing Page Design for an Open-Source AI Tool](https://dribbble.com/shots/27331769-Landing-Page-Design-for-an-Open-Source-AI-Tool) (dribbble)
+- [HR SaaS Dashboard – Talent Recruitment Platform Web UI](https://dribbble.com/shots/27321366-HR-SaaS-Dashboard-Talent-Recruitment-Platform-Web-UI) (dribbble)
+- [Landing Page Design for Logistics Company](https://dribbble.com/shots/27328985-Landing-Page-Design-for-Logistics-Company) (dribbble)
 
 ---
 
@@ -147,6 +148,36 @@ rgb(1, 3, 20)  rgb(223, 225, 244)  rgb(255, 255, 255)  rgba(255, 255, 255, 0.8) 
 1. 用 3 層陰影（xs, sm, md）製造視覺層次，不同 elevation 的元素用不同陰影
 2. accent 色只用在真正重要的 CTA 上，其他全部靠 gray scale
 3. 表格和列表的每隔一行背景用 #f8fafc，但只差 2-3% 亮度 — 很細微但很專業
+
+---
+
+## Accessibility 配方
+
+**對比策略**：品牌色當 accent 時，先驗對比；不夠就用 brand-on-dark 變體。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 

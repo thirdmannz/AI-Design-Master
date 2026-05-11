@@ -1291,9 +1291,53 @@ document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 2. **Google Fonts 引入連結**
 3. **Tailwind config 對應版本**（如果用 Tailwind）
 4. **元件 CSS — 依「風格-元件對照表」產出**（⚠️ 不要用統一 Hero/Nav/Card/Button/Footer 五件套！）
-5. **AI Tells 自我檢查報告** — 對照 Blocklist 10 條，確認沒踩到（或解鎖原因）
-6. **「不像AI」的 3 個具體實作提醒**（依該風格 + constraint 客製）
-7. **推薦的參考網站**（從 `design-bible.json` 讀取該風格的 representativeSites）
+   - 每個元件**必須包含 mobile + tablet + desktop 三段 CSS**（mobile-first）
+   - 詳細規則見 [design-bible/responsive/breakpoints.md](design-bible/responsive/breakpoints.md) 的「每風格的 mobile 適配規則」
+5. **Accessibility 配方**（依風格客製）
+   - Focus state CSS（每個風格有獨特設計，見 [design-bible/a11y/focus-states.md](design-bible/a11y/focus-states.md)）
+   - 語意標籤對照（用 `<nav> <main> <section> <article>` 不要 `<div>`，見 [design-bible/a11y/semantic-patterns.md](design-bible/a11y/semantic-patterns.md)）
+   - Skip link（每個輸出必出）
+   - 該風格的 ARIA 配方（如有 dropdown/modal/tabs，參考 [design-bible/a11y/aria-patterns.md](design-bible/a11y/aria-patterns.md)）
+6. **AI Tells 自我檢查報告** — 對照 Blocklist 10 條，確認沒踩到（或解鎖原因）
+7. **Accessibility self-check 報告** — 對照下方 5 項硬性 gate，任一 fail 就重產
+8. **「不像AI」的 3 個具體實作提醒**（依該風格 + constraint 客製）
+9. **推薦的參考網站**（從 `design-bible.json` 讀取該風格的 representativeSites）
+
+---
+
+### Accessibility Self-Check（硬性 5 項，全 pass 才能輸出）
+
+輸出前在腦中跑一次：
+
+1. **對比 (contrast)**：所有 body text 對 bg ≥ 4.5:1，所有 large text 對 bg ≥ 3:1。Accent 色用在 text 時也要 ≥ 3:1。詳見 [design-bible/a11y/contrast-rules.md](design-bible/a11y/contrast-rules.md)。
+2. **焦點可見 (focus-visible)**：所有 button / link / input / details 有 `:focus-visible` 樣式，沒有裸 `outline: none`。風格對應的 focus ring 見 [design-bible/a11y/focus-states.md](design-bible/a11y/focus-states.md)。
+3. **語意 HTML (semantic)**：用 `<nav> <main> <section> <article> <h1>` 而不是 `<div>` soup。一頁只一個 `<h1>`，heading 階層不跳階。
+4. **圖片 alt (alt text)**：所有 `<img>` 有 `alt` 屬性（裝飾性寫 `alt=""`，內容性寫描述）。
+5. **鍵盤可達 (keyboard nav)**：必出 skip link，所有互動元件 Tab 可達，Modal/dropdown 用 ESC 關，沒有 `tabindex > 0`。詳見 [design-bible/a11y/keyboard-nav.md](design-bible/a11y/keyboard-nav.md)。
+
+任一 fail：**重產輸出，不可妥協**。a11y 不是 nice-to-have，是專業級門檻。
+
+---
+
+### Mobile-First CSS 要求（每個元件必出三段）
+
+```css
+/* 1. Mobile (預設，無 media query) */
+.element { /* mobile values */ }
+
+/* 2. Tablet (md, ≥ 768px) */
+@media (min-width: 768px) { .element { /* tablet adjustments */ } }
+
+/* 3. Desktop (lg, ≥ 1024px) */
+@media (min-width: 1024px) { .element { /* desktop final */ } }
+```
+
+關鍵規則：
+- Font-size 用 `clamp(min, vw, max)` 而不是 fixed
+- Touch target ≥ 44×44px
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Nav 在 < md 變漢堡或下拉
+- 風格特例（Kinetic 在 mobile 禁 parallax / 3D Immersive 在 mobile 改 static poster / Glassmorphism 在 mobile 改 solid bg）必須遵守 [design-bible/responsive/breakpoints.md](design-bible/responsive/breakpoints.md)
 
 ---
 
@@ -1360,6 +1404,99 @@ document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 4. user 反問「為什麼不推 Glass/Aurora？」→ 老實說：「這兩個是當代 AI codegen 的視覺指紋，主動推會讓你的網站像被 AI 生成。如果你刻意要這個語言當然 OK，但通常你不會想要。」
 
 ---
+
+## Step 4：Refinement Loop（雙變體出完後必跑）
+
+Step 3 出完 Variant A + Variant B 後 **不要直接結束**。用 AskUserQuestion 問 user 是否要微調，這是把「一次性生成」變「對話式設計」的關鍵。
+
+### 4.1 問 user 想怎麼改
+
+用 AskUserQuestion 出題：
+
+```
+Question: "選 Variant A 還是 B 當基底？要不要微調？"
+Options:
+1. A 就好，直接定案
+2. B 就好，直接定案
+3. A 為基底，但要調整 → 進入 4.2
+4. B 為基底，但要調整 → 進入 4.2
+5. 兩個都不滿意 → 回 Step 2 重選風格
+```
+
+### 4.2 第二題：調哪裡
+
+如果 user 要調整，第二題問具體方向（multiSelect: true）：
+
+```
+Question: "想調哪些地方？(可複選)"
+Options:
+1. 換 accent 色 → 進入 4.3
+2. 換字體（Display/Body 任一） → 進入 4.3
+3. Hero 改不對稱 / 改置中 → 進入 4.3
+4. 整體再簡 / 再華麗 → 進入 4.3
+5. 套用 / 取消 Constraints（連回 Step 2.5） → 進入 4.3
+6. 換某個元件的設計（Pricing / Card / Form 等） → 進入 4.3
+7. 加 / 減 motion → 進入 4.3
+8. 自由文字描述 → 進入 4.3
+```
+
+### 4.3 局部 Patch（不重啟整個流程）
+
+依 user 選項，**只改該段 CSS / 元件**，輸出 **diff 而非完整重產**。
+
+**輸出格式：**
+
+```markdown
+## Refinement v2（基於 Variant A）
+
+### 改了什麼
+- accent 色：`#2c5fff` → `#ff5722`（OKLCH 換色，對比 ratio 從 5.2:1 → 4.8:1，仍通過 AA）
+- Hero alignment：center → left（呼應 Type-First 風格慣例）
+
+### Token diff
+
+```diff
+:root {
+-  --color-accent: #2c5fff;
++  --color-accent: #ff5722;
+}
+
+.hero {
+-  text-align: center;
++  text-align: left;
+}
+```
+
+### 影響的元件
+- Hero（alignment）
+- Button primary（accent 色）
+- Link hover（accent 色）
+
+### 重跑 a11y self-check
+- ✅ 對比仍通過 AA
+- ✅ Focus state 未變
+- ✅ 語意 HTML 未變
+```
+
+### 4.4 迴圈
+
+跑完 4.3 後再問一次 4.1：「還要繼續調嗎？」。直到 user 選「直接定案」才結束。
+
+### 4.5 最終出貨
+
+User 選定案後：
+1. 整合所有 patch 進最終 token 表
+2. 列出 v1 → vN 的演進摘要（讓 user 知道改了什麼）
+3. 提供完整 CSS / HTML / Tailwind config（不是 diff）
+4. 跑最後一次 AI Tells + a11y self-check
+5. 輸出「設計系統交付包」(component list + token list + 風格鎖定參數)
+
+### Refinement 禁忌
+
+- ❌ **不要每次 patch 都重出完整 CSS** — 用 diff，user 才看得懂改了什麼
+- ❌ **不要因為 user 要改一個 token 就重選風格** — 局部 patch 優先
+- ❌ **不要在 patch 時破壞 a11y** — 每次 patch 都要重跑 a11y self-check
+- ❌ **不要無限迴圈** — 超過 5 輪 patch 就建議 user：「現在的設計可能已偏離原始 brief，要不要重看 Step 1 的回答？」
 
 ---
 

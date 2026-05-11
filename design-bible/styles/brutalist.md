@@ -17,7 +17,7 @@
 - [Next.js Conf 2025](https://nextjs.org/conf?ref=godly) (godly)
 - [ASTRODITHER — Robert Borghesi LAB — [SIGNAL. LOST. BEAUTY. FOUND. DIGITAL. CHAOS.]](https://astrodither.robertborghesi.is/) (awwwards)
 - [Mobbin — UI & UX design inspiration for mobile & web apps](https://mobbin.com/?via=httpster) (httpster)
-- [Quaffable Wine Label System: All Three Variants](https://dribbble.com/shots/27332666-Quaffable-Wine-Label-System-All-Three-Variants) (dribbble)
+- [Logo For Matcha Bar](https://dribbble.com/shots/27330638-Logo-For-Matcha-Bar) (dribbble)
 
 ---
 
@@ -140,6 +140,36 @@ lab(0.0177803 0 0)  lab(93.736 0 0)  rgb(0, 0, 0)  lab(66.3894 -5.37798 -55.7933
 1. Link 用瀏覽器預設樣式（藍色 + underline），不要 hover 後變漸層
 2. Form input 不要加 border-radius 跟 placeholder 淡化效果 — 直接放預設或粗黑框
 3. 故意讓 heading overflow: hidden 切掉一半 — 製造張力
+
+---
+
+## Accessibility 配方
+
+**對比策略**：純黑配純白 (21:1)。Default browser focus（藍 outline + 黃 bg）也是風格特徵，不要美化。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+a:focus, button:focus, input:focus {
+  outline: 2px solid #0000ff;
+  outline-offset: 0;
+  background: yellow;
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 

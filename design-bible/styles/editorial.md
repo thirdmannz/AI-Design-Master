@@ -12,7 +12,7 @@
 - [Occupied](https://occupied.unadsgn.tw/) (awwwards)
 - [Weekend MaxMara Gift Guide](https://weekend-mm-2025-gift-guide-production.monogrid.io/) (awwwards)
 - [Workflow Automation Builder UIUX Design | SaaS Drag & Drop](https://dribbble.com/shots/27333638-Workflow-Automation-Builder-UIUX-Design-SaaS-Drag-Drop) (dribbble)
-- [Courier Delivery Mobile App UIUX Design | Parcel Tracking](https://dribbble.com/shots/27333768-Courier-Delivery-Mobile-App-UIUX-Design-Parcel-Tracking) (dribbble)
+- [Newly ai app creation landing page web design 3d animation](https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation) (dribbble)
 - [AI Healthcare Website](https://dribbble.com/shots/27333724-AI-Healthcare-Website) (dribbble)
 
 ---
@@ -141,6 +141,35 @@ rgb(17, 17, 17)  rgb(255, 255, 255)  rgb(238, 238, 238)  rgb(0, 0, 0)  rgba(255,
 1. Hero 標題要用 clamp() 流體字體大小，最大要夠大（至少 10vw）
 2. 刻意讓一個元素打破 grid 邊界（負 margin 或 absolute position）
 3. 使用 mix-blend-mode: multiply 在圖片上疊加色塊，製造印刷感
+
+---
+
+## Accessibility 配方
+
+**對比策略**：Body text 對 bg ≥ 7:1（editorial 標準），追求閱讀舒適。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 

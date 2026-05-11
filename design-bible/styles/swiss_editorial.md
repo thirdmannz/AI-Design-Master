@@ -147,6 +147,35 @@ rgb(0, 0, 0)  rgb(255, 255, 255)  rgb(49, 45, 251)  rgb(0, 0, 0)  rgb(255, 255, 
 
 ---
 
+## Accessibility 配方
+
+**對比策略**：Pure black on off-white (~18:1)。AAA 標準，editorial 應有的對比。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+*:focus-visible {
+  outline: 1px solid var(--color-ink);
+  outline-offset: 2px;
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
+
+---
+
 ## 適用場景
 
 | 場景 | 匹配度 |

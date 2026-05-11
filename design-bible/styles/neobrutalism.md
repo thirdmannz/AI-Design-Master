@@ -9,10 +9,8 @@
 - [Kaleido Grafik / We partner with visionary clients to create beautiful digital experiences by fusing thoughtful design with playful thinking.](https://kaleidografik.com/?ref=godly) (godly)
 - [Interactive Money Museum in Dallas | MoMoney](https://www.museumofmoney.com/) (awwwards)
 - [Vibrant Wellness | Interactive Digital Health Experience](https://vibrant.noomoagency.com/) (awwwards)
-- [Logo For Matcha Bar](https://dribbble.com/shots/27330638-Logo-For-Matcha-Bar) (dribbble)
-- [Distressed Badges](https://dribbble.com/shots/27332571-Distressed-Badges) (dribbble)
+- [Founders Whiskey](https://dribbble.com/shots/27332578-Founders-Whiskey) (dribbble)
 - [MX Sport Monogram Emblem](https://dribbble.com/shots/27243664-MX-Sport-Monogram-Emblem) (dribbble)
-- [Logo Archive — Recent Works 2025/26](https://dribbble.com/shots/27332232-Logo-Archive-Recent-Works-2025-26) (dribbble)
 
 ---
 
@@ -140,6 +138,36 @@ rgb(236, 234, 229)  rgb(0, 0, 0)  rgba(0, 0, 0, 0.5)  rgb(255, 255, 255)  rgb(0,
 1. box-shadow 用純黑色偏移而非模糊 (4px 4px 0 #000) — 這是新野蠻主義的靈魂
 2. 排版要有意識地「不對齊」某個元素，製造張力
 3. 按鈕 hover 時把 shadow 縮小 (4px→2px) 製造按壓感
+
+---
+
+## Accessibility 配方
+
+**對比策略**：Pure black on saturated accent。所有 text 對 bg 預設 ≥ 7:1，brutalist 美學本來就高對比。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+*:focus-visible {
+  outline: 3px solid var(--color-ink, #000);
+  outline-offset: 0;
+  box-shadow: 4px 4px 0 var(--color-accent);
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 

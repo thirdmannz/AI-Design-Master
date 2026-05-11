@@ -17,6 +17,7 @@
 - [AI Code](https://dribbble.com/shots/27333490-AI-Code) (dribbble)
 - [Newly ai app creation landing page web design 3d animation](https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation) (dribbble)
 - [Charted - Color system](https://dribbble.com/shots/27332229-Charted-Color-system) (dribbble)
+- [Landing Page Design for an Open-Source AI Tool](https://dribbble.com/shots/27331769-Landing-Page-Design-for-an-Open-Source-AI-Tool) (dribbble)
 
 ---
 
@@ -143,6 +144,40 @@ rgb(0, 0, 0)  rgb(248, 248, 248)  rgba(0, 0, 0, 0.32)  rgba(255, 255, 255, 0.8) 
 1. Hero 標題要大到幾乎超出螢幕，字距設 -0.06em，製造壓迫感
 2. 滾動動畫用 Intersection Observer + CSS translate，不要用純 CSS animation（沒有觸發點）
 3. accent 色用螢光色（電光黃 #e8ff00）但只用在一個關鍵元素上
+
+---
+
+## Accessibility 配方
+
+**對比策略**：Scroll 動效中 text overlay 必有 backdrop（半透明黑底）保證對比恆定。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+  animation: focus-pulse 1s ease-out;
+}
+@keyframes focus-pulse {
+  0% { outline-offset: 8px; opacity: 0; }
+  100% { outline-offset: 4px; opacity: 1; }
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 

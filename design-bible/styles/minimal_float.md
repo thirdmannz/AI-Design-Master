@@ -9,9 +9,9 @@
 - [Experience email at its best - Tatem](https://tatem.com/?ref=godly) (godly)
 - [Fey: Make better investments.](https://www.feyapp.com/?ref=godly) (godly)
 - [THE LOOKBACK](https://tlb.betteroff.studio/) (awwwards)
-- [Newly ai app creation landing page web design 3d animation](https://dribbble.com/shots/27333929-Newly-ai-app-creation-landing-page-web-design-3d-animation) (dribbble)
-- [Travel app design](https://dribbble.com/shots/27331519-Travel-app-design) (dribbble)
-- [QuickFix – Home Services Mobile App](https://dribbble.com/shots/27332307-QuickFix-Home-Services-Mobile-App) (dribbble)
+- [Courier Delivery Mobile App UIUX Design | Parcel Tracking](https://dribbble.com/shots/27333768-Courier-Delivery-Mobile-App-UIUX-Design-Parcel-Tracking) (dribbble)
+- [Solvara - Yoga Landing Page Design](https://dribbble.com/shots/27333615-Solvara-Yoga-Landing-Page-Design) (dribbble)
+- [Notiq - Ai Notetaker Saas Website](https://dribbble.com/shots/27331498-Notiq-Ai-Notetaker-Saas-Website) (dribbble)
 
 ---
 
@@ -137,6 +137,36 @@ rgb(10, 10, 10)  rgba(255, 255, 255, 0.95)  rgba(255, 255, 255, 0.06)  rgba(255,
 1. 字距 (letter-spacing) 設為 -0.03em 讓大標題更緊湊、更像手工設計
 2. 使用 serif 字體當標題 + sans-serif 當內文，製造古典×現代的對比
 3. section padding 要大到讓你覺得「會不會太多留白了？」— 那才是對的
+
+---
+
+## Accessibility 配方
+
+**對比策略**：極簡灰階搭配單一 accent。確認 muted text 對 bg ≥ 4.5:1（容易因為太淺 fail）。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+*:focus-visible {
+  outline: 2px solid var(--color-ink, #0a0a0a);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 

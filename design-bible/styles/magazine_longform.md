@@ -15,9 +15,9 @@
 - [Save time and money with our premium and exclusive Framer & Webflow templates.](https://www.jp.works/?ref=godly) (godly)
 - [Maison Margiela Official | Clothing, Shoes & Accessories](https://www.maisonmargiela.com/?ref=godly) (godly)
 - [Shopify Editions | Winter '26](https://www.shopify.com/editions/winter2026) (awwwards)
-- [atomicvibe Logo Archive 01](https://dribbble.com/shots/27332138-atomicvibe-Logo-Archive-01) (dribbble)
-- [PropTech CRM Dashboard — Partner Outreach & Deal Flow UI](https://dribbble.com/shots/27332795-PropTech-CRM-Dashboard-Partner-Outreach-Deal-Flow-UI) (dribbble)
-- [10 years retrospective](https://dribbble.com/shots/27331353-10-years-retrospective) (dribbble)
+- [Logo archive - selection of logo marks](https://dribbble.com/shots/27333381-Logo-archive-selection-of-logo-marks) (dribbble)
+- [Cute Bull Logo](https://dribbble.com/shots/27334031-Cute-Bull-Logo) (dribbble)
+- [Heart-in Flight ✦ Logo](https://dribbble.com/shots/27333144-Heart-in-Flight-Logo) (dribbble)
 
 ---
 
@@ -142,6 +142,36 @@ rgb(242, 241, 236)  rgb(0, 0, 0)  rgba(0, 0, 0, 0.79)  rgb(255, 255, 255)  rgb(0
 1. Body 寬度限制在 65ch（var --measure），不要讓段落鋪滿全寬
 2. Drop cap + pull quote + marginalia 三件套用至少一個 — 紙本特徵，AI codegen 不會做
 3. Display 用 serif、body 用 sans —— 跟 AI 預設「Inter+Inter」相反
+
+---
+
+## Accessibility 配方
+
+**對比策略**：Body text ≥ 7:1（長文閱讀必要）。Drop cap 跟 body 同色，hierarchy 靠 size 不靠對比。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  text-decoration: underline;
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 

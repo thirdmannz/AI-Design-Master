@@ -14,9 +14,10 @@
 - [Khaite](https://www.khaite.com) (manual)
 - [The Extraordinary Lab | GQ](https://www.gq.com/sponsored/story/the-extraordinary-lab) (awwwards)
 - [Talent Management Agency in North America - Dulcedo - Dulcedo](https://dulcedo.com/) (awwwards)
-- [Vitra](https://dribbble.com/shots/27333147-Vitra) (dribbble)
-- [Cute Bull Logo](https://dribbble.com/shots/27334031-Cute-Bull-Logo) (dribbble)
-- [Heart-in Flight ✦ Logo](https://dribbble.com/shots/27333144-Heart-in-Flight-Logo) (dribbble)
+- [atomicvibe Logo Archive 01](https://dribbble.com/shots/27332138-atomicvibe-Logo-Archive-01) (dribbble)
+- [Mile Square Cafe Identity Design](https://dribbble.com/shots/27329616-Mile-Square-Cafe-Identity-Design) (dribbble)
+- [Cportesano Cigars](https://dribbble.com/shots/27332668-Cportesano-Cigars) (dribbble)
+- [PropTech CRM Dashboard — Partner Outreach & Deal Flow UI](https://dribbble.com/shots/27332795-PropTech-CRM-Dashboard-Partner-Outreach-Deal-Flow-UI) (dribbble)
 
 ---
 
@@ -138,6 +139,35 @@ rgb(255, 255, 255)  rgb(3, 3, 3)  rgb(74, 85, 104)  rgb(43, 46, 53)  rgb(247, 25
 1. 文字越少越好 — 一個 hero 可能只有 3-5 個字 + tiny caption
 2. 全程不出現 button — CTA 是裸文字 + arrow（SHOP THE COLLECTION →）
 3. 用 mix-blend-mode: difference 讓 caption 在不同底圖上自動可讀
+
+---
+
+## Accessibility 配方
+
+**對比策略**：Tiny caption 容易因為小字 fail 對比 — 字 ≥ 11px 且對比 ≥ 7:1，不要把 fashion 美學犧牲可讀性。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+*:focus-visible {
+  outline: 1px solid var(--color-ink);
+  outline-offset: 6px;
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 

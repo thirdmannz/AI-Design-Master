@@ -15,8 +15,8 @@
 - [Branding & Web Agency | EPIC Agency](https://www.epic.net/?ref=godly) (godly)
 - [Flying Papers - Home](https://www.flyingpapers.com/?ref=godly) (godly)
 - [Logo archive - selection of logo marks](https://dribbble.com/shots/27333381-Logo-archive-selection-of-logo-marks) (dribbble)
-- [Logo Design for Construction FinTech](https://dribbble.com/shots/27077669-Logo-Design-for-Construction-FinTech) (dribbble)
-- [Cportesano Cigars](https://dribbble.com/shots/27332668-Cportesano-Cigars) (dribbble)
+- [Vitra](https://dribbble.com/shots/27333147-Vitra) (dribbble)
+- [Gefeen Logo Design](https://dribbble.com/shots/27334139-Gefeen-Logo-Design) (dribbble)
 
 ---
 
@@ -146,6 +146,36 @@ rgb(28, 28, 26)  rgba(255, 253, 244, 0.596)  rgba(255, 252, 236, 0.392)  rgba(25
 1. 使用 border-radius 的不規則四值語法製造有機曲線感 (30% 70% 70% 30% / ...)
 2. 加入一個手寫字體做點綴標籤，但只用一兩處
 3. 圖片用老照片濾鏡 (sepia + contrast) 讓視覺更一致
+
+---
+
+## Accessibility 配方
+
+**對比策略**：土色系容易 muted。Body text 對 bg ≥ 4.5:1，accent 用在 link 時加 underline 補足對比不足。
+
+**Focus state CSS（鍵盤焦點）**：
+```css
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 999px;
+}
+```
+
+**通用要求**：
+- 一頁只一個 `<h1>`，heading 階層不跳階
+- 所有 `<img>` 有 `alt` 屬性
+- 用 `<nav> <main> <section> <article>` 不用 `<div>` soup
+- 必出 skip link（`<a href="#main" class="skip-link">Skip to content</a>`）
+- Form input font-size ≥ 16px（避免 iOS auto-zoom）
+- Touch target ≥ 44×44px
+
+**參考文件**：
+- [Contrast rules](../a11y/contrast-rules.md) — WCAG 對比要求
+- [Semantic patterns](../a11y/semantic-patterns.md) — 元件 × HTML5 對照
+- [ARIA patterns](../a11y/aria-patterns.md) — modal / tabs / menu 配方
+- [Focus states](../a11y/focus-states.md) — 全 17 風格 focus CSS
+- [Keyboard nav](../a11y/keyboard-nav.md) — 鍵盤導覽
 
 ---
 
