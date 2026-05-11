@@ -1741,6 +1741,113 @@ User 選定案後：
 預估改動時間：約 [X] 分鐘
 ```
 
+#### 4f. AI Tells 風險警示（user 現網站有哪些要注意拆除）
+
+scan 完現有程式碼後，逐一列出踩到的 AI Tells 並給出拆除策略：
+
+```markdown
+## ⚠️ AI Tells 風險警示
+
+你的網站偵測到 X 個 AI tell，拆除時注意：
+
+### 1. 主 CTA 是 `border-radius: 9999px` pill button
+- 出現於：`src/components/Button.tsx`, `globals.css:42`
+- 拆除策略：改 `--radius-button: 6px`（依目標風格 token）
+- ⚠️ 風險：若有 `<Badge>` 也共用 9999px，要分開 token (`--radius-badge`)
+- 影響範圍：8 處 button + 12 處 badge
+
+### 2. Hero 上方有 subtitle pill「✨ Just shipped v2」
+- 出現於：`src/app/page.tsx:18`
+- 拆除策略：刪除整段，或改 inline `<small>` text without pill
+- ⚠️ 風險：產品行銷可能依賴此 element，問 user 是否真的拆
+
+### 3. Features 3-col card grid + lucide icons
+- 出現於：`src/components/Features.tsx`
+- 拆除策略：依目標風格改 layout（Swiss → numbered list / Magazine → editorial paragraph / Type-First → no icons）
+- ⚠️ 風險：feature 文案可能依賴 icon 視覺，重寫 features 文案前 ask user
+```
+
+#### 4g. Component-by-component migration map
+
+對每個現有元件，輸出對應到新元件庫的遷移指引（指向 [design-bible/components/](design-bible/components/)）：
+
+```markdown
+## 📦 元件遷移地圖
+
+| 現有元件 | 對應檔 | 改動類型 | 工時估 |
+|---------|-------|---------|--------|
+| `Hero.tsx` | [components/hero.md](design-bible/components/hero.md) | layout + token | 30 min |
+| `Nav.tsx` | [components/nav.md](design-bible/components/nav.md) | token only | 15 min |
+| `Card.tsx` | [components/card.md](design-bible/components/card.md) | layout + a11y semantics | 45 min |
+| `Pricing.tsx` | [components/pricing.md](design-bible/components/pricing.md) | full rewrite (3-col → numbered) | 90 min |
+| `Features.tsx` | [components/features.md](design-bible/components/features.md) | full rewrite (different layout per target style) | 90 min |
+| (沒有) → 必新增 Footer 補 a11y | [components/footer.md](design-bible/components/footer.md) | 新建 | 45 min |
+
+每元件展開：原檔 X 行 → 新檔骨架（連到 component 檔的 canonical HTML/CSS）
+```
+
+#### 4h. Rollback guide（每步驟附 git 指令）
+
+```markdown
+## 🔙 Rollback Guide
+
+若改完發現問題，按以下順序 revert：
+
+### Phase 1（如只改 token）
+```bash
+git checkout HEAD -- src/styles/globals.css tailwind.config.js
+```
+
+### Phase 2（如改了 component 結構）
+```bash
+git revert <component-migration-commit>
+```
+
+### Phase 3（如新增了檔案）
+```bash
+rm src/styles/motion.css src/components/MoodBoardCard.tsx
+git checkout HEAD -- src/styles/globals.css
+```
+
+### 安全做法：分階段 commit
+1. Commit 1: token-only changes
+2. Commit 2: per-component HTML/JSX changes
+3. Commit 3: a11y additions (skip link, semantic tags)
+4. Commit 4: motion + responsive
+5. Commit 5: image strategy + asset 替換
+
+各階段獨立 revert，不要一次大 PR。
+```
+
+#### 4i. Before / After A/B 截圖（M5 接通後可用）
+
+```markdown
+## 🖼️ Before / After 視覺對照
+
+執行：
+1. 用 `mcp__Claude_Preview__preview_start` 開原網站當 baseline
+2. 套用 R4 token 改動到 `tmp/revamped.html`
+3. 用 `preview_screenshot` 截兩個 viewport (375 / 1280)
+4. 並排顯示給 user 判斷
+
+如 user OK 才執行完整 component migration（4b-4g）。
+```
+
+#### 4j. 整合新設計系統檔案
+
+User 確認 revamp 方向後，要 patch 引入新設計系統的這些檔案：
+
+| 系統 | Reference 檔 | 何時 read |
+|------|-----------|----------|
+| Accessibility | [design-bible/a11y/](design-bible/a11y/) | 寫 a11y self-check 報告時 |
+| Responsive | [design-bible/responsive/breakpoints.md](design-bible/responsive/breakpoints.md) | 每元件補 mobile/tablet/desktop CSS |
+| Motion | [design-bible/motion/motion-system.md](design-bible/motion/motion-system.md) | 加 motion token |
+| Images | [design-bible/images/image-system.md](design-bible/images/image-system.md) | 替換 stock photo / unDraw |
+| Components | [design-bible/components/](design-bible/components/) | 每個元件改 layout 時 |
+| Framework | [design-bible/frameworks/](design-bible/frameworks/) | 確認框架語法慣例 |
+| Industry bundle | [design-bible/industry/](design-bible/industry/) | 確認該 industry 必出/禁出元件 |
+| Page templates | [design-bible/pages/page-templates.md](design-bible/pages/page-templates.md) | 跨頁面一致性 |
+
 ---
 
 ### Revamp 注意事項
@@ -1749,6 +1856,8 @@ User 選定案後：
 - **優先改 CSS token**：先改 `:root {}` 裡的 token，然後看有哪些元件沒用到 token 要手動補
 - **保留用戶的 class 命名**：不要重構 class 結構，只改 CSS 值
 - **循序漸進**：先給「3 個立竿見影改動」讓用戶先看效果，再給完整遷移
+- **分階段 commit**：token / components / a11y / motion / images 各獨立 commit，方便 revert
+- **a11y 不可妥協**：revamp 時不能讓 a11y 退步（contrast / focus / semantic），新版必須 ≥ 舊版
 
 ---
 
