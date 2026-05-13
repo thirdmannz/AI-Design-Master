@@ -176,3 +176,132 @@ if (cycle === 3 && fail_count >= 3) {
 **建議修正**：
 - 把 `--color-ink` 從 `#1a1a1a` 改 `#0a0a0a` 提升 contrast 到 7:1
 ```
+
+---
+
+# Performance Gates (M7 — Step 5.4b 用)
+
+> 12 項 rubric 是 **靜態可判** 的視覺 + a11y 評分。Performance Gates 是 **runtime 量測**,跑 Step 5.4b 時用 Chrome MCP 在 rendered page 上採集真實數據。
+> 兩者分開記分:rubric 給「設計是否好」,gates 給「設計是否能 ship」。
+
+## 5 個 gates
+
+| # | 指標 | 預設 budget | 量測方式 |
+|---|------|------------|---------|
+| P1 | LCP (Largest Contentful Paint) | < 2.5s | `PerformanceObserver` on `largest-contentful-paint` |
+| P2 | CLS (Cumulative Layout Shift) | < 0.1 | `PerformanceObserver` on `layout-shift`,加總 sources without recent input |
+| P3 | FCP (First Contentful Paint) | < 1.8s | `performance.getEntriesByType('paint')` filter `first-contentful-paint` |
+| P4 | TBT proxy (long tasks > 50ms) | total < 200ms | `PerformanceObserver` on `longtask`,加總 duration |
+| P5 | Total transfer weight | < 500 KB | `performance.getEntriesByType('resource')` 加總 `transferSize` |
+
+**Budget 來源優先級**:
+1. `.design-master/design-system.json` 的 `performance_budget`(若存在)
+2. 上表預設值(若 manifest 沒設或 manifest 不存在)
+
+## 量測 script(在 rendered page eval)
+
+```javascript
+async function measurePerf() {
+  return new Promise((resolve) => {
+    const result = { lcp: null, cls: 0, fcp: null, tbt: 0, weight_kb: 0 };
+
+    // FCP
+    const fcpEntry = performance.getEntriesByType('paint').find(e => e.name === 'first-contentful-paint');
+    if (fcpEntry) result.fcp = fcpEntry.startTime / 1000;
+
+    // LCP — observe and finalize on visibility change or after 3s
+    new PerformanceObserver((list) => {
+      const entries = list.getEntries();
+      result.lcp = entries[entries.length - 1].startTime / 1000;
+    }).observe({ type: 'largest-contentful-paint', buffered: true });
+
+    // CLS
+    new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        if (!entry.hadRecentInput) result.cls += entry.value;
+      }
+    }).observe({ type: 'layout-shift', buffered: true });
+
+    // TBT (long tasks during load)
+    new PerformanceObserver((list) => {
+      for (const entry of list.getEntries()) {
+        result.tbt += Math.max(0, entry.duration - 50);
+      }
+    }).observe({ type: 'longtask', buffered: true });
+
+    // Total transfer weight
+    result.weight_kb = performance.getEntriesByType('resource')
+      .reduce((sum, r) => sum + (r.transferSize || 0), 0) / 1024;
+
+    // Allow async observers to finalize
+    setTimeout(() => resolve(result), 3000);
+  });
+}
+return await measurePerf();
+```
+
+## Auto-fix mapping(fail 時建議)
+
+| Gate fail | 建議 fix |
+|-----------|---------|
+| LCP > 2.5s | preload hero image (`<link rel="preload" as="image" fetchpriority="high">`)、inline critical CSS、移除阻塞 above-the-fold 的 script、用 `<picture>` + avif/webp |
+| CLS > 0.1 | 給 `<img>` / `<video>` 設定 explicit `width` + `height` 屬性、為 ads / embeds 預留位、用 `font-display: optional` 或 preload font 避免字體切換時跳動 |
+| FCP > 1.8s | 減少阻塞的 CSS(inline critical CSS 餘下 lazy)、preload key fonts、用 `font-display: swap`、移除 above-the-fold blocking JS |
+| TBT > 200ms | defer 非 critical JS(`<script defer>` 或 `type="module"`)、code-split、考慮較輕的 framework、避免主執行緒長任務 |
+| Weight > 500 KB | 找出最大的 3 個 resources(從 `performance.getEntriesByType('resource')` 排序)、image 換 avif/webp、檢查 fonts 是否載多餘字重、tree-shake JS |
+
+## 輸出格式
+
+```markdown
+## ⚡ Performance Gates
+
+| # | 指標 | 量測 | Budget | 結果 |
+|---|------|------|--------|------|
+| P1 | LCP | 2.1s | < 2.5s | ✅ |
+| P2 | CLS | 0.04 | < 0.1 | ✅ |
+| P3 | FCP | 1.3s | < 1.8s | ✅ |
+| P4 | TBT | 80ms | < 200ms | ✅ |
+| P5 | Weight | 312 KB | < 500 KB | ✅ |
+
+**Performance verdict: ✅ PASS (5/5 gates)**
+```
+
+或 fail 時:
+
+```markdown
+| P1 | LCP | 3.4s | < 2.5s | ❌ |
+| P5 | Weight | 820 KB | < 500 KB | ❌ |
+
+**Performance verdict: ❌ FAIL (3/5 gates)**
+
+### 建議修正
+- **LCP 3.4s → < 2.5s**: hero image (380 KB JPEG) 是 LCP element。建議:
+  ```html
+  <link rel="preload" as="image" fetchpriority="high" href="/hero.avif" type="image/avif">
+  <picture>
+    <source srcset="/hero.avif" type="image/avif">
+    <source srcset="/hero.webp" type="image/webp">
+    <img src="/hero.jpg" alt="..." width="1280" height="720">
+  </picture>
+  ```
+  預估 LCP 改善 ~1.2s
+
+- **Weight 820 KB → < 500 KB**: 3 個最大 resources:
+  1. hero.jpg (380 KB) → 換 avif (~80 KB)
+  2. analytics.js (210 KB) → defer 或換輕量替代
+  3. icons.css (80 KB) → tree-shake 未用 icon
+```
+
+## 與 12-item rubric 的關係
+
+- 12-item rubric 是「設計品質」門檻 — ≥9/12 才能 ship
+- Performance Gates 是「商業可上線」門檻 — 5/5 才能 ship
+- **兩者獨立** — 一個視覺滿分(12/12)的設計可能 LCP 4s 不能 ship;一個 LCP 1s 的設計可能視覺 4/12 也不能 ship
+- Step 5 自動修正迴路同時看兩者:**任一不過就進入修正**
+
+## Codex / no-MCP fallback
+
+Performance gates 需要 rendered page + Chrome runtime API。Codex / 無 Chrome MCP 時:
+- 跳過 5.4b,在 Step 5 報告標注「Performance gates skipped — no Chrome MCP」
+- 不 block 交付 — 設計部分仍可 ship,但提醒 user 自己在瀏覽器跑 Lighthouse 驗一次
+

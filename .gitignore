@@ -18,3 +18,13 @@ Thumbs.db
 
 # Visual Validation Loop preview temp files (M5)
 tmp/
+
+# M7 Design System Manifest — what to ignore vs commit when consuming this skill
+# in another project:
+#   - Commit: .design-master/design-system.json (the locked source of truth)
+#   - Ignore: .design-master/exports/ and .design-master/pages/ (regenerable)
+#
+# In THIS repo (the skill itself), nothing in .design-master/ should be created.
+# But just in case, ignore the regenerable subdirs:
+.design-master/exports/
+.design-master/pages/

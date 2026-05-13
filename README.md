@@ -60,6 +60,29 @@ Stop building websites that look AI-generated. This skill gives you a curated de
 - **Cross-style switching mid-flow** — "switch to Brutalist" diffs the current style's tokens against the target style's tokens without restarting Mode 1; brand-derived tokens (from Mode 5) are preserved across the switch
 - **Version history** — every refinement creates `v[N]` and the log accumulates; user can ask "revert to v2" or "what changed between v2 and v4"
 
+### Persistent design system (M7 — Project Memory / Style Lock)
+- **`.design-master/design-system.json` manifest** — at Step 4.6 (final delivery) the skill writes the locked design system to the project. Tokens, brand DNA, constraints, version log, performance budgets, page list, audit history all live in one JSON file.
+- **Auto-resume on next invocation** — running `/design` in a project where the manifest exists surfaces the locked system and offers 5 paths (refine further / audit own site / multi-page / export tokens / unlock).
+- **Refinement updates persist** — every Step 4 turn writes back to the manifest, so v1 → vN history survives across sessions.
+- **Mode 2 (Revamp) auto-picks the locked tokens** as the migration target when manifest exists — skip R3 entirely.
+- **Mode 6 (Audit) adds Token Drift section** when auditing your own project — lists which live tokens diverged from the manifest.
+
+### Full-site multi-page generation (M7 — Mode 7)
+- **One command, 5–15 pages** — say "build the full site" once the manifest is locked. Pick from 10 page types (homepage, pricing, about, blog index/post, docs, landing, 404, auth, checkout).
+- **Byte-identical `:root` + nav + footer across pages** — token coherence is mechanical, not aspirational. Internal link graph automatically validated (no dead links).
+- **Per-page rubric scoring** — each generated page gets a 12-item scorecard; aggregate `sitemap.md` summarizes the bundle.
+- **Framework-aware shared blocks** — pure HTML gets copy-paste shared markers; React/Vue/Svelte/Astro get proper component imports.
+
+### Performance + CWV gates (M7 — Step 5.4b)
+- **5 runtime gates** — LCP / CLS / FCP / TBT / total transfer weight, measured in the rendered preview via `PerformanceObserver`. Budgets default to web.dev recommendations; user can override per-project in the manifest.
+- **Auto-fix suggestions on failure** — each failing gate maps to specific fixes (preload hero / explicit image dimensions / defer scripts / image format conversion) and the auto-refinement loop applies them.
+- **Independent of visual rubric** — a 12/12 design with 4s LCP doesn't ship; a 1s LCP with 4/12 rubric doesn't ship either.
+
+### Token export to Figma / Style Dictionary (M7 — Step 4.7)
+- **Three adapters in one call** — W3C DTCG (canonical), Style Dictionary v4+ input, Tokens Studio for Figma — all generated from the manifest, written to `.design-master/exports/`.
+- **Provenance preserved** — brand-derived tokens marked in both `$description` (W3C) and `$extensions.com.designsystem.provenance` (Tokens Studio) so designers see in Figma which tokens came from the brand.
+- **Pure file write** — no MCP needed; works identically on Codex.
+
 ### Framework-agnostic + No mandatory build
 - Works with React, Vue, Svelte, Astro, plain HTML/CSS, or Tailwind
 
@@ -186,6 +209,58 @@ Once Claude has produced dual variants, you can refine conversationally:
 - **"switch to Brutalist"** — cross-style refinement without restarting; brand-derived tokens (if Mode 5 was used) are preserved
 - **"revert to v2"** — every refinement is versioned; you can roll back at any point
 - **"show version log"** — see the v1 → vN history of every token change
+
+### Resuming work in the same project (M7)
+
+The first time you finalize a design, the skill writes `.design-master/design-system.json` into your project. Next time you run `/design` in that project:
+
+```
+🔒 Detected locked design system
+
+Project: acme-saas
+Style: Swiss Editorial (v3, locked 2026-05-13)
+Tokens: 18 (3 brand-derived)
+Brand DNA: present
+Last refinement: "more whitespace"
+
+You can:
+  1. Refine further (loads v3, you can do v4, v5, ...)
+  2. Audit current site against locked tokens (Mode 6 with drift detection)
+  3. Generate more pages (Mode 7 multi-page)
+  4. Export tokens to Figma / Style Dictionary
+  5. Unlock and pick a fresh style
+```
+
+Commit `.design-master/design-system.json` to share the locked system with your team. Gitignore `.design-master/exports/` and `.design-master/pages/` (they're regenerable).
+
+### Generating the whole site at once (Mode 7)
+
+Once a design is locked, say "build the full site" and pick which pages you want:
+
+```
+Which pages do you want to generate? (homepage is required)
+  1. Homepage             ← required
+  2. Pricing
+  3. About
+  4. Blog index
+  ...
+```
+
+The skill writes each page to `.design-master/pages/` with:
+- The same `:root {}` token block on every page (byte-identical — no drift)
+- The same nav and footer (shared blocks; for React/Vue/Svelte/Astro outputs, proper component imports)
+- A closed internal link graph (no dead links between pages)
+- An aggregate `sitemap.md` summarizing rubric score + AI Tells per page
+
+### Exporting tokens for Figma / Style Dictionary
+
+After final delivery (or any time later), say "export tokens". The skill writes three formats to `.design-master/exports/`:
+
+- `tokens.w3c.json` — W3C Design Tokens Community Group format (canonical, what every modern tool consumes)
+- `tokens.style-dictionary.json` — Style Dictionary v4+ input + a quickstart README
+- `tokens.tokens-studio.json` — Tokens Studio for Figma plugin format
+
+Brand-derived tokens are marked in both `$description` and `$extensions.com.designsystem.provenance` so designers see in the Figma plugin which values came from the brand vs the style default.
 
 ---
 
@@ -326,12 +401,16 @@ AI-Design-Master/
 │   │   └── image-system.md
 │   ├── pages/                        ← M4: 10 page-level templates
 │   │   └── page-templates.md
-│   ├── critique/                     ← M5: Self-validation rubric
+│   ├── critique/                     ← M5+M7: Self-validation rubric + Performance Gates
 │   │   └── rubric.md
 │   ├── brand/                        ← M6: Brand DNA schema + 17-style signal matrix
 │   │   └── brand-extraction.md
-│   └── audit/                        ← M6: Audit report template + concrete-vs-generic rule
-│       └── audit-template.md
+│   ├── audit/                        ← M6: Audit report template + concrete-vs-generic rule
+│   │   └── audit-template.md
+│   ├── manifest/                     ← M7: Design System Manifest schema + lifecycle
+│   │   └── manifest-system.md
+│   └── exports/                      ← M7: W3C / Style Dictionary / Tokens Studio formats
+│       └── export-formats.md
 ├── scraper/                          ← Source extractors for style references
 │   ├── lib/extract-tokens.js         ← Shared token extraction
 │   ├── scrape-godly.js
