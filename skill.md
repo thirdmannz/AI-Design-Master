@@ -58,8 +58,22 @@
 問 user（用 AskUserQuestion 或純文字）：
 
 **你想做什麼？**
-- 從零開始設計新網站/App → 進入【新設計模式】
-- 把現有網站改版（Revamp）→ 進入【Revamp 模式】
+- 從零開始設計新網站/App → 進入【新設計模式】（Mode 1）
+- 把現有網站改版（Revamp）→ 進入【Revamp 模式】（Mode 2）
+- 分析這個網站是什麼風格 → 進入【Reverse Mode】（Mode 3）
+- 寫文案 / 改 copy → 進入【Copy Mode】（Mode 4）
+- **我有 logo / 品牌色,設計要貼合品牌 → 進入【Brand-Aware Mode】（Mode 5）**
+- **審查一個網站、給設計打分 → 進入【Audit Mode】（Mode 6）**
+
+### 自動判斷的觸發詞
+
+| Mode | 自動觸發 |
+|------|---------|
+| Mode 5 (Brand-Aware) | "我有 logo / 截圖 / brand kit" / "根據我的品牌色匹配風格" / "match my brand" |
+| Mode 6 (Audit) | "審查這個網站" / "這個頁面哪裡可以改進" / "score this page" / "design audit" |
+
+Mode 5 ↔ Mode 1 的差別：Mode 1 user 自己挑風格;Mode 5 從 brand assets 反推風格。
+Mode 6 ↔ Mode 3 的差別：Mode 3 是「這個風格是什麼,我想學它」;Mode 6 是「這個網站有問題,給我修法清單」。
 
 ---
 
@@ -1560,9 +1574,38 @@ document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
 ---
 
-## Step 4：Refinement Loop（雙變體出完後必跑）
+## Step 4：Refinement Loop（雙變體出完後必跑 — Conversational, Token-Level）
 
 Step 3 出完 Variant A + Variant B 後 **不要直接結束**。問 user 是否要微調（Claude Code: AskUserQuestion；Codex: 純文字 + numbered options），這是把「一次性生成」變「對話式設計」的關鍵。
+
+⭐ **Step 4 的核心原則**：所有 refinement 都在 **token 層** 操作 — 改 `:root {}` 的 custom property,不重新產整頁 HTML。每輪只輸出 diff,不輸出完整 CSS。Mode 1、Mode 2、Mode 5 的輸出都進入這個 loop。
+
+### 4.0 自然語言 → Token 對照表（Conversational Refinement R1）
+
+當 user 用模糊的話描述想要的改動,先查這張表把意圖轉成具體 token 改動。**這是 Step 4 的字典 — 看不到對應就 ask user 細化。**
+
+| User 說 | 改哪些 token | 方向 |
+|---------|------------|------|
+| "make it bolder" / 更粗 | `--font-weight-body`, `--font-weight-display`, `--letter-spacing-display` | weight +200, tracking -0.01em |
+| "more whitespace" / 更鬆 | `--space-section`, `--line-height-body`, `--grid-gap` | +50–100% |
+| "tighter" / 更緊 | `--space-*`, `--line-height-body`, `--letter-spacing-display` | -25–50% |
+| "more contrast" / 對比更強 | `--color-ink`, `--color-bg` | 朝極端推,重跑 WCAG |
+| "softer" / 柔一點 | `--radius-*`, `--font-weight-*`, `--color-accent` 飽和度 | +radius, -weight, desaturate |
+| "less corporate" / 不要太商業 | `--radius-*`, `--font-display`, palette 飽和度 | 破格、換 display font、加強 accent |
+| "more editorial" / 更編輯風 | `--font-display` (→ serif), `--space-section`, `--line-height-body` | 換 serif、加留白、放鬆行高 |
+| "more brutal" / 更粗暴 | `--radius-*`→0, `--shadow-*`→none, `--font-display`→system | 砍圓角、砍陰影、用系統字 |
+| "more luxurious" / 更精品 | `--font-display`→serif、`--color-bg`→深、`--space-*` 加大 | 換 serif、深底、加留白 |
+| "calmer" / 沉穩 | `--color-accent` 飽和度、`--motion-*`、`--font-weight-*` | desaturate accent、減 motion、降 weight |
+| "more energy" / 更有活力 | `--color-accent`, `--motion-duration`, `--font-weight-display` | 高飽和 accent、加 motion、加重 display |
+| "warm it up" / 暖一點 | `--color-bg`, `--color-ink`, `--color-accent` | bg 偏 ivory、ink 偏 warm-black、accent 偏暖色 |
+| "cool it down" / 冷一點 | 同上,朝冷色推 | bg/ink/accent 偏藍灰 |
+| "more playful" / 更活潑 | `--radius-*`, `--color-accent`, `--motion-easing` | +radius、亮 accent、spring easing |
+| "more serious" / 更嚴肅 | `--radius-*`→0, `--font-display`→sans grotesk, palette → mono | 砍圓角、換 grotesk、單色化 |
+
+**規則**:
+- 表內找得到 → 直接出 diff（4.3）
+- 表內找不到 → 問 user「你說的『XX』比較接近哪一個?」並列 3 個最接近的條目
+- User 同時要兩個方向（e.g.「bolder + softer」）→ 取交集,輸出兩段 diff
 
 ### 4.1 問 user 想怎麼改
 
@@ -1592,66 +1635,156 @@ Options:
 5. 套用 / 取消 Constraints（連回 Step 2.5） → 進入 4.3
 6. 換某個元件的設計（Pricing / Card / Form 等） → 進入 4.3
 7. 加 / 減 motion → 進入 4.3
-8. 自由文字描述 → 進入 4.3
+8. 自由文字描述（自然語言；查 4.0 對照表） → 進入 4.3
+9. 換成完全不同的風格（e.g. Swiss → Brutalist） → 進入 4.3b（Cross-Style Refinement）
 ```
 
-### 4.3 局部 Patch（不重啟整個流程）
+### 4.3 局部 Patch（Token-Level Diff,不重啟整個流程）— R2
 
-依 user 選項，**只改該段 CSS / 元件**，輸出 **diff 而非完整重產**。
+依 user 選項（4.0 對照表查到的 token / 或 4.2 選的方向），**只改 `:root {}` 的 custom property + 受影響的 selector**,輸出 **嚴格 token-level diff**。**絕對不重新產整頁 HTML**。
 
-**輸出格式：**
+**輸出格式（必照此格式,不可變）：**
 
 ```markdown
-## Refinement v2（基於 Variant A）
+## Refinement v[N]（基於 v[N-1] / Variant A）
 
-### 改了什麼
-- accent 色：`#2c5fff` → `#ff5722`（OKLCH 換色，對比 ratio 從 5.2:1 → 4.8:1，仍通過 AA）
-- Hero alignment：center → left（呼應 Type-First 風格慣例）
+### Intent
+[一句話：user 要什麼。e.g.「make it bolder」]
 
 ### Token diff
 
 ```diff
 :root {
--  --color-accent: #2c5fff;
-+  --color-accent: #ff5722;
-}
-
-.hero {
--  text-align: center;
-+  text-align: left;
+-  --font-weight-body: 400;
++  --font-weight-body: 600;
+-  --letter-spacing-display: -0.04em;
++  --letter-spacing-display: -0.05em;
 }
 ```
 
-### 影響的元件
-- Hero（alignment）
-- Button primary（accent 色）
-- Link hover（accent 色）
+### Affected selectors
+[列出 inherit 這幾個 token 的 selector,但不重出整段 CSS]
+- `body`, `p`, `.article-body` ← `--font-weight-body`
+- `h1.display`, `.hero-title` ← `--letter-spacing-display`
 
-### 重跑 a11y self-check
-- ✅ 對比仍通過 AA
+### Visual impact
+[一行描述,告訴 user 看起來會怎樣變,不需要重 render]
+- h2 + body 看起來重約 20–30%,display 字距更緊 — 整體感覺更「stamped」
+
+### Re-validation
+- ✅ 對比仍通過 AA（token 改動不影響 contrast)
 - ✅ Focus state 未變
 - ✅ 語意 HTML 未變
+- ✅ AI Tells Blocklist 仍 pass
+
+### Optional re-render
+若需要視覺確認: 跑 Step 5.1–5.2 重新截圖。Default 不跑（cost 高）。
 ```
+
+**重要原則**:
+- ❌ **絕不重出整段 CSS** — 只出 `:root {}` 內被改的 token + 受影響 selector 清單
+- ❌ **絕不重產 HTML** — refinement 不改結構,只改 token 值
+- ❌ **絕不跑 Step 5 visual loop** 除非 user 明確要 — refinement 多次跑 render 太昂貴
+- ✅ 每輪都重跑 a11y self-check（對比、focus、AI Tells)
+
+### 4.3b Cross-Style Refinement（R3 — 換風格不重啟）
+
+當 user 選 4.2 option 9（「換成完全不同的風格」),**不要回 Step 2 重選**。改用 **style-to-style token diff**:
+
+**Flow**:
+1. 讀目前風格的 `:root {}` 與目標風格的 `:root {}`（都在 [design-bible/styles/](design-bible/styles/) 找）
+2. 算 token 差集 — 哪些 token 變了、哪些保留
+3. **如果是 Mode 5 來的（有 brand-derived tokens）**: brand 來源的 token（`--color-accent` 等,看 Mode 5 callout 標記）**保留**,不被目標風格覆寫
+4. 輸出 cross-style diff
+5. 重跑 contrast check（不同風格的 bg 換掉,brand accent 在新 bg 上的對比要重驗）
+
+**輸出格式**:
+
+```markdown
+## Refinement v[N] — Cross-style: Swiss Editorial → Brutalist
+
+### Intent
+換到 Brutalist 風格,保留 brand accent。
+
+### Cross-style token diff
+
+```diff
+:root {
+   /* Brand-derived（從 v1 沿用,不換）*/
+   --color-accent: #635BFF;        /* 保留 */
+
+   /* Style-derived（Swiss → Brutalist 全換）*/
+-  --color-bg: #ffffff;
++  --color-bg: #f4f4f4;
+-  --font-display: "Söhne Breit", sans-serif;
++  --font-display: "Arial Black", system-ui, sans-serif;
+-  --radius-default: 0;
++  --radius-default: 0;            /* 兩個風格都 0,無 diff */
+-  --shadow-none: none;
++  --shadow-brutal: 6px 6px 0 currentColor;
+-  --grid-cols: 12;
++  --grid-cols: 6;
+}
+```
+
+### 風格切換影響
+- ✅ Brand accent 保留
+- ⚠️ Display font 從 Söhne Breit 換成 Arial Black — brand 若有指定 display font 此處會 conflict,要 ask user
+- ⚠️ Hero alignment、元件清單也跟著換（Swiss 用 Masthead+Kicker,Brutalist 用 Slab heading+Index list）
+
+### Brand contrast re-validation
+| Pair | 舊 (Swiss) | 新 (Brutalist) | WCAG |
+|------|----------|--------------|------|
+| brand accent #635BFF on bg | 5.2:1 on #fff | 5.0:1 on #f4f4f4 | ✅ AA |
+```
+
+如 contrast 在新風格下 fail → 走 [design-bible/brand/brand-extraction.md](design-bible/brand/brand-extraction.md) 的 contrast fallback 流程。
 
 ### 4.4 迴圈
 
-跑完 4.3 後再問一次 4.1：「還要繼續調嗎？」。直到 user 選「直接定案」才結束。
+跑完 4.3 / 4.3b 後再問一次 4.1：「還要繼續調嗎？」。直到 user 選「直接定案」才結束。
 
-### 4.5 最終出貨
+### 4.5 Version History（R4 — 每輪累積）
+
+從 v1 開始,**每跑完一輪 4.3/4.3b 都更新一張累積的 version log**。User 可以用 "revert to v2" / "回到 v2" / "show version log" 隨時回看或回退。
+
+**輸出格式（每輪 4.3 結尾附上一張 log）**:
+
+```markdown
+## 📜 Version Log
+
+| Version | Intent | Token changes | Style |
+|---------|--------|---------------|-------|
+| v1 | Initial Variant A | (baseline) | Swiss Editorial |
+| v2 | "more contrast" | `--color-ink`: #1a1a1a → #0a0a0a | Swiss Editorial |
+| v3 | "make it bolder" | `--font-weight-body`: 400 → 600; `--letter-spacing-display`: -0.04em → -0.05em | Swiss Editorial |
+| v4 | "switch to Brutalist" | bg, display, shadow, grid 全換;brand accent 保留 | Brutalist |
+| v5 (current) | "tighter" | `--line-height-body`: 1.6 → 1.4; `--space-section`: 6rem → 4rem | Brutalist |
+```
+
+**Revert 操作**:
+- User 說「revert to v2」/「回到 v2」→ 把 :root 還原成 v2 的 token 狀態,並把這次設成新的 v6（不要直接抹掉 v3–v5,而是新增 v6 = "Revert to v2 snapshot"）
+- User 說「show version log」→ 只出上面那張表,不出新 diff
+- User 說「what changed between v2 and v4?」→ 出兩版的 token diff
+
+### 4.6 最終出貨
 
 User 選定案後：
-1. 整合所有 patch 進最終 token 表
-2. 列出 v1 → vN 的演進摘要（讓 user 知道改了什麼）
-3. 提供完整 CSS / HTML / Tailwind config（不是 diff）
+1. 整合所有 patch 進最終 token 表(用最後一個 v 的狀態)
+2. 列出完整 v1 → vN 的演進摘要（讓 user 知道走過哪些路）
+3. 提供完整 CSS / HTML / Tailwind config（不是 diff,這是最終交付）
 4. 跑最後一次 AI Tells + a11y self-check
 5. 輸出「設計系統交付包」(component list + token list + 風格鎖定參數)
+6. 如果是 Mode 5 來的,output 包含「Brand-derived tokens」callout（見 [design-bible/brand/brand-extraction.md](design-bible/brand/brand-extraction.md) §5）
 
 ### Refinement 禁忌
 
 - ❌ **不要每次 patch 都重出完整 CSS** — 用 diff，user 才看得懂改了什麼
-- ❌ **不要因為 user 要改一個 token 就重選風格** — 局部 patch 優先
+- ❌ **不要因為 user 要改一個 token 就重選風格** — 局部 patch 優先（除非 4.2 選 option 9 走 4.3b）
 - ❌ **不要在 patch 時破壞 a11y** — 每次 patch 都要重跑 a11y self-check
-- ❌ **不要無限迴圈** — 超過 5 輪 patch 就建議 user：「現在的設計可能已偏離原始 brief，要不要重看 Step 1 的回答？」
+- ❌ **不要每輪都重 render** — Step 5 只在最終定案跑,refinement 中途不跑 visual loop
+- ❌ **不要在 cross-style refinement 時抹掉 brand tokens** — Mode 5 的 brand-derived tokens 一律保留
+- ❌ **不要無限迴圈** — 超過 5 輪 patch 就建議 user：「現在的設計可能已偏離原始 brief，要不要重看 Step 1 的回答 / 或 revert 到較早版本？」
 
 ---
 
@@ -2318,6 +2451,317 @@ C: [Number-based（Swiss 風格）]
 
 ---
 
+## 🏷️ Mode 5：Brand-Aware Mode（從 Brand Assets 反推風格）
+
+> User 有 logo / 截圖 / brand kit / hex 色碼 / 品牌 vibe 描述 → Skill 提取 Brand DNA → 自動匹配 17 風格中最貼合的 → fine-tune token 套合品牌。
+>
+> 與 Mode 1 的差別：Mode 1 user 自己挑風格；Mode 5 從 brand assets 反推風格,token 預先帶入品牌色。
+
+### 觸發
+
+用戶說：
+- "我有 logo / 截圖,想讓設計符合品牌"
+- "根據我的品牌色匹配一個風格"
+- "match my brand"
+- "我已經有 brand guidelines"
+- (附帶 logo 圖檔或 hex 色碼時自動進入)
+
+完整參考：[design-bible/brand/brand-extraction.md](design-bible/brand/brand-extraction.md)
+
+---
+
+### Step B1：收集品牌輸入
+
+用 AskUserQuestion（Claude Code）/ 純文字（Codex）問:
+
+```
+你有哪些 brand 資料?(可複選)
+1. Logo 圖檔 — 直接附上,我會看圖
+2. 既有網站 / brand assets 截圖
+3. Hex 色碼（e.g. #635BFF, #0A2540)
+4. 品牌 vibe 描述（e.g.「Apple 但給會計用」)
+5. Brand guidelines PDF
+```
+
+**最少要求**:至少 1 個 palette source + 1 個 typography/formality signal。低於此 → 補問,不進 B2。
+
+**平台 fallback**:
+- Claude Code(vision-capable): 可直接看 logo / 截圖,提取 dominant colors + typography 描述
+- Codex / 無 vision: 改問 user 貼 hex + 描述 logo（serif/sans、stroke weight、是否全大寫)
+
+---
+
+### Step B2：提取 Brand DNA
+
+依 [design-bible/brand/brand-extraction.md](design-bible/brand/brand-extraction.md) §1 schema,產出結構化 profile:
+
+```yaml
+brand_dna:
+  palette:
+    - {hex, role: bg|ink|accent|support, source}
+  typography_lean: serif | sans | display | mono | mixed
+  weight_preference: light | normal | heavy
+  density: airy | balanced | packed
+  formality: editorial | corporate | playful | brutalist | luxury
+  motion_vibe: still | subtle-ease | kinetic | not-specified
+```
+
+**Vision-capable path**: 看圖 → 5–8 主色 → 描述 typography 特性 → 推 formality + density
+**Text-only path**: 從 user 描述 + hex 推,density 通常 `not-specified`,直接 ask
+
+---
+
+### Step B3：17 風格匹配
+
+對 17 風格逐個用 4 個 sub-score 加總(滿分 10):
+
+- **Palette compatibility** 0–3（依 [brand-extraction.md](design-bible/brand/brand-extraction.md) §3a）
+- **Typography lean match** 0–3（§3b)
+- **Density match** 0–2（§3c)
+- **Formality match** 0–2（§3d)
+
+**輸出 Top 3**:
+
+```markdown
+## 🎯 Top 3 Style Matches
+
+| Rank | Style | Score | 為什麼 |
+|------|-------|-------|--------|
+| 1 | Swiss Editorial | 9/10 | Palette: 單一高飽和 accent(+3)。Sans grotesk lean(+3)。Airy(+2)。Corporate(+1)。|
+| 2 | Type-First Monochrome | 8/10 | ... |
+| 3 | Corporate Clean | 7/10 | ... |
+
+**推薦 #1: Swiss Editorial** — signal alignment 最強。也可選 #2、#3 或自由文字。
+```
+
+問 user 選哪個(AskUserQuestion 或 numbered text)。
+
+---
+
+### Step B4：Token Fine-Tune（Brand × Style merge）
+
+依 [brand-extraction.md](design-bible/brand/brand-extraction.md) §4 規則合併:
+
+| Token | 行為 |
+|-------|------|
+| `--color-accent` | **必覆寫**為 brand primary accent |
+| `--color-bg` | 保留風格 default,除非 brand 明確指定 bg 且非純白 |
+| `--color-ink` | 保留風格 default,除非 brand 明確指定。覆寫後驗 ≥7:1（AAA）|
+| `--font-display`/`--font-body` | brand font 若與風格 typography lean 相容(e.g. serif brand + Magazine 風格)→ 套用;否則保留並 flag |
+| `--radius-*` / `--shadow-*` | **永不從 brand 覆寫** — 這是風格 identity 的核心 |
+| Motion tokens | brand motion_vibe 只在風格允許 motion 時使用（Swiss/Brutalist 跳過）|
+
+**Contrast fallback**(brand accent fail AA 時):
+1. 降低 OKLCH 的 L,每次 -5%,直到 ≥4.5:1（text）/ ≥3:1（large text）
+2. 改用 brand support color
+3. 都不行 → flag 給 user:「brand 色只用在非文字裝飾」並用風格 default accent for text
+
+**輸出 Brand contrast verification 表**(每一個 brand 色用在文字情境都列):
+
+```markdown
+## Brand contrast verification
+| Pair | Ratio | WCAG |
+|------|-------|------|
+| brand accent #635BFF on bg #ffffff | 5.2:1 | ✅ AA |
+| brand ink #0A2540 on bg #ffffff | 16.4:1 | ✅ AAA |
+```
+
+---
+
+### Step B5：交給 Mode 1 Step 2.5 接手
+
+帶著 fine-tuned token 進 **Step 2.5 Constraints**(brand-derived constraint 自動加入:「Brand-align: 必保留 brand accent / ink」),然後正常走 Step 3(雙變體)→ Step 4(refinement)→ Step 5(visual loop)。
+
+Step 3 輸出時,**追加一段「Brand-derived tokens」callout**(依 [brand-extraction.md](design-bible/brand/brand-extraction.md) §5):
+
+```markdown
+## 🏷️ Brand-derived tokens
+
+| Token | Value | Source |
+|-------|-------|--------|
+| `--color-accent` | #635BFF | Brand (logo primary) |
+| `--color-ink` | #0A2540 | Brand (user-provided hex) |
+| `--color-bg` | #ffffff | Style default (Swiss) — brand 無 bg 覆寫 |
+| `--font-display` | "Söhne Breit", "Inter Tight", sans-serif | Style default — brand 無 display font |
+| `--radius-default` | 0 | Style default (radius 永不從 brand 覆寫) |
+```
+
+這個 callout 讓 user 知道哪些 token 是品牌的、哪些是風格的 — 後續 Step 4 cross-style refinement(4.3b)時,brand-derived 那幾個會被保留。
+
+---
+
+### Mode 5 注意事項
+
+- **不要把 brand 色強推給不適合的風格** — Top 3 score 都 <6/10 時,老實告訴 user:「你的 brand 比較適合 [風格] 但目前沒匹配到強烈相似的,要試試 Mode 1 自己挑風格嗎?」
+- **brand font 不一定要用** — 例如 brand 給的是 Comic Sans,Swiss 風格要照用會崩,此時保留 Swiss default + flag 給 user
+- **radius / shadow 絕對保留風格 default** — 圓角和陰影是風格 fingerprint,從 brand 覆寫會破壞風格
+- **vision 不是強制** — 沒 vision 也能跑,只是要多問 user 幾個問題（typography lean、density)
+
+---
+
+## 🔬 Mode 6：Design Audit Mode（URL → Rubric Score → 具體改善清單）
+
+> User 給 URL 或貼 HTML → Skill 用 12-item rubric + AI Tells Blocklist 打分 → 輸出 audit report 含具體改善 diff（**不是泛泛建議,要 site-specific**)。
+>
+> 與 Mode 3 (Reverse) 的差別:Mode 3 是「這個風格是什麼,我想學它」(clone / counter);Mode 6 是「這個網站有問題,給我可執行的修法」(critique + fix list)。
+
+### 觸發
+
+用戶說：
+- "審查這個網站的設計"
+- "這個頁面哪裡可以改進"
+- "幫我看一下 [URL] 設計怎樣"
+- "design audit"
+- "score this page"
+- "這個網站打幾分"
+
+完整輸出格式: [design-bible/audit/audit-template.md](design-bible/audit/audit-template.md)
+
+---
+
+### Step A1：取得頁面（reuse Mode 3 V1 邏輯）
+
+```
+if mcp__Claude_in_Chrome__* available:
+  → mcp__Claude_in_Chrome__navigate(url)
+  → mcp__Claude_in_Chrome__get_page_text() + read_page() 拿 DOM
+  → mcp__Claude_in_Chrome__javascript_tool(...) 拿 computed styles
+  → mcp__Claude_Preview__preview_screenshot 三 viewport（375/768/1280)
+
+elif mcp__Claude_Preview__* available:
+  → 把 URL 包成 iframe 或請 user 自己 fetch HTML 再 paste
+  → 截圖三 viewport
+
+else (Codex / no MCP):
+  → Ask user 貼 rendered HTML + CSS
+  → 跳過 §1 Snapshot,在 verdict 標注「partial audit — text-only」
+```
+
+---
+
+### Step A2：抽取 present-state signals
+
+從 DOM + computed styles + axe-core 抽:
+
+- **Computed palette**:抓 top 8 顏色（不含 muted variations)
+- **Typography stack**:font-family + size + weight 分布
+- **Layout signals**:grid? centered? asymmetric?
+- **Motion presence**:有無 transition / animation / scroll-driven
+- **A11y scan**:`mcp__Claude_Preview__preview_eval` 注 axe-core(reuse Step 5.3 注入 script)
+
+---
+
+### Step A3：12-item Rubric 計分
+
+對照 [design-bible/critique/rubric.md](design-bible/critique/rubric.md) 12 項,每項 0 或 1。**這是和 Step 5 自評同一張 rubric,只是套用在外部頁面而非自己產出**。
+
+無 MCP 時,項 11 (mobile layout) 和項 12 (studio-quality feel) 可能只能部分判（從 CSS breakpoints + class 結構推),標 `?` 不是 0/1。
+
+**Verdict 門檻**:
+- ≥9/12 → ✅ PASS（ship-worthy)
+- 7–8 → ⚠️ MARGINAL
+- ≤6 → ❌ FAIL
+
+---
+
+### Step A4：AI Tells Blocklist scan
+
+對照 Blocklist 10 條（skill.md 上面 ⛔ 區段),逐項檢查在這個頁面是否踩中:
+
+```markdown
+### Hit #1 — Pill button (#1 in Blocklist)
+**Where**: `.btn-primary` at body > main > section.hero > button:nth-child(2)
+**Evidence**: `border-radius: 9999px` (computed)
+**Severity**: ⛔⛔⛔
+**Fix**: 改 `border-radius: 4px`(或 `var(--radius-default)` 若有 token)。Pill 只在 Claymorphism 解鎖。
+```
+
+輸出「**AI Tells Index: X/10**」(不同於 rubric 第 1 項的 0/1,這個是顆粒度更細的 0–10)。
+
+---
+
+### Step A5：產出 Audit Report
+
+依 [design-bible/audit/audit-template.md](design-bible/audit/audit-template.md) 的 7-section 結構:
+
+1. **Snapshot** — 三 viewport 截圖（無 MCP 跳過)
+2. **Rubric scorecard** — 12 項 table
+3. **AI Tells findings** — 命中項清單 + selector 引用
+4. **Detected style** — reuse Mode 3 V2 signal matrix,標目前最像哪個風格
+5. **Top 5 concrete improvements** — ⚠️ **site-specific,不是泛泛建議**(下方有 rule)
+6. **Optional improved-version snippet** — 5–20 行 CSS 可直接 paste
+7. **Re-audit instruction** — user 改完後可再跑 A6 確認
+
+---
+
+### 「Concrete vs Generic」rule(§5 Top 5 improvements 必照)
+
+⚠️ 每個 improvement 必含 4 項:
+1. **CSS selector / DOM path**(該頁實際存在的,不是「buttons」要說 `.btn-primary.large`)
+2. **Measured current state**(computed value、ratio、count)
+3. **Diff** 用該頁實際的 class 名
+4. **Expected impact**(可量化:ratio 從 X → Y、blocklist hits 從 X → Y)
+
+少任一項 → 不是 ready 的 improvement,刪掉或挖深。
+
+**禁用 phrasing**(這幾個都是 generic):
+- ❌「Improve contrast on body text」 — 要說哪個 selector、目前 ratio、目標 ratio
+- ❌「Use better fonts」 — 要說目前 font、為什麼換、換成什麼
+- ❌「Simplify the layout」 — 要說哪個 section、刪什麼或合什麼
+- ❌「Modernize the design」 — 不寫,不可行動
+
+**好 vs 壞例子**(brand-extraction.md / audit-template.md 都有,要記住):
+
+```markdown
+❌ 壞:Improve color contrast on body text.
+
+✅ 好:
+**#1 — 提升 body text contrast 到 AA**
+**Element**: `.article-body p` (computed `color: #888` on `background: #ffffff`)
+**Current contrast**: 3.5:1（fails AA)
+**Fix**:
+```diff
+.article-body p {
+-  color: #888;
++  color: #4a4a4a;
+}
+```
+**New contrast**: 9.7:1（AAA)。影響 ~340 個 paragraph nodes(blog/index)。
+```
+
+---
+
+### Step A6：Re-audit（可選)
+
+User 把 fixes apply 後,再貼一次新版 HTML/CSS,重跑 A2–A5,看 rubric 分數是否提升。**這是 Mode 6 的回饋迴路**。
+
+輸出格式:
+
+```markdown
+## Re-audit comparison
+
+| 項目 | v1 score | v2 score | Δ |
+|------|---------|---------|---|
+| Rubric | 6/12 ❌ FAIL | 10/12 ✅ PASS | +4 |
+| AI Tells | 5/10 hits | 1/10 hits | -4 |
+```
+
+---
+
+### Mode 6 注意事項
+
+- **不爬取、不儲存** — 同 Mode 3 注意事項,分析完只用於輸出
+- **rubric 分數 ≠ 設計絕對好壞** — 12/12 只代表沒踩到清單,不代表設計獨特或好用
+- **AI Tells 命中不一定要全砍** — user 可能就是要 AI/glass 感(Aurora UI),要先看 §4 detected style,blocklist 在該風格的解鎖條件上要寬鬆
+- **partial audit 要明說** — 沒 MCP 時 audit 不完整(沒有 visual 驗證),verdict 要標「partial」
+- **Audit 結果可以接 Mode 2(Revamp)** — 如果 user 看完 audit 想改自己的 site,output 最後追加一句:「想直接走改造流程?輸入 'revamp this'  進 Mode 2」
+
+### Mode 6 自檢
+
+Skill 發布更新前,跑一次 Mode 6 audit 在 [design-bible/examples/](design-bible/examples/) 的 9 個 reference page 上 — **每一個都應該 ≥10/12**。如果有低於 10/12 的,要麼 rubric 有問題,要麼 example 有問題,先修再 ship。
+
+---
+
 ## 📚 Reference Examples
 
 當 Skill 輸出設計時，對應到 [design-bible/examples/](design-bible/examples/) 的完整 HTML 參考頁面。在 Step 3 輸出後，可提示：
@@ -2356,4 +2800,6 @@ C: [Number-based（Swiss 風格）]
 *讀取本地設計聖經：`C:\Projects\DesignSkill\data\design-bible.json`*
 *各風格詳細 markdown：`C:\Projects\DesignSkill\design-bible\styles\`*
 *Copy system：`C:\Projects\DesignSkill\design-bible\copy\copy-system.md`*
+*Brand DNA + signal matrix(Mode 5)：`C:\Projects\DesignSkill\design-bible\brand\brand-extraction.md`*
+*Audit template(Mode 6)：`C:\Projects\DesignSkill\design-bible\audit\audit-template.md`*
 *Reference examples：`C:\Projects\DesignSkill\design-bible\examples\`*

@@ -41,6 +41,25 @@ Stop building websites that look AI-generated. This skill gives you a curated de
 - **Self-Critique Rubric** — 12 hard gates: AI Tells / token consistency / hero alignment / WCAG AA / focus visible / forbidden components / type hierarchy / whitespace / color count / motion fit / mobile / "studio-quality" feel
 - **Design validation report** — 3 viewports + 12-item scorecard + axe-core report + refinement log + manual review suggestions
 
+### Brand-aware generation (M6 — Mode 5)
+- **Brand DNA extraction** — upload a logo, screenshot, hex codes, brand-guidelines PDF, or describe the vibe; the skill extracts palette + typography lean + density + formality into a structured profile
+- **17-style signal matching** — scores every style 0–10 across palette compatibility, typography lean, density, and formality; returns Top 3 matches with reasoning
+- **Brand × style token merge** — overrides `--color-accent` (and selected others) from the brand, keeps `--radius-*` / `--shadow-*` as style identity, runs WCAG AA contrast verification on every brand color pair, falls back to a darkened variant if it fails
+- **Brand-derived tokens callout** — every output annotates which tokens came from the brand vs the style default, so cross-style refinement later can preserve brand identity
+
+### Design audit (M6 — Mode 6)
+- **Audit any URL or pasted HTML** — uses Chrome MCP to fetch + screenshot, falls back to user-pasted HTML on Codex
+- **Verdict + 12-item scorecard + AI Tells Index** — same rubric Step 5 uses on the skill's own output, applied to external pages
+- **Top 5 concrete improvements** — every entry must cite a real selector, current measured state, a CSS diff with the page's own class names, and a measurable expected impact (contrast ratio delta, AI Tells removed, etc.). Generic phrasings ("improve contrast", "modernize design") are banned by the skill itself.
+- **Optional drop-in fix snippet** — packages the fixes as a single CSS append the user can paste
+- **Re-audit loop** — paste the fixed version to confirm rubric score improved
+
+### Conversational refinement (M6 — Step 4 upgrade)
+- **Natural-language → token mapping** — "make it bolder", "more whitespace", "less corporate", "warmer" map directly to specific `:root {}` token edits
+- **Token-level diffs only** — refinement never regenerates the full HTML, only diffs the changed tokens + lists affected selectors; visual loop is opt-in, not re-run per turn
+- **Cross-style switching mid-flow** — "switch to Brutalist" diffs the current style's tokens against the target style's tokens without restarting Mode 1; brand-derived tokens (from Mode 5) are preserved across the switch
+- **Version history** — every refinement creates `v[N]` and the log accumulates; user can ask "revert to v2" or "what changed between v2 and v4"
+
 ### Framework-agnostic + No mandatory build
 - Works with React, Vue, Svelte, Astro, plain HTML/CSS, or Tailwind
 
@@ -132,6 +151,41 @@ Claude will:
 2. **Diagnose** current design problems (generic colors, inconsistent spacing, AI-ish shadows)
 3. **Recommend** the best upgrade path
 4. **Output** a component-by-component migration guide with before/after CSS
+
+### Designing for an existing brand (Mode 5)
+
+```
+/design
+```
+
+Then say "I have a logo / brand colors — match my brand" (or attach the logo, or paste hex codes). Claude will:
+
+1. **Extract Brand DNA** — palette + typography lean + density + formality from your assets
+2. **Score all 17 styles** against the DNA and present Top 3 matches with reasoning
+3. **Merge brand into the chosen style's tokens** — `--color-accent` from your brand, `--radius-*` / `--shadow-*` kept as style identity, contrast verified for every text pair
+4. **Hand off to the normal Step 2.5 → Step 3 → Step 4 → Step 5 flow** — dual variants come back with your brand baked in
+
+### Auditing an existing site (Mode 6)
+
+Say "audit this page: [URL]" or "score this design". Claude will:
+
+1. **Fetch + screenshot** the page across 3 viewports (mobile / tablet / desktop)
+2. **Score on the same 12-item rubric** Step 5 uses on its own output
+3. **Run the AI Tells Blocklist** against the page's computed CSS and cite each hit with a selector
+4. **Detect the page's style** (which of the 17 it resembles most)
+5. **Output Top 5 concrete improvements** — each with a real selector, current measured state, a CSS diff using the page's own class names, and a measurable expected impact
+6. **Optionally re-audit** after you apply the fixes to confirm the score improved
+
+Codex (no Chrome MCP) — paste the rendered HTML + CSS and the audit runs in text-only mode.
+
+### Iterating after the first output (Step 4 refinement)
+
+Once Claude has produced dual variants, you can refine conversationally:
+
+- **"make it bolder"** / **"more whitespace"** / **"warmer"** — the skill maps your phrase to specific token edits and emits a token-level diff (not a full re-render)
+- **"switch to Brutalist"** — cross-style refinement without restarting; brand-derived tokens (if Mode 5 was used) are preserved
+- **"revert to v2"** — every refinement is versioned; you can roll back at any point
+- **"show version log"** — see the v1 → vN history of every token change
 
 ---
 
@@ -272,8 +326,12 @@ AI-Design-Master/
 │   │   └── image-system.md
 │   ├── pages/                        ← M4: 10 page-level templates
 │   │   └── page-templates.md
-│   └── critique/                     ← M5: Self-validation rubric
-│       └── rubric.md
+│   ├── critique/                     ← M5: Self-validation rubric
+│   │   └── rubric.md
+│   ├── brand/                        ← M6: Brand DNA schema + 17-style signal matrix
+│   │   └── brand-extraction.md
+│   └── audit/                        ← M6: Audit report template + concrete-vs-generic rule
+│       └── audit-template.md
 ├── scraper/                          ← Source extractors for style references
 │   ├── lib/extract-tokens.js         ← Shared token extraction
 │   ├── scrape-godly.js
